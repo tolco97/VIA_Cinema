@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ProjectionModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ProjectionModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Model.MovieModel" />
+  <xs:import schemaLocation="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/UserAccountModel" />
+  <xs:complexType name="ArrayOfProjection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Projection" nillable="true" type="tns:Projection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProjection" nillable="true" type="tns:ArrayOfProjection" />
+  <xs:complexType name="Projection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="MovieStartTime" type="xs:dateTime" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Model.MovieModel" minOccurs="0" name="ProjectedMovie" nillable="true" type="q1:Movie" />
+      <xs:element minOccurs="0" name="Seats" nillable="true" type="tns:ArrayOfSeat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Projection" nillable="true" type="tns:Projection" />
+  <xs:complexType name="ArrayOfSeat">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Seat" nillable="true" type="tns:Seat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeat" nillable="true" type="tns:ArrayOfSeat" />
+  <xs:complexType name="Seat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SeatNumber" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/UserAccountModel" minOccurs="0" name="SeatOwner" nillable="true" type="q2:UserAccount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Seat" nillable="true" type="tns:Seat" />
+</xs:schema>

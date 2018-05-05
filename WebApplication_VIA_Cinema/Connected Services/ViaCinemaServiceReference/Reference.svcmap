@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="123146a8-060b-4094-9c82-c787ec0201f3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:56046/ViaCinemaWebService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ViaCinemaWebService.disco" MetadataType="Disco" ID="deadd3e3-038f-46e3-960b-9ae309ce3a82" SourceId="1" SourceUrl="http://localhost:56046/ViaCinemaWebService.svc?disco" />
+    <MetadataFile FileName="ViaCinemaWebService.xsd" MetadataType="Schema" ID="1dcd0fe5-11b1-4f08-ac77-8efcabcf76ab" SourceId="1" SourceUrl="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ViaCinemaWebService1.xsd" MetadataType="Schema" ID="17311c7d-99f4-42c1-8979-1e6b8ec6b2fd" SourceId="1" SourceUrl="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ViaCinemaWebService2.xsd" MetadataType="Schema" ID="c271b65b-dfbc-4d8c-b3fb-08528fa410e9" SourceId="1" SourceUrl="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ViaCinemaWebService3.xsd" MetadataType="Schema" ID="c850cc20-bcff-462a-a2b8-c0f80406fc63" SourceId="1" SourceUrl="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ViaCinemaServiceService.wsdl" MetadataType="Wsdl" ID="bc73d1c9-3191-4fcd-8386-00ced949316d" SourceId="1" SourceUrl="http://localhost:56046/ViaCinemaWebService.svc?wsdl" />
+    <MetadataFile FileName="ViaCinemaWebService4.xsd" MetadataType="Schema" ID="1fa9c434-af00-4e80-a328-b86d091ee23d" SourceId="1" SourceUrl="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
