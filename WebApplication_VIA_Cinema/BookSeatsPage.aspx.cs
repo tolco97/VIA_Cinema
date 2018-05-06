@@ -42,7 +42,7 @@
             if (seatNumCheckBoxList.Items.Count != 0) return;
             
             // get all numbers of the available seats
-            var availableSeatNumbers = GetAvailableSeatNumbers(proj);
+            List<int> availableSeatNumbers = GetAvailableSeatNumbers(proj);
 
             // populate checkbox list
             foreach (int seatNum in availableSeatNumbers)

@@ -47,7 +47,7 @@
             if (!userAccountCache.ContainsKey(email))
             {
                 // read it from the database
-                var userAccount = userAccountDAO.Read(email);
+                UserAccount userAccount = userAccountDAO.Read(email);
 
                 // account does not exist
                 if (userAccount == null) return null;

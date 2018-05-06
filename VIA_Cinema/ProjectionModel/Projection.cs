@@ -33,7 +33,7 @@
 
         [DataMember] public Movie ProjectedMovie { get; set; } // FK one to one relationship
 
-        [DataMember] public List<Seat> Seats { get; set; }
+        [DataMember] public List<Seat> Seats { get; set; } // FK one to many relationship
 
         [DataMember] public DateTime MovieStartTime { get; set; }
        

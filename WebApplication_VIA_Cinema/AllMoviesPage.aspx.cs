@@ -57,9 +57,7 @@
                 movieDropdownMenu.Items.Add(new ListItem(movie.Name));
         }
 
-        protected void MovieDropdownSelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
+        protected void MovieDropdownSelectedIndexChanged(object sender, EventArgs e) {}
 
         private void AddHeaderRow()
         {
@@ -183,15 +181,15 @@
                 {
                     Text = numAvailableSeats.ToString(),
                     BorderColor = Color.Black,
-                    ForeColor = numAvailableSeats > 0 ? Color.Black : Color.Red, // button text color is red, if there are no more seats available
+                    ForeColor = (numAvailableSeats > 0) ? Color.Black : Color.Red, // button text color is red, if there are no more seats available
                     BorderWidth = 1
                 };
 
                 TableCell bookButtonCell = new TableCell();
                 Button bookButton = new Button
                 {
-                    Text =  numAvailableSeats > 0 ? "Book Seats" : "Sold Out", // button text is "Sold out", if all seats are unavailable
-                    Enabled = numAvailableSeats > 0, // button is disabled if all seats are unavailable
+                    Text =  (numAvailableSeats > 0) ? "Book Seats" : "Sold Out", // button text is "Sold out", if all seats are unavailable, otherwise "Book Seats"
+                    Enabled = (numAvailableSeats > 0), // button is disabled if all seats are unavailable
                     ID = proj.Id.ToString()
                 };
                 // add button listener
