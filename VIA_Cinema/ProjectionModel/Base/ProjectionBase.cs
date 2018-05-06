@@ -66,23 +66,21 @@
             ICollection<Projection> allProjections = projectionDao.ReadAllProjections();
 
             // create output collection
-            List<Projection> projectionList = new List<Projection>();
+            int size = allProjections.Count;
+            List<Projection> projectionList = new List<Projection>(size);
 
             // cache all projections that are not cached already
             foreach (Projection proj in allProjections)
             {
-                // get the projection Id
-                int projectionId = proj.Id;
-                
                 // check if projection is cached
-                if (!projectionCache.ContainsKey(projectionId))
+                if (!projectionCache.ContainsKey(proj.Id))
                 {
                     // cache projection object
-                    projectionCache[projectionId] = proj;
+                    projectionCache[proj.Id] = proj;
                 }
 
                 // add to output list
-                projectionList.Add(projectionCache[projectionId]);
+                projectionList.Add(projectionCache[proj.Id]);
             }
 
             return projectionList;
@@ -95,7 +93,8 @@
             ICollection<Projection> allProjections = projectionDao.ReadAllProjections(movie);
 
             // create output collection
-            List<Projection> allMatchingProjections = new List<Projection>();
+            int size = allProjections.Count;
+            List<Projection> allMatchingProjections = new List<Projection>(size);
 
             foreach (Projection proj in allProjections)
             {

@@ -26,7 +26,7 @@
         }
 
         /// <inheritdoc/>
-        public int Create(CreditCard newCreditCard)
+        public int Create(string cardNumber, string pin, decimal balanceDkk)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -39,9 +39,9 @@
                     " (number, pin, balance_dkk) VALUES (@number, @pin, @balance);";
 
                 // set statement parameters
-                stmt.Parameters.AddWithValue(CreditCardEntityConstants.CARD_NUMBER_COLUMN, newCreditCard.CardNumber);
-                stmt.Parameters.AddWithValue(CreditCardEntityConstants.PIN_COLUMN, newCreditCard.Pin);
-                stmt.Parameters.AddWithValue(CreditCardEntityConstants.BALANCE_COLUMN, newCreditCard.BalanceDkk);
+                stmt.Parameters.AddWithValue(CreditCardEntityConstants.CARD_NUMBER_COLUMN, cardNumber);
+                stmt.Parameters.AddWithValue(CreditCardEntityConstants.PIN_COLUMN, pin);
+                stmt.Parameters.AddWithValue(CreditCardEntityConstants.BALANCE_COLUMN, balanceDkk);
 
                 // execute statement
                 return stmt.ExecuteNonQuery();

@@ -54,7 +54,8 @@ namespace Model_VIA_Cinema.MovieModel.Base
             ICollection<Movie> allMovies = movieDao.ReadAll();
 
             // create a collection for the output
-            List<Movie> movieList = new List<Movie>();
+            int size = allMovies.Count;
+            List<Movie> movieList = new List<Movie>(size); // avoid list resizing by specifying size
 
             // go through all movies from the database
             foreach (Movie movie in allMovies)

@@ -26,16 +26,16 @@
         ///     to the VIA cinema account
         /// </summary>
         /// <param name="customerCard"></param>
-        /// <param name="transactionAmountDkk"></param>
+        /// <param name="amountDkk"></param>
         /// <returns> true, if the transaction is successful. Otherwise, false </returns>
-        private bool Pay(CreditCard customerCard, decimal transactionAmountDkk)
+        private bool Pay(CreditCard customerCard, decimal amountDkk)
         {
-            // attempt to withdraw the required transactionAmountDkk
-            if (!customerCard.Withdraw(transactionAmountDkk))
+            // attempt to withdraw the required amountDkk
+            if (!customerCard.Withdraw(amountDkk))
                 return false; // card does not have sufficient funds
 
             creditCardDao.UpdateBalance(customerCard); // card has sufficient funds
-            TransferToViaCinemaAccount(transactionAmountDkk); // transfer funds to VIA cinema credit card
+            TransferToViaCinemaAccount(amountDkk); // transfer funds to VIA cinema credit card
 
             return true;
         }

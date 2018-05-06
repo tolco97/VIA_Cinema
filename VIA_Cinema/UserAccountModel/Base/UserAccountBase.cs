@@ -66,7 +66,8 @@
             ICollection<UserAccount> allUsers = userAccountDAO.ReadAll();
 
             // create a collection for the output
-            List<UserAccount> userList = new List<UserAccount>();
+            int size = allUsers.Count;
+            List<UserAccount> userList = new List<UserAccount>(size);
 
             // go through all movies from the database
             foreach (UserAccount user in allUsers)

@@ -5,9 +5,11 @@
         /// <summary>
         ///     Creates a new credit updatedCard entry in the credit cards database entity
         /// </summary>
-        /// <param name="newCreditCard"> the new credit updatedCard objcet </param>
+        /// <param name="cardNumber"> the number of the credit card </param>
+        /// <param name="pin"> the pin of the credit card </param>
+        /// <param name="balanceDkk"> the balance of the credit card </param>
         /// <returns> the number of database rows affected </returns>
-        int Create(CreditCard newCreditCard);
+        int Create(string cardNumber, string pin, decimal balanceDkk);
 
         /// <summary>
         ///     Updates the balance of a credit updatedCard in the database with the credit updatedCard

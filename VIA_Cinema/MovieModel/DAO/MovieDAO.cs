@@ -83,7 +83,9 @@
                 // set statement
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.movies;";
 
-                // create a collection for the movies
+                // create a collection for the movies. LinkedList is used, because
+                // it is not known how many objects are stored in the database & it is 
+                // preffered to avoid array list resizing
                 LinkedList<Movie> allMovies = new LinkedList<Movie>();
 
                 // execute statement
