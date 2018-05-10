@@ -49,7 +49,7 @@
         bool BookSeat(int projectionId, string email, string seatNumbers);
 
         [OperationContract]
-        [WebInvoke(Method = "POST",
+        [WebInvoke(Method = "GET",
             UriTemplate = "/UserExists?email={email}",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]

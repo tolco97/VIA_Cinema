@@ -13,4 +13,5 @@
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
         bool MakeTransaction(string creditCardNumber, string pin, decimal amount);
     }
+
 }

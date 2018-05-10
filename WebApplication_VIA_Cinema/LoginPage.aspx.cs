@@ -49,10 +49,14 @@
             // react to response
             if (loginSuccessful)
             {
-                Session[Constants.USER_EMAIL_KEY] = email; // save the email
-                Response.Redirect("DefaultPage.aspx");
+                // save the email
+                Session[Constants.USER_EMAIL_KEY] = email; 
+
+                // back to main page
+                Response.Redirect("DefaultPage.aspx"); 
             }
             else
+                // show error message
                 ShowMessageBox("Wrong username or password");
         }
 

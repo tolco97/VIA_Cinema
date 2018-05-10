@@ -18,23 +18,22 @@
 
         [DataMember] public decimal BalanceDkk { get; private set; }
 
-        public bool Withdraw(decimal amount)
+        public bool Withdraw(decimal amountDkk)
         {
             // check if account has enough money
-            if (amount >= BalanceDkk)
+            if (amountDkk >= BalanceDkk)
                 return false;
 
             // update balanceDkk
-            BalanceDkk -= amount;
+            BalanceDkk -= amountDkk;
 
             return true;
-
         }
 
-        public bool Deposit(decimal amount)
+        public bool Deposit(decimal amountDkk)
         {
-            // update amount
-            BalanceDkk += amount;
+            // update amountDkk
+            BalanceDkk += amountDkk;
 
             return true;
         }

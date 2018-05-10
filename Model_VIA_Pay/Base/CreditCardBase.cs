@@ -12,13 +12,13 @@
         }
  
         /// <inheritdoc/>
-        public bool MakeTransaction(string creditCardNumber, string creditCardPin, decimal transactionAmountDkk)
+        public bool MakeTransaction(string creditCardNumber, string creditCardPin, decimal amountDkk)
         {
             if (!Authenticate(creditCardNumber, creditCardPin))
                 return false;
 
             CreditCard creditCard = creditCardDao.Read(creditCardNumber);
-            return Pay(creditCard, transactionAmountDkk);
+            return Pay(creditCard, amountDkk);
         }
 
         /// <summary>

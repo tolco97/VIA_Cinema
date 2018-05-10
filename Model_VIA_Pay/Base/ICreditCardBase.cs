@@ -8,8 +8,8 @@
         /// </summary>
         /// <param name="creditCardNumber"> the credit card number of the card that will  </param>
         /// <param name="creditCardPin"> the pin of the credit card from which the money is withdrawn </param>
-        /// <param name="transactionAmountDkk"> the amount of money to be transacted </param>
+        /// <param name="amountDkk"> the amount of money to be transacted </param>
         /// <returns> true, if the trancation is successful. Otherwise, false </returns>
-        bool MakeTransaction(string creditCardNumber, string creditCardPin, decimal transactionAmountDkk);
+        bool MakeTransaction(string creditCardNumber, string creditCardPin, decimal amountDkk);
     }
 }
