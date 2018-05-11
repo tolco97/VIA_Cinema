@@ -45,7 +45,7 @@
 
             // calculate amount of money required: {number of seats * 30.0}. Each movie seat costs 30 DKK for all projections
             List<string> selectedSeatNumbers = Session[Constants.SELECTED_SEAT_NUMBERS_KEY] as List<string>;
-            decimal totalPrice = Constants.SINGLE_MOVIE_TICKET_PRICE * selectedSeatNumbers.Count;
+            decimal totalPrice = Constants.SINGLE_MOVIE_TICKET_PRICE_DKK * selectedSeatNumbers.Count;
 
             // send transaction request
             Task<bool> transactionRequest = payClient.MakeTransactionAsync(creditCardNumber, pin, totalPrice);

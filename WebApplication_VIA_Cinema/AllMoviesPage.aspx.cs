@@ -216,7 +216,7 @@
             int numUnavailableSeats = proj.Seats.Count;
 
             // calculate the amount of available seats {30 is the total number of seats in a cinema theatre}
-            return 30 - numUnavailableSeats;
+            return Constants.MAX_MOVIE_AUDIENCE_SIZE - numUnavailableSeats;
         }
 
         protected void BookButtonOnClick(object sender, EventArgs e)

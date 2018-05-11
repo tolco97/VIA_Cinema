@@ -12,7 +12,9 @@
         public const string SELECTED_SEAT_NUMBERS_KEY = "SelectedSeatNumbers";
         public const string NUMBER_OF_SELECTED_SEATS_KEY = "NumberOfSelectedSeats";
 
-        public const decimal SINGLE_MOVIE_TICKET_PRICE = 30;
+        public const decimal SINGLE_MOVIE_TICKET_PRICE_DKK = 50;
+
+        public const int MAX_MOVIE_AUDIENCE_SIZE = 30;
 
     }
 }
