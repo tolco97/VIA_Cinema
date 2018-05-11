@@ -64,26 +64,16 @@
         {
             // read all projection skeletons
             ICollection<Projection> allProjections = projectionDao.ReadAllProjections();
-
-            // create output collection
-            int size = allProjections.Count;
-            List<Projection> projectionList = new List<Projection>(size);
-
+            
             // cache all projections that are not cached already
             foreach (Projection proj in allProjections)
             {
-                // check if projection is cached
+                // cache all projections
                 if (!projectionCache.ContainsKey(proj.Id))
-                {
-                    // cache projection object
                     projectionCache[proj.Id] = proj;
-                }
-
-                // add to output list
-                projectionList.Add(projectionCache[proj.Id]);
             }
 
-            return projectionList;
+            return new List<Projection>(projectionCache.Values);
         }
 
         /// <inheritdoc/>
@@ -103,11 +93,8 @@
 
                 // check if projection is already cached
                 if (!projectionCache.ContainsKey(projectionId))
-                {
-                    // cache projection object
                     projectionCache[projectionId] = proj;
-                }
-
+                
                 // add to output list
                 allMatchingProjections.Add(projectionCache[projectionId]);
             }

@@ -65,29 +65,19 @@
             // read all accounts from the database
             ICollection<UserAccount> allUsers = userAccountDAO.ReadAll();
 
-            // create a collection for the output
-            int size = allUsers.Count;
-            List<UserAccount> userList = new List<UserAccount>(size);
-
-            // go through all movies from the database
+            // cache all accounts that have not been red so far
             foreach (UserAccount user in allUsers)
-            {
-                // cache all accounts that have not been red so far
                 if (!userAccountCache.ContainsKey(user.Email))
                     userAccountCache[user.Email] = user;
 
-                // add to output list
-                userList.Add(userAccountCache[user.Email]);
-            }
-
-            return userList;
+            return new List<UserAccount>(userAccountCache.Values);
         }
 
         /// <inheritdoc/>
         public bool UserExists(string email)
         {
             // user account is null, if it doesn't exist
-            bool exists = userAccountDAO.Read(email) != null;
+            bool exists = GetUserAccount(email) != null;
 
             return exists;
         }

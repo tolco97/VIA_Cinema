@@ -4,6 +4,7 @@
 
     public class CreditCardBase : ICreditCardBase
     {
+        // i am not caching here because security reasons
         private readonly ICreditCardDAO creditCardDao;
 
         public CreditCardBase(ICreditCardDAO creditCardDao)
@@ -14,11 +15,17 @@
         /// <inheritdoc/>
         public bool MakeTransaction(string creditCardNumber, string creditCardPin, decimal amountDkk)
         {
+            // check if user has correct credit card details
             if (!Authenticate(creditCardNumber, creditCardPin))
                 return false;
 
+            // read credit card from DB
             CreditCard creditCard = creditCardDao.Read(creditCardNumber);
-            return Pay(creditCard, amountDkk);
+
+            // attempt to pay 
+            bool isSuccessful = Pay(creditCard, amountDkk);
+
+            return isSuccessful;
         }
 
         /// <summary>

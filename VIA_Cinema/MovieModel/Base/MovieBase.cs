@@ -9,7 +9,6 @@ namespace Model_VIA_Cinema.MovieModel.Base
     public class MovieBase : IMovieBase
     {
         private readonly Dictionary<string, Movie> movieCache = new Dictionary<string, Movie>();
-
         private readonly IMovieDAO movieDao;
 
         public MovieBase(IMovieDAO movieDao)
@@ -52,23 +51,13 @@ namespace Model_VIA_Cinema.MovieModel.Base
         {
             // read all movies from the database
             ICollection<Movie> allMovies = movieDao.ReadAll();
-
-            // create a collection for the output
-            int size = allMovies.Count;
-            List<Movie> movieList = new List<Movie>(size); // avoid list resizing by specifying size
-
-            // go through all movies from the database
+            
+            // cache all movies that have not been read already 
             foreach (Movie movie in allMovies)
-            {
-                // cache all movies that have not been cached so far
                 if (!movieCache.ContainsKey(movie.Name))
                     movieCache[movie.Name] = movie;
 
-                // add to output list
-                movieList.Add(movieCache[movie.Name]);
-            }
-
-            return movieList;
+            return new List<Movie>(movieCache.Values);
         }
     }
 }
