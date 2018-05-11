@@ -40,66 +40,59 @@
         }
 
         /// <inheritdoc/>
-        public Projection GetProjection(int projectionId)
+        public Projection GetProjection(int projId)
         {
             // if projection is not cached
-            if (!projectionCache.ContainsKey(projectionId))
+            if (!projectionCache.ContainsKey(projId))
             {
                 // read projection
-                Projection proj = projectionDao.ReadProjection(projectionId);
+                Projection proj = projectionDao.ReadProjection(projId);
 
                 // projection does not exist
                 if (proj == null)
-                    throw new ArgumentException($"Projection with id {projectionId} does not exist!");
+                    throw new ArgumentException($"Projection with id {projId} does not exist!");
 
                 // cache projection object
-                projectionCache[projectionId] = proj;
+                projectionCache[projId] = proj;
             }
 
-            return projectionCache[projectionId];
+            return projectionCache[projId];
         }
 
         /// <inheritdoc/>
         public List<Projection> GetAllProjections()
         {
-            // read all projection skeletons
+            // read all projections
             ICollection<Projection> allProjections = projectionDao.ReadAllProjections();
             
             // cache all projections that are not cached already
             foreach (Projection proj in allProjections)
-            {
-                // cache all projections
                 if (!projectionCache.ContainsKey(proj.Id))
                     projectionCache[proj.Id] = proj;
-            }
-
+            
             return new List<Projection>(projectionCache.Values);
         }
 
         /// <inheritdoc/>
         public List<Projection> GetAllProjections(Movie movie)
         {
-            // read all projection skeletons for this movie
+            // read all projections for this movie
             ICollection<Projection> allProjections = projectionDao.ReadAllProjections(movie);
 
             // create output collection
             int size = allProjections.Count;
-            List<Projection> allMatchingProjections = new List<Projection>(size);
+            List<Projection> matchingProjections = new List<Projection>(size); // avoid list resizing
 
+            // cache all projections that have not been read already
             foreach (Projection proj in allProjections)
             {
-                // get the projection Id
-                int projectionId = proj.Id;
-
-                // check if projection is already cached
-                if (!projectionCache.ContainsKey(projectionId))
-                    projectionCache[projectionId] = proj;
+                if (!projectionCache.ContainsKey(proj.Id))
+                    projectionCache[proj.Id] = proj;
                 
-                // add to output list
-                allMatchingProjections.Add(projectionCache[projectionId]);
+                matchingProjections.Add(projectionCache[proj.Id]);
             }
 
-            return allMatchingProjections;
+            return matchingProjections;
         }
         
         /// <summary>

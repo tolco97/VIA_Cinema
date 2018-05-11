@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProjectionModel.Base
+﻿namespace ProjectionModel.Base
 {
     using System.Collections.Generic;
     using Model.MovieModel;
@@ -22,9 +20,9 @@ namespace ProjectionModel.Base
         ///     Retrieves the projection from the system that matches the projeciton id passed as a
         ///     parameter
         /// </summary>
-        /// <param name="projectionId"> the projection id </param>
+        /// <param name="projId"> the projection id </param>
         /// <returns> a projection object </returns>
-        Projection GetProjection(int projectionId);
+        Projection GetProjection(int projId);
 
         /// <summary>
         ///     Retrieves all projections in the system

@@ -95,7 +95,7 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // output collection
-                List<Projection> allProjections = new List<Projection>();
+                LinkedList<Projection> allProjections = new LinkedList<Projection>();
 
                 // set connection
                 stmt.Connection = con;
@@ -124,7 +124,7 @@
                             ProjectedMovie = movie,
                             MovieStartTime = projectionStart
                         };
-                        allProjections.Add(projection);
+                        allProjections.AddLast(projection);
                     }
                 }
 
@@ -142,7 +142,7 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // output collection
-                List<Projection> allProjections = new List<Projection>();
+                LinkedList<Projection> allProjections = new LinkedList<Projection>();
 
                 // set connection
                 stmt.Connection = con;
@@ -172,7 +172,7 @@
                             MovieStartTime = projectionStart
                         };
 
-                        allProjections.Add(projection);
+                        allProjections.AddLast(projection);
                     }
                 }
 
