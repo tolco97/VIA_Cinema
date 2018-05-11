@@ -84,7 +84,9 @@
 
         public bool UserExists(string email)
         {
-            return userAccountBase.UserExists(email);
+            bool exists = userAccountBase.UserExists(email);
+
+            return exists;
         }
 
     }

@@ -9,7 +9,9 @@
         
         public bool MakeTransaction(string creditCardNumber, string pin, decimal amount)
         {
-            return creditCardBase.MakeTransaction(creditCardNumber, pin, amount);
+            bool isSuccessful = creditCardBase.MakeTransaction(creditCardNumber, pin, amount);
+
+            return isSuccessful;
         }
 
     }
