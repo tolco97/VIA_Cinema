@@ -54,7 +54,7 @@
         }
 
         /// <inheritdoc/>
-        public Projection ReadProjection(int projectionId)
+        public Projection Read(int projId)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -66,10 +66,10 @@
                                    " WHERE projections.id = @id;";
 
                 // set statement parameters
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.ID_COLUMN, projectionId);
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.ID_COLUMN, projId);
 
                 // get seats for this projection
-                List<Seat> seatAllocations = ReadSeatReservations(projectionId);
+                List<Seat> seatAllocations = ReadSeatReservations(projId);
 
                 // execute statement and collect values
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
@@ -84,13 +84,13 @@
                     // get proj start
                     DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.PROJECTION_START_COLUMN];
 
-                    return new Projection(projectionId, movie, seatAllocations, projectionStart);
+                    return new Projection(projId, movie, seatAllocations, projectionStart);
                 }
             }
         }
 
         /// <inheritdoc/>
-        public ICollection<Projection> ReadAllProjections()
+        public ICollection<Projection> ReadAll()
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -137,7 +137,7 @@
         }
 
         /// <inheritdoc/>
-        public ICollection<Projection> ReadAllProjections(Movie movie)
+        public ICollection<Projection> Read(Movie movie)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -235,6 +235,12 @@
         }
 
         /// <inheritdoc/>
+        public void CloseConnection()
+        {
+            con?.Close();
+        }
+
+        /// <inheritdoc/>
         public int CreateSeatReservations(Projection proj)
         {
             int rowsAffected = 0;
@@ -274,7 +280,7 @@
         }
 
         /// <inheritdoc/>
-        public List<Seat> ReadSeatReservations(int projectionId)
+        public List<Seat> ReadSeatReservations(int projId)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -297,7 +303,7 @@
                     ".seat_number ASC;";
 
                 // set parameters
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.ID_COLUMN, projectionId);
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.ID_COLUMN, projId);
 
                 // execute quary
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())

@@ -27,15 +27,15 @@
         ///     Reads a projection entry from the database that matches the projection
         ///     id passed as a parameter
         /// </summary>
-        /// <param name="projectionId"> the projection id </param>
+        /// <param name="projId"> the projection id </param>
         /// <returns> a projection object </returns>
-        Projection ReadProjection(int projectionId);
+        Projection Read(int projId);
 
         /// <summary>
         ///     Reads all projection database entries from the projections entity
         /// </summary>
         /// <returns> a collection of projection objects </returns>
-        ICollection<Projection> ReadAllProjections();
+        ICollection<Projection> ReadAll();
 
 
         /// <summary>
@@ -43,15 +43,15 @@
         /// </summary>
         /// <param name="movie"> the movie </param>
         /// <returns> a collection of projection objects </returns>
-        ICollection<Projection> ReadAllProjections(Movie movie);
+        ICollection<Projection> Read(Movie movie);
 
         /// <summary>
         ///     Reads all seat reservation entries from the seat reservations entity that match
         ///     the projection id passed as a parameter
         /// </summary>
-        /// <param name="projectionId"> the projection id </param>
+        /// <param name="projId"> the projection id </param>
         /// <returns> a list of seats </returns>
-        List<Seat> ReadSeatReservations(int projectionId);
+        List<Seat> ReadSeatReservations(int projId);
 
         /// <summary>
         ///     Updates a projection database entry with the data from the projection passed
@@ -70,5 +70,10 @@
         /// <param name="seatNumber"> the seat number </param>
         /// <returns> the number of database rows affected </returns>
         int DeleteSeatReservation(int projectionId, UserAccount user, int seatNumber);
+        
+        /// <summary>
+        ///     Closes the connection to the database
+        /// </summary>
+        void CloseConnection();
     }
 }

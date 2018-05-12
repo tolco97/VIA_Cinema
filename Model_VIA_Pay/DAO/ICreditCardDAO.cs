@@ -33,5 +33,10 @@
         /// <param name="creditCardNumber"> the credit card number </param>
         /// <returns> a credit card object </returns>
         CreditCard Read(string creditCardNumber);
+
+        /// <summary>
+        ///     Closes the connection to the database
+        /// </summary>
+        void CloseConnection();
     }
 }

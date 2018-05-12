@@ -162,7 +162,7 @@
         public static IMovieDAO GetIntance()
         {
             // Return movieDao if it is not null. Otherwise create create new MovieDAO object and
-            // assign it to movieDao. Finally, return
+            // assign it to movieDao & return.
             return movieDao ?? (movieDao = new MovieDAO());
         }
     }

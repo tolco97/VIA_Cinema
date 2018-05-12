@@ -4,8 +4,7 @@ namespace Model_VIA_Cinema.MovieModel.Base
 {
     using System.Collections.Generic;
     using Model.MovieModel;
-    using System;
-
+    
     public class MovieBase : IMovieBase
     {
         private readonly Dictionary<string, Movie> movieCache = new Dictionary<string, Movie>();
@@ -37,8 +36,7 @@ namespace Model_VIA_Cinema.MovieModel.Base
                 Movie movie = movieDao.Read(movieName);
 
                 // movie does not exist
-                if (movie == null)
-                    throw new ArgumentException($"Movie with name {movieName} does not exist!");
+                if (movie == null) return null;
 
                 movieCache[movie.Name] = movie;
             }

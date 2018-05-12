@@ -46,11 +46,10 @@
             if (!projectionCache.ContainsKey(projId))
             {
                 // read projection
-                Projection proj = projectionDao.ReadProjection(projId);
+                Projection proj = projectionDao.Read(projId);
 
                 // projection does not exist
-                if (proj == null)
-                    throw new ArgumentException($"Projection with id {projId} does not exist!");
+                if (proj == null) return null;
 
                 // cache projection object
                 projectionCache[projId] = proj;
@@ -63,13 +62,13 @@
         public List<Projection> GetAllProjections()
         {
             // read all projections
-            ICollection<Projection> allProjections = projectionDao.ReadAllProjections();
+            ICollection<Projection> allProjections = projectionDao.ReadAll();
             
             // cache all projections that are not cached already
             foreach (Projection proj in allProjections)
                 if (!projectionCache.ContainsKey(proj.Id))
                     projectionCache[proj.Id] = proj;
-            
+
             return new List<Projection>(projectionCache.Values);
         }
 
@@ -77,7 +76,7 @@
         public List<Projection> GetAllProjections(Movie movie)
         {
             // read all projections for this movie
-            ICollection<Projection> allProjections = projectionDao.ReadAllProjections(movie);
+            ICollection<Projection> allProjections = projectionDao.Read(movie);
 
             // create output collection
             int size = allProjections.Count;

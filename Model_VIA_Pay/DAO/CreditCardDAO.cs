@@ -111,5 +111,11 @@
                 }
             }
         }
+
+        /// <inheritdoc/>
+        public void CloseConnection()
+        {
+            con?.Close();
+        }
     }
 }
