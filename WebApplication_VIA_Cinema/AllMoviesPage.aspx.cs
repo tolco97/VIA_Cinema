@@ -223,6 +223,7 @@
                     Enabled = (numAvailableSeats > 0), // button is disabled if all seats are unavailable
                     ID = proj.Id.ToString()
                 };
+
                 // add button listener
                 bookButton.Click += BookButtonOnClick;
 
