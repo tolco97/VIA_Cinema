@@ -6,7 +6,6 @@
     public class CreditCardDAO : ICreditCardDAO
     {
         private readonly NpgsqlConnection con;
-
         private static ICreditCardDAO instance = null;
 
         private CreditCardDAO()

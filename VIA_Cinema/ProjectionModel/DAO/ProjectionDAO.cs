@@ -46,10 +46,10 @@
                     movieStartTime);
 
                 // execute statement and return generated ID
-                int projectionId = (int) stmt.ExecuteScalar();
+                int projId = (int) stmt.ExecuteScalar();
 
                 // create new projection object
-                return new Projection(projectionId, projectedMovie, new List<Seat>(), movieStartTime);
+                return new Projection(projId, projectedMovie, new List<Seat>(), movieStartTime);
             }
         }
 
@@ -81,10 +81,10 @@
                     string movieName = reader[ProjectionEntityConstants.MOVIE_NAME_COLUMN] as string;
                     Movie movie = movieDao.Read(movieName);
 
-                    // get proj start
-                    DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.PROJECTION_START_COLUMN];
+                    // get projection start
+                    DateTime projStartTime = (DateTime) reader[ProjectionEntityConstants.PROJECTION_START_COLUMN];
 
-                    return new Projection(projId, movie, seatAllocations, projectionStart);
+                    return new Projection(projId, movie, seatAllocations, projStartTime);
                 }
             }
         }
