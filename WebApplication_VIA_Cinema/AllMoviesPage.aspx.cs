@@ -253,7 +253,7 @@
             int numUnavailableSeats = proj.Seats.Count;
 
             // calculate the amount of available seats {30 is the total number of seats in a cinema theatre}
-            return Constants.MAX_MOVIE_AUDIENCE_SIZE - numUnavailableSeats;
+            return Constants.MAX_PROJECTION_AUDIENCE_SIZE - numUnavailableSeats;
         }
 
         /// <summary>

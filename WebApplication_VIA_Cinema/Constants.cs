@@ -14,7 +14,7 @@
 
         public const decimal SINGLE_MOVIE_TICKET_PRICE_DKK = 50;
 
-        public const int MAX_MOVIE_AUDIENCE_SIZE = 30;
+        public const int MAX_PROJECTION_AUDIENCE_SIZE = 30;
 
     }
 }
