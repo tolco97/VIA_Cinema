@@ -18,10 +18,10 @@
         private readonly IProjectionBase projectionBase = new ProjectionBase(ProjectionDAO.GetInstance());
         private readonly IUserAccountBase userAccountBase = new UserAccountBase(UserAccountDAO.GetInstance());
 
-        public List<Movie> GetAllMovies()
+        public IList<Movie> GetAllMovies()
         {
             // get all movies
-            List<Movie> allMovies = movieBase.GetAllMovies();
+            IList<Movie> allMovies = movieBase.GetAllMovies();
 
             return allMovies;
         }
@@ -34,10 +34,10 @@
             return loginSuccessful;
         }
 
-        public List<Projection> GetAllProjections()
+        public IList<Projection> GetAllProjections()
         {
             // get all projections
-            List<Projection> allProjections = projectionBase.GetAllProjections();
+            IList<Projection> allProjections = projectionBase.GetAllProjections();
 
             return allProjections;
         }
@@ -54,13 +54,13 @@
             return newUser;
         }
 
-        public List<Projection> GetProjections(string movieName)
+        public IList<Projection> GetProjections(string movieName)
         {
             // get movie
             Movie movie = movieBase.GetMovie(movieName);
 
             // get all projections of the movie
-            List<Projection> projections = projectionBase.GetAllProjections(movie);
+            IList<Projection> projections = projectionBase.GetAllProjections(movie);
 
             return projections;
         }

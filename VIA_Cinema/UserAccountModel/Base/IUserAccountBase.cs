@@ -41,7 +41,7 @@
         ///     Retrieves all accouns from the system
         /// </summary>
         /// <returns> a list of user accounts </returns>
-        List<UserAccount> GetAllAccounts();
+        IList<UserAccount> GetAllAccounts();
 
         /// <summary>
         ///     Checks if a user with the email passed as a parameter exists

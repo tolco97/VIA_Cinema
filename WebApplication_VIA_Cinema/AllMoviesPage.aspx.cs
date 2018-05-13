@@ -14,7 +14,7 @@
     {
         private IViaCinemaService client;
         private bool isLoggedIn;
-        private Dictionary<int, Projection> projectionCache;
+        private IDictionary<int, Projection> projectionCache;
 
         protected void Page_Load(object sender, EventArgs e)
         {

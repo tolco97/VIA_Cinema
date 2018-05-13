@@ -6,7 +6,7 @@
 
     public class UserAccountBase : IUserAccountBase
     {
-        private readonly Dictionary<string, UserAccount> userAccountCache = new Dictionary<string, UserAccount>();
+        private readonly IDictionary<string, UserAccount> userAccountCache = new Dictionary<string, UserAccount>();
         private readonly IUserAccountDAO userAccountDAO;
 
         public UserAccountBase(IUserAccountDAO userAccountDAO)
@@ -60,7 +60,7 @@
         }
 
         /// <inheritdoc/>
-        public List<UserAccount> GetAllAccounts()
+        public IList<UserAccount> GetAllAccounts()
         {
             // read all accounts from the database
             ICollection<UserAccount> allUsers = userAccountDAO.ReadAll();

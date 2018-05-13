@@ -13,7 +13,7 @@
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/GetAllMovies", RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
-        List<Movie> GetAllMovies();
+        IList<Movie> GetAllMovies();
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/Login?email={email}&userPassword={userPassword}",
@@ -24,7 +24,7 @@
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/GetAllProjections", RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
-        List<Projection> GetAllProjections();
+        IList<Projection> GetAllProjections();
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/CreateAccount?email={email}&userPassword={userPassword}&" +
@@ -39,7 +39,7 @@
         [WebInvoke(Method = "GET", UriTemplate = "/GetProjections?movieName={movieName}",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
-        List<Projection> GetProjections(string movieName);
+        IList<Projection> GetProjections(string movieName);
 
         [OperationContract]
         [WebInvoke(Method = "POST",

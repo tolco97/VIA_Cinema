@@ -15,15 +15,6 @@
             con.Open();
         }
 
-        /// <summary>
-        ///     Singleton implementation
-        /// </summary>
-        /// <returns> an instance of a credit updatedCard data access object </returns>
-        public static ICreditCardDAO GetInstance()
-        {
-            return instance ?? (instance = new CreditCardDAO());
-        }
-
         /// <inheritdoc/>
         public int Create(string cardNumber, string pin, decimal balanceDkk)
         {
@@ -115,6 +106,15 @@
         public void CloseConnection()
         {
             con?.Close();
+        }
+
+        /// <summary>
+        ///     Singleton implementation
+        /// </summary>
+        /// <returns> an instance of a credit updatedCard data access object </returns>
+        public static ICreditCardDAO GetInstance()
+        {
+            return instance ?? (instance = new CreditCardDAO());
         }
     }
 }

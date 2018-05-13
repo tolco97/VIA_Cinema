@@ -51,7 +51,7 @@
         /// </summary>
         /// <param name="projId"> the projection id </param>
         /// <returns> a list of seats </returns>
-        List<Seat> ReadSeatReservations(int projId);
+        IList<Seat> ReadSeatReservations(int projId);
 
         /// <summary>
         ///     Updates a projection database entry with the data from the projection passed

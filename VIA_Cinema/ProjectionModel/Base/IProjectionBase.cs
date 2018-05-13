@@ -28,13 +28,13 @@
         ///     Retrieves all projections in the system
         /// </summary>
         /// <returns> a list of projections </returns>
-        List<Projection> GetAllProjections();
+        IList<Projection> GetAllProjections();
 
         /// <summary>
         ///     Retrieves all projections in the system that project the movie passed as a parameter
         /// </summary>
         /// <param name="movie"> the movie </param>
         /// <returns> a list of projections </returns>
-        List<Projection> GetAllProjections(Movie movie);
+        IList<Projection> GetAllProjections(Movie movie);
     }
 }

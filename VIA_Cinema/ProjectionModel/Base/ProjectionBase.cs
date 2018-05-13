@@ -8,7 +8,7 @@
 
     public class ProjectionBase : IProjectionBase
     {
-        private readonly Dictionary<int, Projection> projectionCache = new Dictionary<int, Projection>();
+        private readonly IDictionary<int, Projection> projectionCache = new Dictionary<int, Projection>();
         private readonly IProjectionDAO projectionDao;
 
         public ProjectionBase(IProjectionDAO projectionDao)
@@ -58,7 +58,7 @@
         }
 
         /// <inheritdoc/>
-        public List<Projection> GetAllProjections()
+        public IList<Projection> GetAllProjections()
         {
             // read all projections
             ICollection<Projection> allProjections = projectionDao.ReadAll();
@@ -72,7 +72,7 @@
         }
 
         /// <inheritdoc/>
-        public List<Projection> GetAllProjections(Movie movie)
+        public IList<Projection> GetAllProjections(Movie movie)
         {
             // read all projections for this movie
             ICollection<Projection> allProjections = projectionDao.Read(movie);
@@ -102,7 +102,7 @@
         /// <returns> true, if all the seats are available. Otherwise, false </returns>
         private bool AreSeatsAvailable(Projection proj, params int[] seatNumbers)
         {
-            List<Seat> seatPattern = proj.Seats;
+            IList<Seat> seatPattern = proj.Seats;
 
             foreach (int seatNum in seatNumbers)
                 foreach (Seat seat in seatPattern)

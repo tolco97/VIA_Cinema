@@ -1,8 +1,7 @@
-﻿using System;
-
-namespace UserAccountModel.DAO
+﻿namespace UserAccountModel.DAO
 {
     using System.Collections.Generic;
+    using System;
 
     public interface IUserAccountDAO
     {

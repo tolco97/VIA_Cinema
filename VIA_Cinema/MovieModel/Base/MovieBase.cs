@@ -7,7 +7,7 @@ namespace Model_VIA_Cinema.MovieModel.Base
     
     public class MovieBase : IMovieBase
     {
-        private readonly Dictionary<string, Movie> movieCache = new Dictionary<string, Movie>();
+        private readonly IDictionary<string, Movie> movieCache = new Dictionary<string, Movie>();
         private readonly IMovieDAO movieDao;
 
         public MovieBase(IMovieDAO movieDao)
@@ -45,7 +45,7 @@ namespace Model_VIA_Cinema.MovieModel.Base
         }
 
         /// <inheritdoc/>
-        public List<Movie> GetAllMovies()
+        public IList<Movie> GetAllMovies()
         {
             // read all movies from the database
             ICollection<Movie> allMovies = movieDao.ReadAll();

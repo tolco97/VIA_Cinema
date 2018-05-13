@@ -69,7 +69,7 @@
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.ID_COLUMN, projId);
 
                 // get seats for this projection
-                List<Seat> seatAllocations = ReadSeatReservations(projId);
+                IList<Seat> seatAllocations = ReadSeatReservations(projId);
 
                 // execute statement and collect values
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
@@ -280,7 +280,7 @@
         }
 
         /// <inheritdoc/>
-        public List<Seat> ReadSeatReservations(int projId)
+        public IList<Seat> ReadSeatReservations(int projId)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {

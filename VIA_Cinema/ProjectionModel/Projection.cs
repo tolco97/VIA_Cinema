@@ -11,7 +11,7 @@
         public Projection() {}
 
         // constructor for reading from the database
-        public Projection(int id, Movie projectedMovie, List<Seat> seats,
+        public Projection(int id, Movie projectedMovie, IList<Seat> seats,
             DateTime movieStartTime)
         {
             Id = id;
@@ -21,7 +21,7 @@
         }
 
         // constructor for saving to the database
-        public Projection(Movie projectedMovie, List<Seat> seats,
+        public Projection(Movie projectedMovie, IList<Seat> seats,
             DateTime movieStartTime)
         {
             ProjectedMovie = projectedMovie;
@@ -33,7 +33,7 @@
 
         [DataMember] public Movie ProjectedMovie { get; set; } // FK one to one relationship
 
-        [DataMember] public List<Seat> Seats { get; set; } // FK one to many relationship
+        [DataMember] public IList<Seat> Seats { get; set; } // FK one to many relationship
 
         [DataMember] public DateTime MovieStartTime { get; set; }
        

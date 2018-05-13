@@ -25,6 +25,6 @@
         ///     Retrieves all movies from the system
         /// </summary>
         /// <returns> a list of movies </returns>
-        List<Movie> GetAllMovies();
+        IList<Movie> GetAllMovies();
     }
 }
