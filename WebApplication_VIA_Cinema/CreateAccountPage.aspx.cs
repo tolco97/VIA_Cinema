@@ -67,6 +67,10 @@
             Response.Redirect("DefaultPage.aspx");
         }
 
+        /// <summary>
+        ///     Validates an account email
+        /// </summary>
+        /// <param name="email"> the email </param>
         private void ValidateAccountEmail(string email)
         {
             // make request
@@ -83,6 +87,10 @@
                 throw new InvalidOperationException($"Account with email {email} already exists!");
         }
 
+        /// <summary>
+        ///     Shows a message box to the user
+        /// </summary>
+        /// <param name="message"> the message </param>
         private void ShowMessageBox(string message)
         {
             string s = "<SCRIPT language='javascript'>alert('" + message.Replace("\r\n", "\\n").Replace("'", "") +

@@ -23,41 +23,6 @@
             InitializeLoginStatusLabel();
         }
 
-        private void InitializeButtons()
-        {
-            if (isLoggedIn)
-            {
-                // when logged in, you can't use login and create account buttons
-                loginButton.Enabled = false;
-                createAccountButton.Enabled = false;
-                allMoviesButton.Enabled = true;
-                logoutButton.Enabled = true;
-            }
-            else
-            {
-                // when logged out, you can't use logout and all movies buttons
-                loginButton.Enabled = true;
-                createAccountButton.Enabled = true;
-                allMoviesButton.Enabled = false;
-                logoutButton.Enabled = false;
-            }
-        }
-
-        private void InitializeLoginStatusLabel()
-        {
-            if (isLoggedIn)
-            {
-                string userEmail = Session[Constants.USER_EMAIL_KEY] as string;
-                isLoggedInLabel.Text = $"Hello, {userEmail}!";
-                isLoggedInLabel.ForeColor = Color.Green;
-            }
-            else
-            {
-                isLoggedInLabel.Text = "You are not logged in!";
-                isLoggedInLabel.ForeColor = Color.Red;
-            }
-        }
-
         protected void LoginButtonOnClick(object sender, EventArgs e)
         {
             Response.Redirect("LoginPage.aspx");
@@ -80,6 +45,47 @@
         protected void AllMoviesButtonOnClick(object sender, EventArgs e)
         {
             Response.Redirect("AllMoviesPage.aspx");
+        }
+
+        /// <summary>
+        ///     Initializes all buttons
+        /// </summary>
+        private void InitializeButtons()
+        {
+            if (isLoggedIn)
+            {
+                // when logged in, you can't use login and create account buttons
+                loginButton.Enabled = false;
+                createAccountButton.Enabled = false;
+                allMoviesButton.Enabled = true;
+                logoutButton.Enabled = true;
+            }
+            else
+            {
+                // when logged out, you can't use logout and all movies buttons
+                loginButton.Enabled = true;
+                createAccountButton.Enabled = true;
+                allMoviesButton.Enabled = false;
+                logoutButton.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        ///     Initializes the login status label
+        /// </summary>
+        private void InitializeLoginStatusLabel()
+        {
+            if (isLoggedIn)
+            {
+                string userEmail = Session[Constants.USER_EMAIL_KEY] as string;
+                isLoggedInLabel.Text = $"Hello, {userEmail}!";
+                isLoggedInLabel.ForeColor = Color.Green;
+            }
+            else
+            {
+                isLoggedInLabel.Text = "You are not logged in!";
+                isLoggedInLabel.ForeColor = Color.Red;
+            }
         }
     }
 }

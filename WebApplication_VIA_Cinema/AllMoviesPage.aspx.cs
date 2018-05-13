@@ -41,6 +41,33 @@
             PopulateProjectionsTable(movieDropdownMenu.SelectedValue);
         }
 
+        protected void BookButtonOnClick(object sender, EventArgs e)
+        {
+            // login check
+            if (!isLoggedIn)
+            {
+                ShowMessageBox("You need to log in first!");
+                return;
+            }
+
+            // get event source
+            Button button = sender as Button;
+
+            // get id of pressed button
+            int buttonId = int.Parse(button.ID);
+
+            // save projection selected by the user in the session
+            Session[Constants.PROJECTION_KEY] = projectionCache[buttonId];
+
+            // redirect to booking page
+            Response.Redirect("BookSeatsPage.aspx");
+        }
+        
+        protected void MovieDropdownSelectedIndexChanged(object sender, EventArgs e) { }
+
+        /// <summary>
+        ///     Initializes the dropdown menu with all movie values
+        /// </summary>
         private void InitializeDropdownMenu()
         {
             // request all movies
@@ -57,8 +84,9 @@
                 movieDropdownMenu.Items.Add(new ListItem(movie.Name));
         }
 
-        protected void MovieDropdownSelectedIndexChanged(object sender, EventArgs e) {}
-
+        /// <summary>
+        ///     Adds the header row to the table with projections
+        /// </summary>
         private void AddHeaderRow()
         {
             // create header row
@@ -118,7 +146,10 @@
             projectionTable.Rows.Add(headerRow);
         }
 
-        // populate the projections table with movies that match the name as parameter
+        /// <summary>
+        ///     Populates the projections table with movies that match the name as parameter
+        /// </summary>
+        /// <param name="movieName"> the name of the movie </param>
         private void PopulateProjectionsTable(string movieName)
         {
             // request all projections
@@ -210,6 +241,11 @@
             }
         }
 
+        /// <summary>
+        ///     Calculates the number of available seats that a projection has
+        /// </summary>
+        /// <param name="proj"> the projection </param>
+        /// <returns> the number of available seats </returns>
         private int GetNumAvailableSeats(Projection proj)
         {
             // get number of seats in the projection
@@ -217,28 +253,6 @@
 
             // calculate the amount of available seats {30 is the total number of seats in a cinema theatre}
             return Constants.MAX_MOVIE_AUDIENCE_SIZE - numUnavailableSeats;
-        }
-
-        protected void BookButtonOnClick(object sender, EventArgs e)
-        {
-            // login check
-            if (!isLoggedIn)
-            {
-                ShowMessageBox("You need to log in first!");
-                return;
-            }
-
-            // get event source
-            Button button = sender as Button;
-
-            // get id of pressed button
-            int buttonId = int.Parse(button.ID);
-
-            // save projection selected by the user in the session
-            Session[Constants.PROJECTION_KEY] = projectionCache[buttonId];
-
-            // redirect to booking page
-            Response.Redirect("BookSeatsPage.aspx");
         }
 
         /// <summary>

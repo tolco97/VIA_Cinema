@@ -29,6 +29,32 @@
             InitializeCheckBoxList(projection);
         }
 
+        protected void BookSeatsButtonOnClick(object sender, EventArgs e)
+        {
+            // check if user is logged in
+            if (!isLoggedIn)
+            {
+                ShowMessageBox("You need to log in first!");
+                return;
+            }
+
+            // get a list of all checked elements in the checkbox list
+            List<string> selectedSeatNumbers = seatNumCheckBoxList.Items.Cast<ListItem>()
+                .Where(listItem => listItem.Selected)
+                .Select(listItem => listItem.Value)
+                .ToList();
+
+            // save seat numbers for payment page
+            Session[Constants.SELECTED_SEAT_NUMBERS_KEY] = selectedSeatNumbers;
+
+            // go to payment page
+            Response.Redirect("PaymentPage.aspx");
+        }
+
+        /// <summary>
+        ///     Initializes all the projected movie and movie start time labels
+        /// </summary>
+        /// <param name="proj"> the projection </param>
         private void InitializeLabels(Projection proj)
         {
             // set projection movie name and start time
@@ -36,6 +62,10 @@
             projectionStartTimeLbl.Text = $"Starts: {proj?.MovieStartTime:dddd  dd  MMMM HH:mm}";
         }
 
+        /// <summary>
+        ///     Initializes the check box list with the seats from the projection passed as a parameter
+        /// </summary>
+        /// <param name="proj"> the projection </param>
         private void InitializeCheckBoxList(Projection proj)
         {
             // avoid redundant repopulation
@@ -49,6 +79,11 @@
                 seatNumCheckBoxList.Items.Add(new ListItem(seatNum.ToString()));
         }
 
+        /// <summary>
+        ///     Gets a list of all the numbers of the available seats in a projection
+        /// </summary>
+        /// <param name="proj"> the projection </param>
+        /// <returns> a list of integers </returns>
         private List<int> GetAvailableSeatNumbers(Projection proj)
         {
             // get all seat numbers of seats that are unavailable
@@ -60,28 +95,10 @@
             return availableSeatsList;
         }
 
-        protected void BookSeatsButtonOnClick(object sender, EventArgs e)
-        {
-            // check if user is logged in
-            if (!isLoggedIn)
-            {
-                ShowMessageBox("You need to log in first!");
-                return;
-            }
-                
-            // get a list of all checked elements in the checkbox list
-            List<string> selectedSeatNumbers = seatNumCheckBoxList.Items.Cast<ListItem>()
-                .Where(listItem => listItem.Selected)
-                .Select(listItem => listItem.Value)
-                .ToList();
-           
-            // save seat numbers for payment page
-            Session[Constants.SELECTED_SEAT_NUMBERS_KEY] = selectedSeatNumbers;
-
-            // go to payment page
-            Response.Redirect("PaymentPage.aspx");
-        }
-
+        /// <summary>
+        ///     Shows a message box to the user
+        /// </summary>
+        /// <param name="message"> the message </param>
         private void ShowMessageBox(string message)
         {
             // script

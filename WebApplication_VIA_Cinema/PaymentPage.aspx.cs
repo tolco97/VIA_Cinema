@@ -67,6 +67,9 @@
             BookSeats();
         }
 
+        /// <summary>
+        ///     Books all selected seats
+        /// </summary>
         private void BookSeats()
         {
             // get needed data
@@ -85,6 +88,10 @@
             Response.Redirect("DefaultPage.aspx");
         }
 
+        /// <summary>
+        ///     Shows a message box to the user
+        /// </summary>
+        /// <param name="message"> the message </param>
         private void ShowMessageBox(string message)
         {
             string script = "<SCRIPT language='javascript'>alert('" + message.Replace("\r\n", "\\n").Replace("'", "") +
