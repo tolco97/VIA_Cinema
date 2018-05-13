@@ -5,7 +5,6 @@
     using DAO;
     using UserAccountModel;
     using VIA_Cinema.Util;
-    using System;
 
     public class ProjectionBase : IProjectionBase
     {
