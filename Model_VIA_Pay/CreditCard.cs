@@ -1,5 +1,6 @@
 ﻿namespace Model_VIA_Pay
 {
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
     [DataContract]
@@ -38,9 +39,27 @@
             return true;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (!(obj is CreditCard))
+                return false;
+
+            CreditCard other = (CreditCard) obj;
+            return CardNumber.Equals(other.CardNumber) && Pin.Equals(other.Pin) && BalanceDkk.Equals(other.BalanceDkk);
+        }
+
         public override string ToString()
         {
             return $"CreditCard {BalanceDkk} DKK";
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 1404725597;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CardNumber);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Pin);
+            hashCode = hashCode * -1521134295 + BalanceDkk.GetHashCode();
+            return hashCode;
         }
     }
 }
