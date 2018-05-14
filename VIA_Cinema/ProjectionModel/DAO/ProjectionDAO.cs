@@ -313,8 +313,9 @@
                     {
                         int seatNumber = (int) reader[ProjectionEntityConstants.SEAT_NUMBER_COLUMN];
                         string email = reader[UserAccountEntityConstants.EMAIL_COLUMN] as string;
+                        UserAccount seatOwner = userAccountDao.Read(email);
 
-                        seatReservations.Add(new Seat(seatNumber, userAccountDao.Read(email)));
+                        seatReservations.Add(new Seat(seatNumber, seatOwner));
                     }
 
                     return seatReservations;

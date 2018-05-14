@@ -11,10 +11,10 @@
         ///     parameter
         /// </summary>
         /// <param name="proj"> the projection </param>
-        /// <param name="userAcc"> the user account </param>
+        /// <param name="seatOwner"> the user account </param>
         /// <param name="seatNumbers"> the seat numbers </param>
         /// <returns> true, if the booking is successful. Otherwise, false </returns>
-        bool BookSeats(Projection proj, UserAccount userAcc, params int[] seatNumbers);
+        bool BookSeats(Projection proj, UserAccount seatOwner, params int[] seatNumbers);
 
         /// <summary>
         ///     Retrieves the projection from the system that matches the projeciton id passed as a

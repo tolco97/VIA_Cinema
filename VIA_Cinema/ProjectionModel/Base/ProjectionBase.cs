@@ -17,7 +17,7 @@
         }
 
         /// <inheritdoc/>
-        public bool BookSeats(Projection proj, UserAccount userAcc, params int[] seatNumbers)
+        public bool BookSeats(Projection proj, UserAccount seatOwner, params int[] seatNumbers)
         {
             // illegal seat number
             if (!Validator.ValidateSeatNumber(seatNumbers)) return false;
@@ -27,7 +27,7 @@
 
             // seats are available. book them
             foreach (int seatNum in seatNumbers)
-                proj.Seats.Add(new Seat(seatNum, userAcc));
+                proj.Seats.Add(new Seat(seatNum, seatOwner));
             
             // update database
             projectionDao.CreateSeatReservations(proj);
