@@ -12,7 +12,7 @@
         /// </summary>
         /// <param name="projectedMovie"> the movie to be projected in the projection </param>
         /// <param name="movieStartTime"> the time at which the projection starts </param>
-        /// <returns> the number of database rows affected </returns>
+        /// <returns> a projection object </returns>
         Projection CreateProjection(Movie projectedMovie, DateTime movieStartTime);
 
         /// <summary>
@@ -20,8 +20,8 @@
         ///     the data from the proj passed as a parameter
         /// </summary>
         /// <param name="proj"> the projection </param>
-        /// <returns> the number of database rows affected </returns>
-        int CreateSeatReservations(Projection proj);
+        /// <returns> the projection's seat pattern </returns>
+        IList<Seat> CreateSeatReservations(Projection proj);
 
         /// <summary>
         ///     Reads a projection entry from the database that matches the projection
@@ -58,8 +58,8 @@
         ///     as a parameter
         /// </summary>
         /// <param name="updatedProj"> the updated projection object </param>
-        /// <returns> the number of database rows affected </returns>
-        int UpdateProjection(Projection updatedProj);
+        /// <returns> true, if the update operation has affected at least 1 database row. Otherwise, false </returns>
+        bool UpdateProjection(Projection updatedProj);
 
         /// <summary>
         ///     Deletes the seat reservation database entries that match the projection id,
@@ -68,8 +68,8 @@
         /// <param name="projectionId"> the projection id </param>
         /// <param name="user"> the user account </param>
         /// <param name="seatNumber"> the seat number </param>
-        /// <returns> the number of database rows affected </returns>
-        int DeleteSeatReservation(int projectionId, UserAccount user, int seatNumber);
+        /// <returns> true, if the delete operation has affected at least 1 database row. Otherwise, false </returns>
+        bool DeleteSeatReservation(int projectionId, UserAccount user, int seatNumber);
         
         /// <summary>
         ///     Closes the connection to the database

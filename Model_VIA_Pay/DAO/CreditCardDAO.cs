@@ -16,7 +16,7 @@
         }
 
         /// <inheritdoc/>
-        public int Create(string cardNumber, string pin, decimal balanceDkk)
+        public CreditCard Create(string cardNumber, string pin, decimal balanceDkk)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -34,12 +34,14 @@
                 stmt.Parameters.AddWithValue(CreditCardEntityConstants.BALANCE_COLUMN, balanceDkk);
 
                 // execute statement
-                return stmt.ExecuteNonQuery();
+                stmt.ExecuteNonQuery();
+
+                return new CreditCard(cardNumber, pin, balanceDkk);
             }
         }
 
         /// <inheritdoc/>
-        public int UpdateBalance(CreditCard updatedCard)
+        public bool UpdateBalance(CreditCard updatedCard)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -56,7 +58,7 @@
                 stmt.Parameters.AddWithValue(CreditCardEntityConstants.PIN_COLUMN, updatedCard.Pin);
 
                 // execute statement
-                return stmt.ExecuteNonQuery();
+                return stmt.ExecuteNonQuery() != 0;
             }
         }
 

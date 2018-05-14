@@ -13,7 +13,7 @@
         /// <param name="firstName"> the first name of the user </param>
         /// <param name="lastName"> the last name of the user </param>
         /// <param name="birthday"> the birthday of the user </param>
-        /// <returns> the number of database rows affected </returns>
+        /// <returns> a user account object </returns>
         UserAccount Create(string email, string userPassword, string firstName, string lastName,
             DateTime birthday);
 
@@ -36,16 +36,16 @@
         ///     of the account passed as a parameter
         /// </summary>
         /// <param name="updatedAct"> the updated user account </param>
-        /// <returns> the number of database rows affected </returns>
-        int Update(UserAccount updatedAct);
+        /// <returns> true, if the update operation has affected at least 1 database row. Otherwise, false </returns>
+        bool Update(UserAccount updatedAct);
 
         /// <summary>
         ///     Deletes a user account database entry that matches the account email
         ///     of the account passed as a parameter
         /// </summary>
         /// <param name="account"> the account </param>
-        /// <returns> the number of database rows affected </returns>
-        int Delete(UserAccount account);
+        /// <returns> true, if the delete operation has affected at least 1 database row. Otherwise, false </returns>
+        bool Delete(UserAccount account);
 
         /// <summary>
         ///     Closes the connection to the database

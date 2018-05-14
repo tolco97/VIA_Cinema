@@ -185,7 +185,7 @@
         }
 
         /// <inheritdoc/>
-        public int UpdateProjection(Projection updatedProj)
+        public bool UpdateProjection(Projection updatedProj)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -206,12 +206,12 @@
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.ID_COLUMN, updatedProj.Id);
 
                 // execute statement
-                return stmt.ExecuteNonQuery();
+                return stmt.ExecuteNonQuery() != 0;
             }
         }
 
         /// <inheritdoc/>
-        public int DeleteSeatReservation(int projectionId, UserAccount user, int seatNumber)
+        public bool DeleteSeatReservation(int projectionId, UserAccount user, int seatNumber)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -230,7 +230,7 @@
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.SEAT_NUMBER_COLUMN, seatNumber);
 
                 // execute statement
-                return stmt.ExecuteNonQuery();
+                return stmt.ExecuteNonQuery() != 0;
             }
         }
 
@@ -241,10 +241,8 @@
         }
 
         /// <inheritdoc/>
-        public int CreateSeatReservations(Projection proj)
+        public IList<Seat> CreateSeatReservations(Projection proj)
         {
-            int rowsAffected = 0;
-
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set connection
@@ -268,14 +266,11 @@
                     stmt.Parameters.AddWithValue(UserAccountEntityConstants.EMAIL_COLUMN, seat.SeatOwner.Email);
                     stmt.Parameters.AddWithValue(ProjectionEntityConstants.SEAT_NUMBER_COLUMN, seat.SeatNumber);
 
-                    // execute statement
-                    rowsAffected += stmt.ExecuteNonQuery();
-
                     // clear parameters for next interation
                     stmt.Parameters.Clear();
                 }
 
-                return rowsAffected;
+                return proj.Seats;
             }
         }
 

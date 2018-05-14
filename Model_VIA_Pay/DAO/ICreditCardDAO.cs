@@ -8,16 +8,16 @@
         /// <param name="cardNumber"> the number of the credit card </param>
         /// <param name="pin"> the pin of the credit card </param>
         /// <param name="balanceDkk"> the balance of the credit card </param>
-        /// <returns> the number of database rows affected </returns>
-        int Create(string cardNumber, string pin, decimal balanceDkk);
+        /// <returns> a credit card object </returns>
+        CreditCard Create(string cardNumber, string pin, decimal balanceDkk);
 
         /// <summary>
         ///     Updates the balance of a credit updatedCard in the database with the credit updatedCard
         ///     number of the credit updatedCard passed as a parameter
         /// </summary>
         /// <param name="updatedCard"> the credit updatedCard </param>
-        /// <returns> the number of database rows affected </returns>
-        int UpdateBalance(CreditCard updatedCard);
+        /// <returns> true, if the update operation has affected at least 1 database row. Otherwise, false</returns>
+        bool UpdateBalance(CreditCard updatedCard);
 
         /// <summary>
         ///     Checks if a credit card exists in the database

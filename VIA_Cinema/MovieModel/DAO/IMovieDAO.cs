@@ -31,15 +31,15 @@
         ///     Updates a movie entry in the database, with the data from the movie passed as a parameter
         /// </summary>
         /// <param name="updatedMovie"> the updated movie object </param>
-        /// <returns> the number of database rows affected </returns>
-        int Update(Movie updatedMovie);
+        /// <returns> true, if the update operation has affected at least 1 database row. Otherwise, false </returns>
+        bool Update(Movie updatedMovie);
 
         /// <summary>
         ///     Deletes a movie entry from the database that matches the properties of the movie object passed as a parameter
         /// </summary>
         /// <param name="movie"> the movie to be deleted </param>
-        /// <returns> the number of database rows affected </returns>
-        int Delete(Movie movie);
+        /// <returns> true, if the delete operation has affected at least 1 database row. Otherwise, false </returns>
+        bool Delete(Movie movie);
 
         /// <summary>
         ///     Closes the connection to the database

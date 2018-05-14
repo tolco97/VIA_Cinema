@@ -37,16 +37,6 @@
 
         [DataMember] public DateTime MovieStartTime { get; set; }
 
-        public override bool Equals(object obj)
-        {
-            if (!(obj is Projection))
-                return false;
-
-            Projection other = (Projection) obj;
-            return Id.Equals(other.Id) && ProjectedMovie.Equals(other.ProjectedMovie) &&
-                   MovieStartTime.Equals(other.MovieStartTime) && Seats.Equals(other.Seats);
-        }
-
         public override string ToString()
         {
             return $"Projection [id: {Id}, Movie: {ProjectedMovie}, " +

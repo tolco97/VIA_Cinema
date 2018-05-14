@@ -110,7 +110,7 @@
         }
 
         /// <inheritdoc/>
-        public int Update(UserAccount updatedAct)
+        public bool Update(UserAccount updatedAct)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -129,12 +129,12 @@
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.BIRTHDAY_COLUMN, updatedAct.Birthday);
 
                 // execute statement
-                return stmt.ExecuteNonQuery();
+                return stmt.ExecuteNonQuery() != 0;
             }
         }
 
         /// <inheritdoc/>
-        public int Delete(UserAccount account)
+        public bool Delete(UserAccount account)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -148,7 +148,7 @@
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.EMAIL_COLUMN, account.Email);
 
                 // execute statement
-                return stmt.ExecuteNonQuery();
+                return stmt.ExecuteNonQuery() != 0;
             }
         }
 

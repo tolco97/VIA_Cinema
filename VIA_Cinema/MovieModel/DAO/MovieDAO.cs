@@ -6,7 +6,7 @@
 
     public class MovieDAO : IMovieDAO
     {
-        private static IMovieDAO movieDao = null;
+        private static IMovieDAO instance = null;
         private readonly NpgsqlConnection con;
 
         private MovieDAO()
@@ -107,7 +107,7 @@
         }
 
         /// <inheritdoc/>
-        public int Update(Movie updatedMovie)
+        public bool Update(Movie updatedMovie)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -125,12 +125,12 @@
                 stmt.Parameters.AddWithValue(MovieEntityConstants.NAME_COLUMN, updatedMovie.Name);
 
                 // execute statement
-                return stmt.ExecuteNonQuery();
+                return stmt.ExecuteNonQuery() != 0;
             }
         }
 
         /// <inheritdoc/>
-        public int Delete(Movie movie)
+        public bool Delete(Movie movie)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -145,7 +145,7 @@
                 stmt.Parameters.AddWithValue(MovieEntityConstants.NAME_COLUMN, movie.Name);
 
                 // execute statement
-                return stmt.ExecuteNonQuery();
+                return stmt.ExecuteNonQuery() != 0;
             }
         }
 
@@ -163,7 +163,7 @@
         {
             // Return movieDao if it is not null. Otherwise create create new MovieDAO object and
             // assign it to movieDao & return.
-            return movieDao ?? (movieDao = new MovieDAO());
+            return instance ?? (instance = new MovieDAO());
         }
     }
 }
