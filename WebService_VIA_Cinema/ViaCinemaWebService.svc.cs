@@ -12,7 +12,7 @@
     using UserAccountModel.Base;
     using UserAccountModel.DAO;
     
-    public class ViaCinemaServiceService : IViaCinemaService
+    public class ViaCinemaService : IViaCinemaService
     {
         private readonly IMovieBase movieBase = new MovieBase(MovieDAO.GetIntance());
         private readonly IProjectionBase projectionBase = new ProjectionBase(ProjectionDAO.GetInstance());

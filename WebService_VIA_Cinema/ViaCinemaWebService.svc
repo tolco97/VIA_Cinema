@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="WebService_VIA_Cinema.ViaCinemaServiceService" CodeBehind="ViaCinemaWebService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WebService_VIA_Cinema.ViaCinemaService" CodeBehind="ViaCinemaWebService.svc.cs" %>
