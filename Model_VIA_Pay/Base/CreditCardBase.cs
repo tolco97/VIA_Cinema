@@ -32,8 +32,8 @@
         ///     Attempts to transfer money from the credit card passed as a parameter
         ///     to the VIA cinema account
         /// </summary>
-        /// <param name="customerCard"></param>
-        /// <param name="amountDkk"></param>
+        /// <param name="customerCard"> the customer credit card </param>
+        /// <param name="amountDkk"> amount of money to be paid </param>
         /// <returns> true, if the transaction is successful. Otherwise, false </returns>
         private bool Pay(CreditCard customerCard, decimal amountDkk)
         {
