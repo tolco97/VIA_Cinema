@@ -83,10 +83,8 @@
                 // set statement
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.movies;";
 
-                // create a collection for the movies. LinkedList is used, because
-                // it is not known how many objects are stored in the database & it is 
-                // preffered to avoid array list resizing
-                LinkedList<Movie> allMovies = new LinkedList<Movie>();
+                // create output collection
+                List<Movie> allMovies = new List<Movie>();
 
                 // execute statement
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
@@ -98,7 +96,7 @@
                         int duration = (int) reader[MovieEntityConstants.DURATION_COLUMN];
                         string genre = reader[MovieEntityConstants.GENRE_COLUMN] as string;
 
-                        allMovies.AddLast(new Movie(movieName, duration, genre));
+                        allMovies.Add(new Movie(movieName, duration, genre));
                     }
                 }
 

@@ -86,7 +86,7 @@
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.user_accounts;";
 
                 // create a collection for the movies
-                LinkedList<UserAccount> allAccounts = new LinkedList<UserAccount>(); // avoid array list resizing
+                List<UserAccount> allAccounts = new List<UserAccount>(); // avoid array list resizing
 
                 // execute statement
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
@@ -101,7 +101,7 @@
                         string lastName = reader[UserAccountEntityConstants.LAST_NAME_COLUMN] as string;
                         DateTime birthday = (DateTime) reader[UserAccountEntityConstants.BIRTHDAY_COLUMN];
 
-                        allAccounts.AddLast(new UserAccount(email, password, firstName, lastName, birthday));
+                        allAccounts.Add(new UserAccount(email, password, firstName, lastName, birthday));
                     }
                 }
 
