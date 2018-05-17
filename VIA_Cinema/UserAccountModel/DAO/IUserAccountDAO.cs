@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System;
 
-    public interface IUserAccountDAO
+    public interface IUserAccountDAO : IDisposable
     {
         /// <summary>
         ///     Creates a new user account database entry from the user account parameter
@@ -47,9 +47,5 @@
         /// <returns> true, if the delete operation has affected at least 1 database row. Otherwise, false </returns>
         bool Delete(UserAccount account);
 
-        /// <summary>
-        ///     Closes the connection to the database
-        /// </summary>
-        void CloseConnection();
     }
 }

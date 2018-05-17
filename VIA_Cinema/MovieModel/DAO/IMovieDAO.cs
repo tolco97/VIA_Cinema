@@ -2,8 +2,9 @@
 {
     using System.Collections.Generic;
     using Model.MovieModel;
+    using System;
 
-    public interface IMovieDAO
+    public interface IMovieDAO : IDisposable
     {
         /// <summary>
         ///     Creates a new movie entry in the movies entity
@@ -40,10 +41,6 @@
         /// <param name="movie"> the movie to be deleted </param>
         /// <returns> true, if the delete operation has affected at least 1 database row. Otherwise, false </returns>
         bool Delete(Movie movie);
-
-        /// <summary>
-        ///     Closes the connection to the database
-        /// </summary>
-        void CloseConnection();
+        
     }
 }

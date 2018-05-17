@@ -6,7 +6,7 @@
 
     public class UserAccountDAO : IUserAccountDAO
     {
-        private static IUserAccountDAO instance = null;
+        private static IUserAccountDAO instance;
 
         private readonly NpgsqlConnection con;
 
@@ -64,9 +64,9 @@
                     if (!reader.Read()) return null;
 
                     // get values
-                    string password = reader[UserAccountEntityConstants.PASSWORD_COLUMN] as string;
-                    string firstName = reader[UserAccountEntityConstants.FIRST_NAME_COLUMN] as string;
-                    string lastName = reader[UserAccountEntityConstants.LAST_NAME_COLUMN] as string;
+                    string password = (string) reader[UserAccountEntityConstants.PASSWORD_COLUMN];
+                    string firstName = (string) reader[UserAccountEntityConstants.FIRST_NAME_COLUMN];
+                    string lastName = (string) reader[UserAccountEntityConstants.LAST_NAME_COLUMN];
                     DateTime birthday = (DateTime) reader[UserAccountEntityConstants.BIRTHDAY_COLUMN];
 
                     return new UserAccount(email, password, firstName, lastName, birthday);
@@ -95,10 +95,10 @@
                     while (reader.Read())
                     {
                         // get values
-                        string email = reader[UserAccountEntityConstants.EMAIL_COLUMN] as string;
-                        string password = reader[UserAccountEntityConstants.PASSWORD_COLUMN] as string;
-                        string firstName = reader[UserAccountEntityConstants.FIRST_NAME_COLUMN] as string;
-                        string lastName = reader[UserAccountEntityConstants.LAST_NAME_COLUMN] as string;
+                        string email = (string) reader[UserAccountEntityConstants.EMAIL_COLUMN];
+                        string password = (string) reader[UserAccountEntityConstants.PASSWORD_COLUMN];
+                        string firstName = (string) reader[UserAccountEntityConstants.FIRST_NAME_COLUMN];
+                        string lastName = (string) reader[UserAccountEntityConstants.LAST_NAME_COLUMN];
                         DateTime birthday = (DateTime) reader[UserAccountEntityConstants.BIRTHDAY_COLUMN];
 
                         allAccounts.Add(new UserAccount(email, password, firstName, lastName, birthday));
@@ -152,10 +152,10 @@
             }
         }
 
-        /// <inheritdoc/>
-        public void CloseConnection()
+        /// <inheritdoc />
+        public void Dispose()
         {
-            con?.Close();
+            con?.Dispose();
         }
 
         /// <summary>
@@ -166,5 +166,6 @@
         {
             return instance ?? (instance = new UserAccountDAO());
         }
+        
     }
 }

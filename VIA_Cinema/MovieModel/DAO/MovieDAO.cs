@@ -6,7 +6,7 @@
 
     public class MovieDAO : IMovieDAO
     {
-        private static IMovieDAO instance = null;
+        private static IMovieDAO instance;
         private readonly NpgsqlConnection con;
 
         private MovieDAO()
@@ -65,7 +65,7 @@
 
                     // collect data
                     int duration = (int) reader[MovieEntityConstants.DURATION_COLUMN];
-                    string genre = reader[MovieEntityConstants.GENRE_COLUMN] as string;
+                    string genre = (string) reader[MovieEntityConstants.GENRE_COLUMN];
 
                     return new Movie(movieName, duration, genre);
                 }
@@ -92,9 +92,9 @@
                     // loop through the reader and collect data
                     while (reader.Read())
                     {
-                        string movieName = reader[MovieEntityConstants.NAME_COLUMN] as string;
+                        string movieName = (string) reader[MovieEntityConstants.NAME_COLUMN];
                         int duration = (int) reader[MovieEntityConstants.DURATION_COLUMN];
-                        string genre = reader[MovieEntityConstants.GENRE_COLUMN] as string;
+                        string genre = (string) reader[MovieEntityConstants.GENRE_COLUMN];
 
                         allMovies.Add(new Movie(movieName, duration, genre));
                     }
@@ -146,13 +146,13 @@
                 return stmt.ExecuteNonQuery() != 0;
             }
         }
-
-        /// <inheritdoc/>
-        public void CloseConnection()
-        {
-            con?.Close();
-        }
         
+        /// < inheritdoc />
+        public void Dispose()
+        {
+            con?.Dispose();
+        }
+
         /// <summary>
         ///     Singleton implementation
         /// </summary>

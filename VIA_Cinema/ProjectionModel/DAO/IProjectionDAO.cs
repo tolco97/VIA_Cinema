@@ -5,7 +5,7 @@
     using UserAccountModel;
     using System;
 
-    public interface IProjectionDAO
+    public interface IProjectionDAO : IDisposable
     {
         /// <summary>
         ///     Creates a projection database entry in the projections entity
@@ -71,9 +71,5 @@
         /// <returns> true, if the delete operation has affected at least 1 database row. Otherwise, false </returns>
         bool DeleteSeatReservation(int projectionId, UserAccount user, int seatNumber);
         
-        /// <summary>
-        ///     Closes the connection to the database
-        /// </summary>
-        void CloseConnection();
     }
 }

@@ -92,7 +92,7 @@
                     if (!reader.Read()) return null;
 
                     // collect data
-                    var pin = reader[CreditCardEntityConstants.PIN_COLUMN] as string;
+                    string pin = (string) reader[CreditCardEntityConstants.PIN_COLUMN];
 
                     // 2 decimal symbol format for the balance
                     // Example: 450.50

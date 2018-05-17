@@ -10,7 +10,7 @@
 
     public class ProjectionDAO : IProjectionDAO
     {
-        private static IProjectionDAO instance = null;
+        private static IProjectionDAO instance;
 
         private readonly NpgsqlConnection con;
 
@@ -78,7 +78,7 @@
                     if (!reader.Read()) return null;
 
                     // get the movie object
-                    string movieName = reader[ProjectionEntityConstants.MOVIE_NAME_COLUMN] as string;
+                    string movieName = (string) reader[ProjectionEntityConstants.MOVIE_NAME_COLUMN];
                     Movie movie = movieDao.Read(movieName);
 
                     // get projection start
@@ -112,7 +112,7 @@
                         int projectionId = (int) reader[ProjectionEntityConstants.ID_COLUMN];
 
                         // get the movie name & movie object
-                        string movieName = reader[ProjectionEntityConstants.MOVIE_NAME_COLUMN] as string;
+                        string movieName = (string) reader[ProjectionEntityConstants.MOVIE_NAME_COLUMN];
                         Movie movie = movieDao.Read(movieName);
 
                         // get projection start
@@ -235,12 +235,6 @@
         }
 
         /// <inheritdoc/>
-        public void CloseConnection()
-        {
-            con?.Close();
-        }
-
-        /// <inheritdoc/>
         public IList<Seat> CreateSeatReservations(Projection proj)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
@@ -309,7 +303,7 @@
                     while (reader.Read())
                     {
                         int seatNumber = (int) reader[ProjectionEntityConstants.SEAT_NUMBER_COLUMN];
-                        string email = reader[UserAccountEntityConstants.EMAIL_COLUMN] as string;
+                        string email = (string) reader[UserAccountEntityConstants.EMAIL_COLUMN];
                         UserAccount seatOwner = userAccountDao.Read(email);
 
                         seatReservations.Add(new Seat(seatNumber, seatOwner));
@@ -320,13 +314,20 @@
             }
         }
 
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            con?.Dispose();
+        }
+
         /// <summary>
         ///     Singleton implementation
         /// </summary>
-        /// <returns> an instance of a proj data access object </returns>
+        /// <returns> a reference to a projection data access object </returns>
         public static IProjectionDAO GetInstance()
         {
             return instance ?? (instance = new ProjectionDAO());
         }
+        
     }
 }
