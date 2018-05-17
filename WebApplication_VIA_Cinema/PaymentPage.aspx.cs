@@ -23,7 +23,7 @@
             if (Session[Constants.SERVICE_CLIENT_KEY] == null)
                 Session[Constants.SERVICE_CLIENT_KEY] = new ViaCinemaServiceClient();
 
-            cinemaClient = Session[Constants.SERVICE_CLIENT_KEY] as IViaCinemaService;
+            cinemaClient = (IViaCinemaService) Session[Constants.SERVICE_CLIENT_KEY];
         }
 
         protected void PayButtonOnClick(object sender, EventArgs e)
@@ -44,7 +44,7 @@
             }
 
             // calculate amount of money required: {number of seats * 30.0}. Each movie seat costs 30 DKK for all projections
-            List<string> selectedSeatNumbers = Session[Constants.SELECTED_SEAT_NUMBERS_KEY] as List<string>;
+            List<string> selectedSeatNumbers = (List<string>) Session[Constants.SELECTED_SEAT_NUMBERS_KEY];
             decimal totalPrice = Constants.SINGLE_MOVIE_TICKET_PRICE_DKK * selectedSeatNumbers.Count;
 
             // send transaction request
@@ -73,9 +73,9 @@
         private void BookSeats()
         {
             // get needed data
-            Projection projection = Session[Constants.PROJECTION_KEY] as Projection;
-            string email = Session[Constants.USER_EMAIL_KEY] as string;
-            List<string> seatNumbersList = Session[Constants.SELECTED_SEAT_NUMBERS_KEY] as List<string>;
+            Projection projection = (Projection) Session[Constants.PROJECTION_KEY];
+            string email = (string) Session[Constants.USER_EMAIL_KEY];
+            List<string> seatNumbersList = (List<string>) Session[Constants.SELECTED_SEAT_NUMBERS_KEY];
             string seatNumberString = string.Join(", ", seatNumbersList);
 
             // request the booking of the seats

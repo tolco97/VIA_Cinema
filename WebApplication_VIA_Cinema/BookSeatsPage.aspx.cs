@@ -20,7 +20,7 @@
             isLoggedIn = (bool) Session[Constants.IS_LOGGED_IN_FLAG_KEY];
 
             // get projection
-            Projection projection = Session[Constants.PROJECTION_KEY] as Projection;
+            Projection projection = (Projection) Session[Constants.PROJECTION_KEY];
             
             // set text to the labels
             InitializeLabels(projection);

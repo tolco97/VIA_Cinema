@@ -16,7 +16,7 @@
             if (Session[Constants.SERVICE_CLIENT_KEY] == null)
                 Session[Constants.SERVICE_CLIENT_KEY] = new ViaCinemaServiceClient();
 
-            client = Session[Constants.SERVICE_CLIENT_KEY] as IViaCinemaService;
+            client = (IViaCinemaService) Session[Constants.SERVICE_CLIENT_KEY];
         }
 
         protected void LoginButtonOnClick(object sender, EventArgs e)

@@ -25,7 +25,7 @@
             if (Session[Constants.SERVICE_CLIENT_KEY] == null)
                 Session[Constants.SERVICE_CLIENT_KEY] = new ViaCinemaServiceClient();
 
-            client = Session[Constants.SERVICE_CLIENT_KEY] as IViaCinemaService;
+            client = (IViaCinemaService) Session[Constants.SERVICE_CLIENT_KEY];
 
             // get logged in status 
             if (Session[Constants.IS_LOGGED_IN_FLAG_KEY] == null)
@@ -51,7 +51,7 @@
             }
 
             // get event source
-            Button button = sender as Button;
+            Button button = (Button) sender;
 
             // get id of pressed button
             int buttonId = int.Parse(button.ID);
@@ -63,7 +63,7 @@
             Response.Redirect("BookSeatsPage.aspx");
         }
         
-        protected void MovieDropdownSelectedIndexChanged(object sender, EventArgs e) { }
+        protected void MovieDropdownSelectedIndexChanged(object sender, EventArgs e) {}
 
         /// <summary>
         ///     Initializes the dropdown menu with all movie values

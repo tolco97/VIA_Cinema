@@ -77,7 +77,7 @@
         {
             if (isLoggedIn)
             {
-                string userEmail = Session[Constants.USER_EMAIL_KEY] as string;
+                string userEmail = (string) Session[Constants.USER_EMAIL_KEY];
                 isLoggedInLabel.Text = $"Hello, {userEmail}!";
                 isLoggedInLabel.ForeColor = Color.Green;
             }
