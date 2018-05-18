@@ -60,5 +60,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VIA_Cinema\Model_VIA_Cinema.csproj">
+      <Project>{7e5bdcd4-8461-468a-b23c-7243db6a2bc6}</Project>
+      <Name>Model_VIA_Cinema</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

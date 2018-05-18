@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using DAO;
+    using VIA_Cinema.Util;
 
     public class UserAccountBase : IUserAccountBase
     {
@@ -18,6 +19,9 @@
         public UserAccount CreateAccount(string email, string userPassword, string firstName, string lastName,
             DateTime birthday)
         {
+            // validate input
+            Validator.ValidateTextualInput(email, firstName, lastName, userPassword);
+
             // create a new account in the database
             UserAccount newAccount = userAccountDAO.Create(email, userPassword, firstName, lastName, birthday);
 
@@ -30,6 +34,9 @@
         /// <inheritdoc/>
         public bool Login(string email, string userPassword)
         {
+            // validate input
+            Validator.ValidateTextualInput(email, userPassword);
+
             // get the account 
             UserAccount userAccount = GetUserAccount(email);
 
@@ -43,6 +50,9 @@
         /// <inheritdoc/>
         public UserAccount GetUserAccount(string email)
         {
+            // validate input
+            Validator.ValidateTextualInput(email);
+
             // account is not cached in the memory
             if (!userAccountCache.ContainsKey(email))
             {

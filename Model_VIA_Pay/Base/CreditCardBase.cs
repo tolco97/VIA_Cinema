@@ -1,6 +1,7 @@
 ﻿namespace Model_VIA_Pay.Base
 {
     using DAO;
+    using VIA_Cinema.Util;
 
     public class CreditCardBase : ICreditCardBase
     {
@@ -15,6 +16,9 @@
         /// <inheritdoc/>
         public bool MakeTransaction(string creditCardNumber, string creditCardPin, decimal amountDkk)
         {
+            // validate input
+            Validator.ValidateTextualInput(creditCardNumber, creditCardPin);
+
             // check if user has correct credit card details
             if (!Authenticate(creditCardNumber, creditCardPin))
                 return false;

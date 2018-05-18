@@ -19,8 +19,9 @@
         /// <inheritdoc/>
         public bool BookSeats(Projection proj, UserAccount seatOwner, params int[] seatNumbers)
         {
-            // illegal seat number
-            if (!Validator.ValidateSeatNumber(seatNumbers)) return false;
+            // validate input
+            Validator.ValidateObjectsNotNull(proj, seatOwner);
+            Validator.ValidateSeatNumbers(seatNumbers); 
 
             // check if requested seats are available
             if (!AreSeatsAvailable(proj, seatNumbers)) return false;
@@ -74,6 +75,9 @@
         /// <inheritdoc/>
         public IList<Projection> GetAllProjections(Movie movie)
         {
+            // validate input
+            Validator.ValidateObjectsNotNull(movie);
+
             // read all projections for this movie
             ICollection<Projection> allProjections = projectionDao.Read(movie);
 

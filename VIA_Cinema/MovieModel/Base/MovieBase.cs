@@ -4,7 +4,8 @@ namespace Model_VIA_Cinema.MovieModel.Base
 {
     using System.Collections.Generic;
     using Model.MovieModel;
-    
+    using VIA_Cinema.Util;
+
     public class MovieBase : IMovieBase
     {
         private readonly IDictionary<string, Movie> movieCache = new Dictionary<string, Movie>();
@@ -18,6 +19,10 @@ namespace Model_VIA_Cinema.MovieModel.Base
         /// <inheritdoc/>
         public Movie AddMovie(string name, int durationMinuites, string genre)
         {
+            // validate input
+            Validator.ValidateMovieDuration(durationMinuites);
+            Validator.ValidateTextualInput(name, genre);
+
             // create new movie in the database
             Movie newMovie = movieDao.Create(name, durationMinuites, genre);
 
@@ -30,6 +35,9 @@ namespace Model_VIA_Cinema.MovieModel.Base
         /// <inheritdoc/>
         public Movie GetMovie(string movieName)
         {
+            // validate input
+            Validator.ValidateTextualInput(movieName);
+
             // read movie from the database and cache
             if (!movieCache.ContainsKey(movieName))
             {

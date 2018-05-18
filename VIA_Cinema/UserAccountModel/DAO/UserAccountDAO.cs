@@ -38,6 +38,9 @@
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.LAST_NAME_COLUMN, lastName);
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.BIRTHDAY_COLUMN, birthday);
 
+                // execute statement
+                stmt.ExecuteNonQuery();
+
                 return new UserAccount(email, userPassword, firstName, lastName, birthday);
             }
         }
