@@ -90,7 +90,7 @@
             List<int> unavailableSeatsList = proj.Seats.Select(seat => seat.SeatNumber).ToList();
 
             // get all seat numbers of seats that are available. seat numbers can be between 1 and 30
-            List<int> availableSeatsList = Enumerable.Range(1, 30).Except(unavailableSeatsList).ToList();
+            List<int> availableSeatsList = Enumerable.Range(1, Constants.MAX_PROJECTION_AUDIENCE_SIZE).Except(unavailableSeatsList).ToList();
 
             return availableSeatsList;
         }
