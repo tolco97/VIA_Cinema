@@ -36,6 +36,8 @@
                 stmt.Parameters.AddWithValue(MovieEntityConstants.GENRE_COLUMN, genre);
 
                 // execute statement
+                stmt.ExecuteNonQuery();
+
                 return new Movie(movieName, durationMinuites, genre);
             }
         }

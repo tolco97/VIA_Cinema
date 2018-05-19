@@ -260,6 +260,7 @@
                     stmt.Parameters.AddWithValue(UserAccountEntityConstants.EMAIL_COLUMN, seat.SeatOwner.Email);
                     stmt.Parameters.AddWithValue(ProjectionEntityConstants.SEAT_NUMBER_COLUMN, seat.SeatNumber);
 
+                    // execute statement
                     stmt.ExecuteNonQuery();
 
                     // clear parameters for next interation

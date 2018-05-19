@@ -33,7 +33,8 @@
             // validate input
             try
             {
-                Validator.ValidateTextualInput(userEmail, userPassword, firstName, lastName);
+                Validator.ValidateTextualInput(userEmail, userPassword, firstName, 
+                    lastName, birthdayString[0], birthdayString[1], birthdayString[2]);
                 ValidateAccountEmail(userEmail);
             }
             catch (ArgumentException)

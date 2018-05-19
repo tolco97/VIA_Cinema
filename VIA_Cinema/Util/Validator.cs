@@ -51,5 +51,6 @@
                 if (obj == null)
                     throw new ArgumentNullException($"{nameof(obj)} is null!");
         }
+
     }
 }
