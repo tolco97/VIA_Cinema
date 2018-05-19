@@ -159,7 +159,7 @@
         ///     Singleton implementation
         /// </summary>
         /// <returns> an instance of a movie data access object </returns>
-        public static IMovieDAO GetIntance()
+        public static IMovieDAO GetInstance()
         {
             // Return movieDao if it is not null. Otherwise create create new MovieDAO object and
             // assign it to movieDao & return.

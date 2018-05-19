@@ -15,7 +15,7 @@
         private readonly NpgsqlConnection con;
 
         // I couldn't use dependency injections, because all DAO objects are Singletons
-        private readonly IMovieDAO movieDao = MovieDAO.GetIntance();
+        private readonly IMovieDAO movieDao = MovieDAO.GetInstance();
         private readonly IUserAccountDAO userAccountDao = UserAccountDAO.GetInstance();
 
         private ProjectionDAO()

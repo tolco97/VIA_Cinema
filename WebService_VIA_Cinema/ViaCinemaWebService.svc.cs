@@ -14,7 +14,7 @@
     
     public class ViaCinemaService : IViaCinemaService
     {
-        private readonly IMovieBase movieBase = new MovieBase(MovieDAO.GetIntance());
+        private readonly IMovieBase movieBase = new MovieBase(MovieDAO.GetInstance());
         private readonly IProjectionBase projectionBase = new ProjectionBase(ProjectionDAO.GetInstance());
         private readonly IUserAccountBase userAccountBase = new UserAccountBase(UserAccountDAO.GetInstance());
 
