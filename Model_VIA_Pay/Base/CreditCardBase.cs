@@ -10,7 +10,7 @@
 
         public CreditCardBase(ICreditCardDAO creditCardDao)
         {
-            this._creditCardDao = creditCardDao;
+            _creditCardDao = creditCardDao;
         }
  
         /// <inheritdoc/>

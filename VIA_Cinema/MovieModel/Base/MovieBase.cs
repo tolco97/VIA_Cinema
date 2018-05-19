@@ -13,7 +13,7 @@ namespace Model_VIA_Cinema.MovieModel.Base
 
         public MovieBase(IMovieDAO movieDao)
         {
-            this._movieDao = movieDao;
+            _movieDao = movieDao;
         }
 
         /// <inheritdoc/>

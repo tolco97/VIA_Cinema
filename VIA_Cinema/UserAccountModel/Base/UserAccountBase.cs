@@ -12,7 +12,7 @@
 
         public UserAccountBase(IUserAccountDAO userAccountDAO)
         {
-            this._userAccountDao = userAccountDAO;
+            _userAccountDao = userAccountDAO;
         }
 
         /// <inheritdoc/>

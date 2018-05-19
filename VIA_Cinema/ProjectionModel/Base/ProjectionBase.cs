@@ -13,7 +13,7 @@
 
         public ProjectionBase(IProjectionDAO projectionDao)
         {
-            this._projectionDao = projectionDao;
+            _projectionDao = projectionDao;
         }
 
         /// <inheritdoc/>
