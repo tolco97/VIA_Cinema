@@ -7,12 +7,12 @@
 
     public class UserAccountBase : IUserAccountBase
     {
-        private readonly IDictionary<string, UserAccount> userAccountCache = new Dictionary<string, UserAccount>();
-        private readonly IUserAccountDAO userAccountDAO;
+        private readonly IDictionary<string, UserAccount> _userAccountCache = new Dictionary<string, UserAccount>();
+        private readonly IUserAccountDAO _userAccountDao;
 
         public UserAccountBase(IUserAccountDAO userAccountDAO)
         {
-            this.userAccountDAO = userAccountDAO;
+            this._userAccountDao = userAccountDAO;
         }
 
         /// <inheritdoc/>
@@ -23,10 +23,10 @@
             Validator.ValidateTextualInput(email, firstName, lastName, userPassword);
 
             // create a new account in the database
-            UserAccount newAccount = userAccountDAO.Create(email, userPassword, firstName, lastName, birthday);
+            UserAccount newAccount = _userAccountDao.Create(email, userPassword, firstName, lastName, birthday);
 
             // cache the new account
-            userAccountCache[newAccount.Email] = newAccount;
+            _userAccountCache[newAccount.Email] = newAccount;
 
             return newAccount;
         }
@@ -54,33 +54,33 @@
             Validator.ValidateTextualInput(email);
 
             // account is not cached in the memory
-            if (!userAccountCache.ContainsKey(email))
+            if (!_userAccountCache.ContainsKey(email))
             {
                 // read it from the database
-                UserAccount userAccount = userAccountDAO.Read(email);
+                UserAccount userAccount = _userAccountDao.Read(email);
 
                 // account does not exist
                 if (userAccount == null) return null;
 
                 // cache it
-                userAccountCache[userAccount.Email] = userAccount;
+                _userAccountCache[userAccount.Email] = userAccount;
             }
 
-            return userAccountCache[email];
+            return _userAccountCache[email];
         }
 
         /// <inheritdoc/>
         public IList<UserAccount> GetAllAccounts()
         {
             // read all accounts from the database
-            ICollection<UserAccount> allUsers = userAccountDAO.ReadAll();
+            ICollection<UserAccount> allUsers = _userAccountDao.ReadAll();
 
             // cache all accounts that have not been red so far
             foreach (UserAccount user in allUsers)
-                if (!userAccountCache.ContainsKey(user.Email))
-                    userAccountCache[user.Email] = user;
+                if (!_userAccountCache.ContainsKey(user.Email))
+                    _userAccountCache[user.Email] = user;
 
-            return new List<UserAccount>(userAccountCache.Values);
+            return new List<UserAccount>(_userAccountCache.Values);
         }
 
         /// <inheritdoc/>

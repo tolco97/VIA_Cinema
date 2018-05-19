@@ -5,11 +5,11 @@
 
     public class ViaPayService : IViaPayService
     {
-        private readonly ICreditCardBase creditCardBase = new CreditCardBase(CreditCardDAO.GetInstance());
+        private readonly ICreditCardBase _creditCardBase = new CreditCardBase(CreditCardDAO.GetInstance());
         
         public bool MakeTransaction(string creditCardNumber, string pin, decimal amount)
         {
-            bool isSuccessful = creditCardBase.MakeTransaction(creditCardNumber, pin, amount);
+            bool isSuccessful = _creditCardBase.MakeTransaction(creditCardNumber, pin, amount);
 
             return isSuccessful;
         }

@@ -11,19 +11,19 @@
 
     public partial class PaymentPage : Page
     {
-        private IViaPayService payClient;
-        private IViaCinemaService cinemaClient;
+        private IViaPayService _payClient;
+        private IViaCinemaService _cinemaClient;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             // instantiate payment web service client
-            payClient = new ViaPayServiceClient();
+            _payClient = new ViaPayServiceClient();
 
             // get cinema client
-            if (Session[Constants.SERVICE_CLIENT_KEY] == null)
-                Session[Constants.SERVICE_CLIENT_KEY] = new ViaCinemaServiceClient();
+            if (Session[Constants.ServiceClientKey] == null)
+                Session[Constants.ServiceClientKey] = new ViaCinemaServiceClient();
 
-            cinemaClient = (IViaCinemaService) Session[Constants.SERVICE_CLIENT_KEY];
+            _cinemaClient = (IViaCinemaService) Session[Constants.ServiceClientKey];
         }
 
         protected void PayButtonOnClick(object sender, EventArgs e)
@@ -44,11 +44,11 @@
             }
 
             // calculate amount of money required: {number of seats * 30.0}. Each movie seat costs 30 DKK for all projections
-            List<string> selectedSeatNumbers = (List<string>) Session[Constants.SELECTED_SEAT_NUMBERS_KEY];
-            decimal totalPrice = Constants.SINGLE_MOVIE_TICKET_PRICE_DKK * selectedSeatNumbers.Count;
+            List<string> selectedSeatNumbers = (List<string>) Session[Constants.SelectedSeatNumbersKey];
+            decimal totalPrice = Constants.SingleMovieTicketPriceDkk * selectedSeatNumbers.Count;
 
             // send transaction request
-            Task<bool> transactionRequest = payClient.MakeTransactionAsync(creditCardNumber, pin, totalPrice);
+            Task<bool> transactionRequest = _payClient.MakeTransactionAsync(creditCardNumber, pin, totalPrice);
 
             // wait for response
             Task.WaitAll(transactionRequest);
@@ -73,13 +73,13 @@
         private void BookSeats()
         {
             // get needed data
-            Projection projection = (Projection) Session[Constants.PROJECTION_KEY];
-            string email = (string) Session[Constants.USER_EMAIL_KEY];
-            List<string> seatNumbersList = (List<string>) Session[Constants.SELECTED_SEAT_NUMBERS_KEY];
+            Projection projection = (Projection) Session[Constants.ProjectionKey];
+            string email = (string) Session[Constants.UserEmailKey];
+            List<string> seatNumbersList = (List<string>) Session[Constants.SelectedSeatNumbersKey];
             string seatNumberString = string.Join(", ", seatNumbersList);
 
             // request the booking of the seats
-            Task<bool> bookRequest = cinemaClient.BookSeatAsync(projection.Id, email, seatNumberString);
+            Task<bool> bookRequest = _cinemaClient.BookSeatAsync(projection.Id, email, seatNumberString);
 
             // wait for response
             Task.WaitAll(bookRequest);

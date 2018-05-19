@@ -10,9 +10,9 @@
 
     public class ProjectionDAO : IProjectionDAO
     {
-        private static IProjectionDAO instance;
+        private static IProjectionDAO _instance;
 
-        private readonly NpgsqlConnection con;
+        private readonly NpgsqlConnection _con;
 
         // I couldn't use dependency injections, because all DAO objects are Singletons
         private readonly IMovieDAO movieDao = MovieDAO.GetInstance();
@@ -20,9 +20,9 @@
 
         private ProjectionDAO()
         {
-            con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
+            _con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
                                        "Password=password;Database=via_cinema_system;");
-            con.Open();
+            _con.Open();
         }
 
         /// <inheritdoc/>
@@ -31,7 +31,7 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText =
@@ -40,9 +40,9 @@
                     " VALUES (@movie_name, @projection_start) RETURNING id;";
 
                 // set statement parameters
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.MOVIE_NAME_COLUMN,
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.MovieNameColumn,
                     projectedMovie.Name);
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.PROJECTION_START_COLUMN,
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.ProjectionStartColumn,
                     movieStartTime);
 
                 // execute statement and return generated ID
@@ -59,14 +59,14 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.projections" +
                                    " WHERE projections.id = @id;";
 
                 // set statement parameters
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.ID_COLUMN, projId);
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.IdColumn, projId);
 
                 // get seats for this projection
                 IList<Seat> seatAllocations = ReadSeatReservations(projId);
@@ -78,11 +78,11 @@
                     if (!reader.Read()) return null;
 
                     // get the movie object
-                    string movieName = (string) reader[ProjectionEntityConstants.MOVIE_NAME_COLUMN];
+                    string movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
                     Movie movie = movieDao.Read(movieName);
 
                     // get projection start
-                    DateTime projStartTime = (DateTime) reader[ProjectionEntityConstants.PROJECTION_START_COLUMN];
+                    DateTime projStartTime = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
 
                     return new Projection(projId, movie, seatAllocations, projStartTime);
                 }
@@ -98,7 +98,7 @@
                 List<Projection> allProjections = new List<Projection>();
 
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.projections;";
@@ -109,14 +109,14 @@
                     while (reader.Read())
                     {
                         // get projection projectionId
-                        int projectionId = (int) reader[ProjectionEntityConstants.ID_COLUMN];
+                        int projectionId = (int) reader[ProjectionEntityConstants.IdColumn];
 
                         // get the movie name & movie object
-                        string movieName = (string) reader[ProjectionEntityConstants.MOVIE_NAME_COLUMN];
+                        string movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
                         Movie movie = movieDao.Read(movieName);
 
                         // get projection start
-                        DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.PROJECTION_START_COLUMN];
+                        DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
 
                         Projection projection = new Projection
                         {
@@ -145,14 +145,14 @@
                 List<Projection> allProjections = new List<Projection>();
 
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.projections" +
                                    " WHERE projections.movie_name = @movie_name;";
 
                 // set parameters
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.MOVIE_NAME_COLUMN, movie.Name);
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.MovieNameColumn, movie.Name);
 
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
                 {
@@ -160,10 +160,10 @@
                     while (reader.Read())
                     {
                         // get projection projectionId
-                        int projectionId = (int) reader[ProjectionEntityConstants.ID_COLUMN];
+                        int projectionId = (int) reader[ProjectionEntityConstants.IdColumn];
 
                         // get projection start
-                        DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.PROJECTION_START_COLUMN];
+                        DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
                         
                         Projection projection = new Projection
                         {
@@ -190,7 +190,7 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText = "UPDATE via_cinema_schema.projections " +
@@ -199,11 +199,11 @@
                                    "WHERE projections.id = @id;";
 
                 // set parameters for proj update
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.MOVIE_NAME_COLUMN,
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.MovieNameColumn,
                     updatedProj.ProjectedMovie.Name);
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.PROJECTION_START_COLUMN,
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.ProjectionStartColumn,
                     updatedProj.MovieStartTime);
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.ID_COLUMN, updatedProj.Id);
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.IdColumn, updatedProj.Id);
 
                 // execute statement
                 return stmt.ExecuteNonQuery() != 0;
@@ -216,7 +216,7 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText = "DELETE FROM via_cinema_schema.seat_reservations " +
@@ -225,9 +225,9 @@
                                    " AND seat_reservations.seat_number = @seat_number;";
 
                 // set parameters for proj update
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.PROJECTION_ID_COLUMN, projectionId);
-                stmt.Parameters.AddWithValue(UserAccountEntityConstants.EMAIL_COLUMN, user.Email);
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.SEAT_NUMBER_COLUMN, seatNumber);
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.ProjectionIdColumn, projectionId);
+                stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, user.Email);
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.SeatNumberColumn, seatNumber);
 
                 // execute statement
                 return stmt.ExecuteNonQuery() != 0;
@@ -240,7 +240,7 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText =
@@ -256,9 +256,9 @@
                 foreach (Seat seat in proj.Seats)
                 {
                     // set parameters
-                    stmt.Parameters.AddWithValue(ProjectionEntityConstants.PROJECTION_ID_COLUMN, proj.Id);
-                    stmt.Parameters.AddWithValue(UserAccountEntityConstants.EMAIL_COLUMN, seat.SeatOwner.Email);
-                    stmt.Parameters.AddWithValue(ProjectionEntityConstants.SEAT_NUMBER_COLUMN, seat.SeatNumber);
+                    stmt.Parameters.AddWithValue(ProjectionEntityConstants.ProjectionIdColumn, proj.Id);
+                    stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, seat.SeatOwner.Email);
+                    stmt.Parameters.AddWithValue(ProjectionEntityConstants.SeatNumberColumn, seat.SeatNumber);
 
                     // execute statement
                     stmt.ExecuteNonQuery();
@@ -279,7 +279,7 @@
                 List<Seat> seatReservations = new List<Seat>(30);
 
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText =
@@ -295,7 +295,7 @@
                     ".seat_number ASC;";
 
                 // set parameters
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.ID_COLUMN, projId);
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.IdColumn, projId);
 
                 // execute quary
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
@@ -303,8 +303,8 @@
                     // collect values
                     while (reader.Read())
                     {
-                        int seatNumber = (int) reader[ProjectionEntityConstants.SEAT_NUMBER_COLUMN];
-                        string email = (string) reader[UserAccountEntityConstants.EMAIL_COLUMN];
+                        int seatNumber = (int) reader[ProjectionEntityConstants.SeatNumberColumn];
+                        string email = (string) reader[UserAccountEntityConstants.EmailColumn];
                         UserAccount seatOwner = userAccountDao.Read(email);
 
                         seatReservations.Add(new Seat(seatNumber, seatOwner));
@@ -318,7 +318,7 @@
         /// <inheritdoc />
         public void Dispose()
         {
-            con?.Dispose();
+            _con?.Dispose();
         }
 
         /// <summary>
@@ -327,7 +327,7 @@
         /// <returns> a reference to a projection data access object </returns>
         public static IProjectionDAO GetInstance()
         {
-            return instance ?? (instance = new ProjectionDAO());
+            return _instance ?? (_instance = new ProjectionDAO());
         }
         
     }

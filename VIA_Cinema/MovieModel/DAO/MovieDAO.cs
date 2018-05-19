@@ -6,14 +6,14 @@
 
     public class MovieDAO : IMovieDAO
     {
-        private static IMovieDAO instance;
-        private readonly NpgsqlConnection con;
+        private static IMovieDAO _instance;
+        private readonly NpgsqlConnection _con;
 
         private MovieDAO()
         {
-            con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
+            _con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
                                        "Password=password;Database=via_cinema_system;");
-            con.Open();
+            _con.Open();
         }
 
         /// <inheritdoc/>
@@ -22,7 +22,7 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText =
@@ -31,9 +31,9 @@
                     " genre) VALUES (@name, @duration_minuites, @genre);";
 
                 // set statement parameters
-                stmt.Parameters.AddWithValue(MovieEntityConstants.NAME_COLUMN, movieName);
-                stmt.Parameters.AddWithValue(MovieEntityConstants.DURATION_COLUMN, durationMinuites);
-                stmt.Parameters.AddWithValue(MovieEntityConstants.GENRE_COLUMN, genre);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.NameColumn, movieName);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.DurationColumn, durationMinuites);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.GenreColumn, genre);
 
                 // execute statement
                 stmt.ExecuteNonQuery();
@@ -48,7 +48,7 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText =
@@ -57,7 +57,7 @@
                     "movies.name = @name;";
 
                 // set parameters
-                stmt.Parameters.AddWithValue(MovieEntityConstants.NAME_COLUMN, movieName);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.NameColumn, movieName);
 
                 // execute statement
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
@@ -66,8 +66,8 @@
                     if (!reader.Read()) return null;
 
                     // collect data
-                    int duration = (int) reader[MovieEntityConstants.DURATION_COLUMN];
-                    string genre = (string) reader[MovieEntityConstants.GENRE_COLUMN];
+                    int duration = (int) reader[MovieEntityConstants.DurationColumn];
+                    string genre = (string) reader[MovieEntityConstants.GenreColumn];
 
                     return new Movie(movieName, duration, genre);
                 }
@@ -80,7 +80,7 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set the connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.movies;";
@@ -94,9 +94,9 @@
                     // loop through the reader and collect data
                     while (reader.Read())
                     {
-                        string movieName = (string) reader[MovieEntityConstants.NAME_COLUMN];
-                        int duration = (int) reader[MovieEntityConstants.DURATION_COLUMN];
-                        string genre = (string) reader[MovieEntityConstants.GENRE_COLUMN];
+                        string movieName = (string) reader[MovieEntityConstants.NameColumn];
+                        int duration = (int) reader[MovieEntityConstants.DurationColumn];
+                        string genre = (string) reader[MovieEntityConstants.GenreColumn];
 
                         allMovies.Add(new Movie(movieName, duration, genre));
                     }
@@ -112,7 +112,7 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText = "UPDATE via_cinema_schema.movies " +
@@ -120,9 +120,9 @@
                                    "genre = @genre WHERE name = @name;";
 
                 // set the statement parameters
-                stmt.Parameters.AddWithValue(MovieEntityConstants.DURATION_COLUMN, updatedMovie.DurationMinuites);
-                stmt.Parameters.AddWithValue(MovieEntityConstants.GENRE_COLUMN, updatedMovie.Genre);
-                stmt.Parameters.AddWithValue(MovieEntityConstants.NAME_COLUMN, updatedMovie.Name);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.DurationColumn, updatedMovie.DurationMinuites);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.GenreColumn, updatedMovie.Genre);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.NameColumn, updatedMovie.Name);
 
                 // execute statement
                 return stmt.ExecuteNonQuery() != 0;
@@ -135,14 +135,14 @@
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
                 // set connection
-                stmt.Connection = con;
+                stmt.Connection = _con;
 
                 // set statement
                 stmt.CommandText = "DELETE FROM via_cinema_schema.movies " +
                                    "WHERE movies.name = @name;";
 
                 // set statement parameters
-                stmt.Parameters.AddWithValue(MovieEntityConstants.NAME_COLUMN, movie.Name);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.NameColumn, movie.Name);
 
                 // execute statement
                 return stmt.ExecuteNonQuery() != 0;
@@ -152,7 +152,7 @@
         /// < inheritdoc />
         public void Dispose()
         {
-            con?.Dispose();
+            _con?.Dispose();
         }
 
         /// <summary>
@@ -163,7 +163,7 @@
         {
             // Return movieDao if it is not null. Otherwise create create new MovieDAO object and
             // assign it to movieDao & return.
-            return instance ?? (instance = new MovieDAO());
+            return _instance ?? (_instance = new MovieDAO());
         }
     }
 }

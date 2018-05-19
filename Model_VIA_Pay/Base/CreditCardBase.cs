@@ -6,11 +6,11 @@
     public class CreditCardBase : ICreditCardBase
     {
         // i am not caching here because security reasons
-        private readonly ICreditCardDAO creditCardDao;
+        private readonly ICreditCardDAO _creditCardDao;
 
         public CreditCardBase(ICreditCardDAO creditCardDao)
         {
-            this.creditCardDao = creditCardDao;
+            this._creditCardDao = creditCardDao;
         }
  
         /// <inheritdoc/>
@@ -24,7 +24,7 @@
                 return false;
 
             // read credit card from DB
-            CreditCard creditCard = creditCardDao.Read(creditCardNumber);
+            CreditCard creditCard = _creditCardDao.Read(creditCardNumber);
 
             // attempt to pay 
             bool isSuccessful = Pay(creditCard, amountDkk);
@@ -45,7 +45,7 @@
             if (!customerCard.Withdraw(amountDkk))
                 return false; // card does not have sufficient funds
 
-            creditCardDao.UpdateBalance(customerCard); // card has sufficient funds
+            _creditCardDao.UpdateBalance(customerCard); // card has sufficient funds
             TransferToViaCinemaAccount(amountDkk); // transfer funds to VIA cinema credit card
 
             return true;
@@ -61,11 +61,11 @@
         private bool Authenticate(string creditCardNumber, string pin)
         {
             // check if credit card exists
-            if (!creditCardDao.CreditCardExists(creditCardNumber))
+            if (!_creditCardDao.CreditCardExists(creditCardNumber))
                 return false;
 
             // read credit card from the database
-            CreditCard creditCard = creditCardDao.Read(creditCardNumber);
+            CreditCard creditCard = _creditCardDao.Read(creditCardNumber);
 
             // check if pins match
             return pin.Equals(creditCard.Pin);
@@ -78,13 +78,13 @@
         private void TransferToViaCinemaAccount(decimal amount)
         {
             // get VIA Cinema's bank accoumt
-            CreditCard viaCinemaCreditCard = creditCardDao.Read(CreditCardEntityConstants.VIA_CINEMA_ACCOUNT_NUMBER);
+            CreditCard viaCinemaCreditCard = _creditCardDao.Read(CreditCardEntityConstants.ViaCinemaAccountNumber);
 
             // deposit to account
             viaCinemaCreditCard.Deposit(amount);
 
             // update credit card account
-            creditCardDao.UpdateBalance(viaCinemaCreditCard);
+            _creditCardDao.UpdateBalance(viaCinemaCreditCard);
         }
 
     }

@@ -8,12 +8,12 @@
 
     public class ProjectionBase : IProjectionBase
     {
-        private readonly IDictionary<int, Projection> projectionCache = new Dictionary<int, Projection>();
-        private readonly IProjectionDAO projectionDao;
+        private readonly IDictionary<int, Projection> _projectionCache = new Dictionary<int, Projection>();
+        private readonly IProjectionDAO _projectionDao;
 
         public ProjectionBase(IProjectionDAO projectionDao)
         {
-            this.projectionDao = projectionDao;
+            this._projectionDao = projectionDao;
         }
 
         /// <inheritdoc/>
@@ -31,10 +31,10 @@
                 proj.Seats.Add(new Seat(seatNum, seatOwner));
             
             // update database
-            projectionDao.CreateSeatReservations(proj);
+            _projectionDao.CreateSeatReservations(proj);
 
             // update cache
-            projectionCache[proj.Id] = proj;
+            _projectionCache[proj.Id] = proj;
 
             return true;
         }
@@ -43,33 +43,33 @@
         public Projection GetProjection(int projId)
         {
             // if projection is not cached
-            if (!projectionCache.ContainsKey(projId))
+            if (!_projectionCache.ContainsKey(projId))
             {
                 // read projection
-                Projection proj = projectionDao.Read(projId);
+                Projection proj = _projectionDao.Read(projId);
 
                 // projection does not exist
                 if (proj == null) return null;
 
                 // cache projection object
-                projectionCache[projId] = proj;
+                _projectionCache[projId] = proj;
             }
 
-            return projectionCache[projId];
+            return _projectionCache[projId];
         }
 
         /// <inheritdoc/>
         public IList<Projection> GetAllProjections()
         {
             // read all projections
-            ICollection<Projection> allProjections = projectionDao.ReadAll();
+            ICollection<Projection> allProjections = _projectionDao.ReadAll();
             
             // cache all projections that are not cached already
             foreach (Projection proj in allProjections)
-                if (!projectionCache.ContainsKey(proj.Id))
-                    projectionCache[proj.Id] = proj;
+                if (!_projectionCache.ContainsKey(proj.Id))
+                    _projectionCache[proj.Id] = proj;
 
-            return new List<Projection>(projectionCache.Values);
+            return new List<Projection>(_projectionCache.Values);
         }
 
         /// <inheritdoc/>
@@ -79,7 +79,7 @@
             Validator.ValidateObjectsNotNull(movie);
 
             // read all projections for this movie
-            ICollection<Projection> allProjections = projectionDao.Read(movie);
+            ICollection<Projection> allProjections = _projectionDao.Read(movie);
 
             // create output collection
             int size = allProjections.Count;
@@ -88,10 +88,10 @@
             // cache all projections that have not been read already
             foreach (Projection proj in allProjections)
             {
-                if (!projectionCache.ContainsKey(proj.Id))
-                    projectionCache[proj.Id] = proj;
+                if (!_projectionCache.ContainsKey(proj.Id))
+                    _projectionCache[proj.Id] = proj;
                 
-                matchingProjections.Add(projectionCache[proj.Id]);
+                matchingProjections.Add(_projectionCache[proj.Id]);
             }
 
             return matchingProjections;

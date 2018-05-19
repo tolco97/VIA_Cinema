@@ -6,15 +6,15 @@
 
     public partial class Default : Page
     {
-        private bool isLoggedIn;
+        private bool _isLoggedIn;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             // get Login status
-            if (Session[Constants.IS_LOGGED_IN_FLAG_KEY] == null)
-                Session[Constants.IS_LOGGED_IN_FLAG_KEY] = false;
+            if (Session[Constants.IsLoggedInFlagKey] == null)
+                Session[Constants.IsLoggedInFlagKey] = false;
 
-            isLoggedIn = (bool) Session[Constants.IS_LOGGED_IN_FLAG_KEY];
+            _isLoggedIn = (bool) Session[Constants.IsLoggedInFlagKey];
 
             // restrict access to buttons depending on login status
             InitializeButtons();
@@ -31,7 +31,7 @@
         protected void LogoutOnClick(object sender, EventArgs e)
         {
             // set login flag to false
-            Session[Constants.IS_LOGGED_IN_FLAG_KEY] = false;
+            Session[Constants.IsLoggedInFlagKey] = false;
 
             // refresh page
             Response.Redirect(Request.RawUrl);
@@ -52,7 +52,7 @@
         /// </summary>
         private void InitializeButtons()
         {
-            if (isLoggedIn)
+            if (_isLoggedIn)
             {
                 // when logged in, you can't use login and create account buttons
                 loginButton.Enabled = false;
@@ -75,9 +75,9 @@
         /// </summary>
         private void InitializeLoginStatusLabel()
         {
-            if (isLoggedIn)
+            if (_isLoggedIn)
             {
-                string userEmail = (string) Session[Constants.USER_EMAIL_KEY];
+                string userEmail = (string) Session[Constants.UserEmailKey];
                 isLoggedInLabel.Text = $"Hello, {userEmail}!";
                 isLoggedInLabel.ForeColor = Color.Green;
             }

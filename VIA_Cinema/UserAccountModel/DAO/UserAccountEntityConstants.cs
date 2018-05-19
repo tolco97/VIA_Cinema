@@ -5,12 +5,12 @@
     /// </summary>
     public sealed class UserAccountEntityConstants
     {
-        private UserAccountEntityConstants() { }
+        private UserAccountEntityConstants() {}
         
-        public const string EMAIL_COLUMN = "email";
-        public const string PASSWORD_COLUMN = "password";
-        public const string FIRST_NAME_COLUMN = "first_name";
-        public const string LAST_NAME_COLUMN = "last_name";
-        public const string BIRTHDAY_COLUMN = "birthday";
+        public const string EmailColumn = "email";
+        public const string PasswordColumn = "password";
+        public const string FirstNameColumn = "first_name";
+        public const string LastNameColumn = "last_name";
+        public const string BirthdayColumn = "birthday";
     }
 }

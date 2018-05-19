@@ -8,15 +8,15 @@
 
     public partial class Login : Page
     {
-        private IViaCinemaService client;
+        private IViaCinemaService _client;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             // get web service client
-            if (Session[Constants.SERVICE_CLIENT_KEY] == null)
-                Session[Constants.SERVICE_CLIENT_KEY] = new ViaCinemaServiceClient();
+            if (Session[Constants.ServiceClientKey] == null)
+                Session[Constants.ServiceClientKey] = new ViaCinemaServiceClient();
 
-            client = (IViaCinemaService) Session[Constants.SERVICE_CLIENT_KEY];
+            _client = (IViaCinemaService) Session[Constants.ServiceClientKey];
         }
 
         protected void LoginButtonOnClick(object sender, EventArgs e)
@@ -37,20 +37,20 @@
             }
 
             // send login request
-            Task<bool> loginRequest = client.LoginAsync(email, password);
+            Task<bool> loginRequest = _client.LoginAsync(email, password);
 
             // wait for response from server
             Task.WaitAll(loginRequest);
 
             // get response & save it in the session
             bool loginSuccessful = loginRequest.Result;
-            Session[Constants.IS_LOGGED_IN_FLAG_KEY] = loginSuccessful;
+            Session[Constants.IsLoggedInFlagKey] = loginSuccessful;
 
             // react to response
             if (loginSuccessful)
             {
                 // save the email
-                Session[Constants.USER_EMAIL_KEY] = email; 
+                Session[Constants.UserEmailKey] = email; 
 
                 // back to main page
                 Response.Redirect("DefaultPage.aspx"); 

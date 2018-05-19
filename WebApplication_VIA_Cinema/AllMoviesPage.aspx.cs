@@ -12,26 +12,26 @@
 
     public partial class AllMovies : Page
     {
-        private IViaCinemaService client;
-        private bool isLoggedIn;
-        private IDictionary<int, Projection> projectionsOnDisplay;
+        private IViaCinemaService _client;
+        private bool _isLoggedIn;
+        private IDictionary<int, Projection> _projectionsOnDisplay;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             // initialize cache
-            projectionsOnDisplay = new Dictionary<int, Projection>();
+            _projectionsOnDisplay = new Dictionary<int, Projection>();
 
             // get web service client
-            if (Session[Constants.SERVICE_CLIENT_KEY] == null)
-                Session[Constants.SERVICE_CLIENT_KEY] = new ViaCinemaServiceClient();
+            if (Session[Constants.ServiceClientKey] == null)
+                Session[Constants.ServiceClientKey] = new ViaCinemaServiceClient();
 
-            client = (IViaCinemaService) Session[Constants.SERVICE_CLIENT_KEY];
+            _client = (IViaCinemaService) Session[Constants.ServiceClientKey];
 
             // get logged in status 
-            if (Session[Constants.IS_LOGGED_IN_FLAG_KEY] == null)
-                Session[Constants.IS_LOGGED_IN_FLAG_KEY] = false;
+            if (Session[Constants.IsLoggedInFlagKey] == null)
+                Session[Constants.IsLoggedInFlagKey] = false;
 
-            isLoggedIn = (bool) Session[Constants.IS_LOGGED_IN_FLAG_KEY];
+            _isLoggedIn = (bool) Session[Constants.IsLoggedInFlagKey];
 
             // page loaded for the first time
             if (!Page.IsPostBack)
@@ -44,7 +44,7 @@
         protected void BookButtonOnClick(object sender, EventArgs e)
         {
             // login check
-            if (!isLoggedIn)
+            if (!_isLoggedIn)
             {
                 ShowMessageBox("You need to log in first!");
                 return;
@@ -57,7 +57,7 @@
             int buttonId = int.Parse(button.ID);
 
             // save projection selected by the user in the session
-            Session[Constants.PROJECTION_KEY] = projectionsOnDisplay[buttonId];
+            Session[Constants.ProjectionKey] = _projectionsOnDisplay[buttonId];
 
             // redirect to booking page
             Response.Redirect("BookSeatsPage.aspx");
@@ -71,7 +71,7 @@
         private void InitializeDropdownMenu()
         {
             // request all movies
-            Task<Movie[]> allMoviesRequest = client.GetAllMoviesAsync();
+            Task<Movie[]> allMoviesRequest = _client.GetAllMoviesAsync();
 
             // wait for response
             Task.WaitAll(allMoviesRequest);
@@ -153,7 +153,7 @@
         private void PopulateProjectionsTable(string movieName)
         {
             // request all projections
-            Task<Projection[]> projectionsRequest = client.GetProjectionsAsync(movieName);
+            Task<Projection[]> projectionsRequest = _client.GetProjectionsAsync(movieName);
 
             // wait for response
             Task.WaitAll(projectionsRequest);
@@ -168,7 +168,7 @@
             foreach (Projection proj in projections)
             {
                 // save the projection for the on click button listener
-                projectionsOnDisplay[proj.Id] = proj;
+                _projectionsOnDisplay[proj.Id] = proj;
 
                 // create row
                 TableRow row = new TableRow();
@@ -253,7 +253,7 @@
             int numUnavailableSeats = proj.Seats.Count;
 
             // calculate the amount of available seats {30 is the total number of seats in a cinema theatre}
-            return Constants.MAX_PROJECTION_AUDIENCE_SIZE - numUnavailableSeats;
+            return Constants.MaxProjectionAudienceSize - numUnavailableSeats;
         }
 
         /// <summary>

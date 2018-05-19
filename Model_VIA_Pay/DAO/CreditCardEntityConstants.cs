@@ -7,14 +7,14 @@
     {
         private CreditCardEntityConstants() {}
 
-        public const string CARD_NUMBER_COLUMN = "number";
-        public const string PIN_COLUMN = "pin";
-        public const string BALANCE_COLUMN = "balance_dkk";
+        public const string CardNumberColumn = "number";
+        public const string PinColumn = "pin";
+        public const string BalanceColumn = "balance_dkk";
 
 
         // All money from the tickets is transfered to VIA Cinema's bank account with these details:
-        public const string VIA_CINEMA_ACCOUNT_NUMBER = "000000000000";
-        public const string VIA_CINEMA_ACCOUNT_PIN = "0000";
+        public const string ViaCinemaAccountNumber = "000000000000";
+        public const string ViaCinemaAccountPin = "0000";
 
     }
 }

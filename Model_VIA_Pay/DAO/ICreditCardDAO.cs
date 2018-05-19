@@ -1,6 +1,8 @@
 ﻿namespace Model_VIA_Pay.DAO
 {
-    public interface ICreditCardDAO
+    using System;
+
+    public interface ICreditCardDAO : IDisposable
     {
         /// <summary>
         ///     Creates a new credit updatedCard entry in the credit cards database entity
@@ -33,10 +35,5 @@
         /// <param name="creditCardNumber"> the credit card number </param>
         /// <returns> a credit card object </returns>
         CreditCard Read(string creditCardNumber);
-
-        /// <summary>
-        ///     Closes the connection to the database
-        /// </summary>
-        void CloseConnection();
     }
 }

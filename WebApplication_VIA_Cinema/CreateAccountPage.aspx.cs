@@ -9,15 +9,15 @@
 
     public partial class CreateAccountPage : Page
     {
-        private IViaCinemaService client;
+        private IViaCinemaService _client;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             // get web service client
-            if (Session[Constants.SERVICE_CLIENT_KEY] == null)
-                Session[Constants.SERVICE_CLIENT_KEY] = new ViaCinemaServiceClient();
+            if (Session[Constants.ServiceClientKey] == null)
+                Session[Constants.ServiceClientKey] = new ViaCinemaServiceClient();
 
-            client = (IViaCinemaService) Session[Constants.SERVICE_CLIENT_KEY];
+            _client = (IViaCinemaService) Session[Constants.ServiceClientKey];
         }
 
         protected void CreateAccountButtonOnClick(object sender, EventArgs e)
@@ -49,7 +49,7 @@
             }
             
             // make request
-            Task<UserAccount> registerRequest = client.CreateAccountAsync(userEmail, userPassword, firstName, lastName,
+            Task<UserAccount> registerRequest = _client.CreateAccountAsync(userEmail, userPassword, firstName, lastName,
                 int.Parse(birthdayString[0]), int.Parse(birthdayString[1]), int.Parse(birthdayString[2]));
 
             // wait for response
@@ -59,10 +59,10 @@
             UserAccount registerResponse = registerRequest.Result;
             
             // save user email
-            Session[Constants.USER_EMAIL_KEY] = registerResponse.Email;
+            Session[Constants.UserEmailKey] = registerResponse.Email;
 
             // set login flag to true
-            Session[Constants.IS_LOGGED_IN_FLAG_KEY] = true;
+            Session[Constants.IsLoggedInFlagKey] = true;
 
             // return to main page
             Response.Redirect("DefaultPage.aspx");
@@ -75,7 +75,7 @@
         private void ValidateAccountEmail(string email)
         {
             // make request
-            Task<bool> userExistsRequest = client.UserExistsAsync(email);
+            Task<bool> userExistsRequest = _client.UserExistsAsync(email);
 
             // wait for response
             Task.WaitAll(userExistsRequest);

@@ -14,14 +14,14 @@
     
     public class ViaCinemaService : IViaCinemaService
     {
-        private readonly IMovieBase movieBase = new MovieBase(MovieDAO.GetInstance());
-        private readonly IProjectionBase projectionBase = new ProjectionBase(ProjectionDAO.GetInstance());
-        private readonly IUserAccountBase userAccountBase = new UserAccountBase(UserAccountDAO.GetInstance());
+        private readonly IMovieBase _movieBase = new MovieBase(MovieDAO.GetInstance());
+        private readonly IProjectionBase _projectionBase = new ProjectionBase(ProjectionDAO.GetInstance());
+        private readonly IUserAccountBase _userAccountBase = new UserAccountBase(UserAccountDAO.GetInstance());
 
         public IList<Movie> GetAllMovies()
         {
             // get all movies
-            IList<Movie> allMovies = movieBase.GetAllMovies();
+            IList<Movie> allMovies = _movieBase.GetAllMovies();
 
             return allMovies;
         }
@@ -29,7 +29,7 @@
         public bool Login(string email, string userPassword)
         {
             // try to login
-            bool loginSuccessful = userAccountBase.Login(email, userPassword);
+            bool loginSuccessful = _userAccountBase.Login(email, userPassword);
 
             return loginSuccessful;
         }
@@ -37,7 +37,7 @@
         public IList<Projection> GetAllProjections()
         {
             // get all projections
-            IList<Projection> allProjections = projectionBase.GetAllProjections();
+            IList<Projection> allProjections = _projectionBase.GetAllProjections();
 
             return allProjections;
         }
@@ -49,7 +49,7 @@
             DateTime dateOfBirth = new DateTime(yearOfBirth, monthOfBirth, dayOfBirth);
 
             // create new account
-            UserAccount newUser = userAccountBase.CreateAccount(email, userPassword, firstName, lastName, dateOfBirth);
+            UserAccount newUser = _userAccountBase.CreateAccount(email, userPassword, firstName, lastName, dateOfBirth);
 
             return newUser;
         }
@@ -57,10 +57,10 @@
         public IList<Projection> GetProjections(string movieName)
         {
             // get movie
-            Movie movie = movieBase.GetMovie(movieName);
+            Movie movie = _movieBase.GetMovie(movieName);
 
             // get all projections of the movie
-            IList<Projection> projections = projectionBase.GetAllProjections(movie);
+            IList<Projection> projections = _projectionBase.GetAllProjections(movie);
 
             return projections;
         }
@@ -68,23 +68,23 @@
         public bool BookSeat(int projectionId, string email, string seatNumbers)
         {
             // get projection
-            Projection projection = projectionBase.GetProjection(projectionId);
+            Projection projection = _projectionBase.GetProjection(projectionId);
 
             // get user account
-            UserAccount userAccount = userAccountBase.GetUserAccount(email);
+            UserAccount userAccount = _userAccountBase.GetUserAccount(email);
 
             // parse string into int array
             int[] seatNumberArray = Array.ConvertAll(seatNumbers.Split(new[] {", "}, StringSplitOptions.None), int.Parse);
 
             // book seats
-            bool bookingSuccessful = projectionBase.BookSeats(projection, userAccount, seatNumberArray);
+            bool bookingSuccessful = _projectionBase.BookSeats(projection, userAccount, seatNumberArray);
 
             return bookingSuccessful;
         }
 
         public bool UserExists(string email)
         {
-            bool exists = userAccountBase.UserExists(email);
+            bool exists = _userAccountBase.UserExists(email);
 
             return exists;
         }

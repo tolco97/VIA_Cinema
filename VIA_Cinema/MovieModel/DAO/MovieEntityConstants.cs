@@ -7,8 +7,8 @@
     {
         private MovieEntityConstants() {}
 
-        public const string NAME_COLUMN = "name";
-        public const string DURATION_COLUMN = "duration_minuites";
-        public const string GENRE_COLUMN = "genre";
+        public const string NameColumn = "name";
+        public const string DurationColumn = "duration_minuites";
+        public const string GenreColumn = "genre";
     }
 }

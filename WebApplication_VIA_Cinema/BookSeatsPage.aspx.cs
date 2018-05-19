@@ -9,18 +9,18 @@
 
     public partial class BookSeatsPage : Page
     {
-        private bool isLoggedIn;
+        private bool _isLoggedIn;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             // get logged in status
-            if (Session[Constants.IS_LOGGED_IN_FLAG_KEY] == null)
-                Session[Constants.IS_LOGGED_IN_FLAG_KEY] = false;
+            if (Session[Constants.IsLoggedInFlagKey] == null)
+                Session[Constants.IsLoggedInFlagKey] = false;
 
-            isLoggedIn = (bool) Session[Constants.IS_LOGGED_IN_FLAG_KEY];
+            _isLoggedIn = (bool) Session[Constants.IsLoggedInFlagKey];
 
             // get projection
-            Projection projection = (Projection) Session[Constants.PROJECTION_KEY];
+            Projection projection = (Projection) Session[Constants.ProjectionKey];
             
             // set text to the labels
             InitializeLabels(projection);
@@ -32,7 +32,7 @@
         protected void BookSeatsButtonOnClick(object sender, EventArgs e)
         {
             // check if user is logged in
-            if (!isLoggedIn)
+            if (!_isLoggedIn)
             {
                 ShowMessageBox("You need to log in first!");
                 return;
@@ -45,7 +45,7 @@
                 .ToList();
 
             // save seat numbers for payment page
-            Session[Constants.SELECTED_SEAT_NUMBERS_KEY] = selectedSeatNumbers;
+            Session[Constants.SelectedSeatNumbersKey] = selectedSeatNumbers;
 
             // go to payment page
             Response.Redirect("PaymentPage.aspx");
@@ -90,7 +90,7 @@
             List<int> unavailableSeatsList = proj.Seats.Select(seat => seat.SeatNumber).ToList();
 
             // get all seat numbers of seats that are available. seat numbers can be between 1 and 30
-            List<int> availableSeatsList = Enumerable.Range(1, Constants.MAX_PROJECTION_AUDIENCE_SIZE).Except(unavailableSeatsList).ToList();
+            List<int> availableSeatsList = Enumerable.Range(1, Constants.MaxProjectionAudienceSize).Except(unavailableSeatsList).ToList();
 
             return availableSeatsList;
         }

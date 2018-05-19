@@ -4,17 +4,17 @@
     {
         private Constants() {}
 
-        public const string IS_LOGGED_IN_FLAG_KEY = "isLoggedInFlag";
-        public const string SERVICE_CLIENT_KEY = "ViaCinemaServiceClient";
-        public const string USER_EMAIL_KEY = "UserEmail";
-        public const string PROJECTION_KEY = "Projection";
-        public const string SELECTED_MOVIE_KEY = "SelectedMovie";
-        public const string SELECTED_SEAT_NUMBERS_KEY = "SelectedSeatNumbers";
-        public const string NUMBER_OF_SELECTED_SEATS_KEY = "NumberOfSelectedSeats";
+        public const string IsLoggedInFlagKey = "isLoggedInFlag";
+        public const string ServiceClientKey = "ViaCinemaServiceClient";
+        public const string UserEmailKey = "UserEmail";
+        public const string ProjectionKey = "Projection";
+        public const string SelectedMovieKey = "SelectedMovie";
+        public const string SelectedSeatNumbersKey = "SelectedSeatNumbers";
+        public const string NumberOfSelectedSeatsKey = "NumberOfSelectedSeats";
 
-        public const decimal SINGLE_MOVIE_TICKET_PRICE_DKK = 50;
+        public const decimal SingleMovieTicketPriceDkk = 50;
 
-        public const int MAX_PROJECTION_AUDIENCE_SIZE = 30;
+        public const int MaxProjectionAudienceSize = 30;
 
     }
 }
