@@ -14,12 +14,12 @@
     {
         private IViaCinemaService client;
         private bool isLoggedIn;
-        private IDictionary<int, Projection> projectionCache;
+        private IDictionary<int, Projection> projectionsOnDisplay;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             // initialize cache
-            projectionCache = new Dictionary<int, Projection>();
+            projectionsOnDisplay = new Dictionary<int, Projection>();
 
             // get web service client
             if (Session[Constants.SERVICE_CLIENT_KEY] == null)
@@ -57,7 +57,7 @@
             int buttonId = int.Parse(button.ID);
 
             // save projection selected by the user in the session
-            Session[Constants.PROJECTION_KEY] = projectionCache[buttonId];
+            Session[Constants.PROJECTION_KEY] = projectionsOnDisplay[buttonId];
 
             // redirect to booking page
             Response.Redirect("BookSeatsPage.aspx");
@@ -168,7 +168,7 @@
             foreach (Projection proj in projections)
             {
                 // save the projection for the on click button listener
-                projectionCache[proj.Id] = proj;
+                projectionsOnDisplay[proj.Id] = proj;
 
                 // create row
                 TableRow row = new TableRow();
