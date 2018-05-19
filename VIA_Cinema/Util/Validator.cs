@@ -26,7 +26,7 @@
         public static void ValidateMovieDuration(int durationMinuites)
         {
             if (durationMinuites < 1)
-                throw new ArgumentException("Duration can not be below 0");
+                throw new ArgumentException("Duration can not be below 1");
         }
 
         /// <summary>
@@ -49,7 +49,7 @@
         {
             foreach (object obj in objects)
                 if (obj == null)
-                    throw new ArgumentNullException($"{nameof(obj)} is null!");
+                    throw new ArgumentNullException("null value!");
         }
 
     }
