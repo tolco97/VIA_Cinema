@@ -26,6 +26,8 @@
             // read credit card from DB
             CreditCard creditCard = _creditCardDao.Read(creditCardNumber);
 
+            Validator.ValidateObjectsNotNull(creditCard);
+
             // attempt to pay 
             bool isSuccessful = Pay(creditCard, amountDkk);
 
