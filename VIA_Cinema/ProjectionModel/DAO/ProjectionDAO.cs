@@ -54,7 +54,7 @@
         }
 
         /// <inheritdoc/>
-        public Projection Read(int projId)
+        public Projection ReadProjection(int projectionId)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -66,10 +66,10 @@
                                    " WHERE projections.id = @id;";
 
                 // set statement parameters
-                stmt.Parameters.AddWithValue(ProjectionEntityConstants.IdColumn, projId);
+                stmt.Parameters.AddWithValue(ProjectionEntityConstants.IdColumn, projectionId);
 
                 // get seats for this projection
-                IList<Seat> seatAllocations = ReadSeatReservations(projId);
+                IList<Seat> seatAllocations = ReadSeatReservations(projectionId);
 
                 // execute statement and collect values
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
@@ -84,13 +84,13 @@
                     // get projection start
                     DateTime projStartTime = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
 
-                    return new Projection(projId, movie, seatAllocations, projStartTime);
+                    return new Projection(projectionId, movie, seatAllocations, projStartTime);
                 }
             }
         }
 
         /// <inheritdoc/>
-        public ICollection<Projection> ReadAll()
+        public ICollection<Projection> ReadAllProjections()
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -137,7 +137,7 @@
         }
 
         /// <inheritdoc/>
-        public ICollection<Projection> Read(Movie movie)
+        public ICollection<Projection> ReadAllProjections(Movie movie)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -194,9 +194,9 @@
 
                 // set statement
                 stmt.CommandText = "UPDATE via_cinema_schema.projections " +
-                                   "SET projections.movie_name = @movie_name," +
-                                   " projections.projection_start = @projection_start " +
-                                   "WHERE projections.id = @id;";
+                                   "SET movie_name = @movie_name," +
+                                   " projection_start = @projection_start " +
+                                   "WHERE id = @id;";
 
                 // set parameters for proj update
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.MovieNameColumn,

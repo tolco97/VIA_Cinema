@@ -27,15 +27,15 @@
         ///     Reads a projection entry from the database that matches the projection
         ///     id passed as a parameter
         /// </summary>
-        /// <param name="projId"> the projection id </param>
+        /// <param name="projectionId"> the projection id </param>
         /// <returns> a projection object </returns>
-        Projection Read(int projId);
+        Projection ReadProjection(int projectionId);
 
         /// <summary>
         ///     Reads all projection database entries from the projections entity
         /// </summary>
         /// <returns> a collection of projection objects </returns>
-        ICollection<Projection> ReadAll();
+        ICollection<Projection> ReadAllProjections();
 
 
         /// <summary>
@@ -43,7 +43,7 @@
         /// </summary>
         /// <param name="movie"> the movie </param>
         /// <returns> a collection of projection objects </returns>
-        ICollection<Projection> Read(Movie movie);
+        ICollection<Projection> ReadAllProjections(Movie movie);
 
         /// <summary>
         ///     Reads all seat reservation entries from the seat reservations entity that match

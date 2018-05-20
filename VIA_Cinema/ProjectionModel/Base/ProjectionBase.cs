@@ -46,7 +46,7 @@
             if (!_projectionCache.ContainsKey(projId))
             {
                 // read projection
-                Projection proj = _projectionDao.Read(projId);
+                Projection proj = _projectionDao.ReadProjection(projId);
 
                 // projection does not exist
                 if (proj == null) return null;
@@ -62,7 +62,7 @@
         public IList<Projection> GetAllProjections()
         {
             // read all projections
-            ICollection<Projection> allProjections = _projectionDao.ReadAll();
+            ICollection<Projection> allProjections = _projectionDao.ReadAllProjections();
             
             // cache all projections that are not cached already
             foreach (Projection proj in allProjections)
@@ -79,7 +79,7 @@
             Validator.ValidateObjectsNotNull(movie);
 
             // read all projections for this movie
-            ICollection<Projection> allProjections = _projectionDao.Read(movie);
+            ICollection<Projection> allProjections = _projectionDao.ReadAllProjections(movie);
 
             // create output collection
             int size = allProjections.Count;

@@ -123,13 +123,14 @@
                 // set statement
                 stmt.CommandText = "UPDATE via_cinema_schema.user_accounts SET password = @password , " +
                                    "first_name = @first_name, last_name = @last_name, birthday = @birthday" +
-                                   " WHERE name = @name;";
+                                   " WHERE email = @email;";
 
                 // set the statement parameters
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.PasswordColumn, updatedAct.UserPassword);
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.FirstNameColumn, updatedAct.FirstName);
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.LastNameColumn, updatedAct.LastName);
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.BirthdayColumn, updatedAct.Birthday);
+                stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, updatedAct.Email);
 
                 // execute statement
                 return stmt.ExecuteNonQuery() != 0;
@@ -145,12 +146,18 @@
                 stmt.Connection = _con;
 
                 // set statement
-                stmt.CommandText = "DELETE FROM via_cinema_schema.user_accounts WHERE user_accounts.email = @email;";
-
+                stmt.CommandText =
+                    "DELETE FROM via_cinema_schema.seat_reservations WHERE seat_reservations.email = @email";
+                
                 // set statement parameters
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, account.Email);
 
-                // execute statement
+                // delete seat reservations of the user account
+                stmt.ExecuteNonQuery();
+                
+                stmt.CommandText = "DELETE FROM via_cinema_schema.user_accounts WHERE user_accounts.email = @email;";
+                
+                // delete user account
                 return stmt.ExecuteNonQuery() != 0;
             }
         }

@@ -116,7 +116,7 @@
 
                 // set statement
                 stmt.CommandText = "UPDATE via_cinema_schema.movies " +
-                                   "SET duration_minuites = @duration , " +
+                                   "SET duration_minuites = @duration_minuites , " +
                                    "genre = @genre WHERE name = @name;";
 
                 // set the statement parameters
