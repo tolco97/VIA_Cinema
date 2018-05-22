@@ -10,9 +10,9 @@
         private readonly IDictionary<string, UserAccount> _userAccountCache = new Dictionary<string, UserAccount>();
         private readonly IUserAccountDAO _userAccountDao;
 
-        public UserAccountBase(IUserAccountDAO userAccountDAO)
+        public UserAccountBase(IUserAccountDAO userAccountDao)
         {
-            _userAccountDao = userAccountDAO;
+            _userAccountDao = userAccountDao;
         }
 
         /// <inheritdoc/>
