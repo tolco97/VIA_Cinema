@@ -74,7 +74,7 @@
                 // execute statement and collect values
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
                 {
-                    // proj does not exist
+                    // projection does not exist
                     if (!reader.Read()) return null;
 
                     // get the movie object
