@@ -52,16 +52,16 @@
         }
 
         /// <inheritdoc/>
-        public UserAccount GetUserAccount(string email)
+        public UserAccount GetUserAccount(string userEmail)
         {
             // validate input
-            Validator.ValidateTextualInput(email);
+            Validator.ValidateTextualInput(userEmail);
 
             // account is not cached in the memory
-            if (!_userAccountCache.ContainsKey(email))
+            if (!_userAccountCache.ContainsKey(userEmail))
             {
                 // read it from the database
-                UserAccount userAccount = _userAccountDao.Read(email);
+                UserAccount userAccount = _userAccountDao.Read(userEmail);
 
                 // account does not exist
                 if (userAccount == null) return null;
@@ -70,7 +70,7 @@
                 _userAccountCache[userAccount.Email] = userAccount;
             }
 
-            return _userAccountCache[email];
+            return _userAccountCache[userEmail];
         }
 
         /// <inheritdoc/>
@@ -88,10 +88,10 @@
         }
 
         /// <inheritdoc/>
-        public bool UserExists(string email)
+        public bool UserExists(string userEmail)
         {
             // user account is null, if it doesn't exist
-            bool exists = GetUserAccount(email) != null;
+            bool exists = GetUserAccount(userEmail) != null;
 
             return exists;
         }

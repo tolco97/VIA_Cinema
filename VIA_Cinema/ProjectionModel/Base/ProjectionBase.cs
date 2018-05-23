@@ -56,22 +56,22 @@
         }
 
         /// <inheritdoc/>
-        public Projection GetProjection(int projId)
+        public Projection GetProjection(int projectionId)
         {
             // if projection is not cached
-            if (!_projectionCache.ContainsKey(projId))
+            if (!_projectionCache.ContainsKey(projectionId))
             {
                 // read projection
-                Projection proj = _projectionDao.ReadProjection(projId);
+                Projection proj = _projectionDao.ReadProjection(projectionId);
 
                 // projection does not exist
                 if (proj == null) return null;
 
                 // cache projection object
-                _projectionCache[projId] = proj;
+                _projectionCache[projectionId] = proj;
             }
 
-            return _projectionCache[projId];
+            return _projectionCache[projectionId];
         }
 
         /// <inheritdoc/>

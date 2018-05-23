@@ -29,9 +29,9 @@
         ///     Retrieves the projection from the system that matches the projeciton id passed as a
         ///     parameter
         /// </summary>
-        /// <param name="projId"> the projection id </param>
+        /// <param name="projectionId"> the projection id </param>
         /// <returns> a projection object </returns>
-        Projection GetProjection(int projId);
+        Projection GetProjection(int projectionId);
 
         /// <summary>
         ///     Retrieves all projections in the system

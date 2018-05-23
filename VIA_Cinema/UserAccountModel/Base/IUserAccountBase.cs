@@ -33,9 +33,9 @@
         ///     Retrieves the user account in the system that matches the email
         ///     passed as a parameter
         /// </summary>
-        /// <param name="email"> the email </param>
+        /// <param name="userEmail"> the email </param>
         /// <returns> a user account object </returns>
-        UserAccount GetUserAccount(string email);
+        UserAccount GetUserAccount(string userEmail);
 
         /// <summary>
         ///     Retrieves all accouns from the system
@@ -47,11 +47,11 @@
         ///     Checks if a user with the email passed as a parameter exists
         ///     in the system
         /// </summary>
-        /// <param name="email"> the email </param>
+        /// <param name="userEmail"> the email </param>
         /// <returns>
         ///     true, if a user account with the email exists
         ///     in the system. Otherwise, false
         /// </returns>
-        bool UserExists(string email);
+        bool UserExists(string userEmail);
     }
 }
