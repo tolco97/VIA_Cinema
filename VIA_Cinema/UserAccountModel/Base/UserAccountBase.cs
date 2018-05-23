@@ -36,13 +36,13 @@
         }
 
         /// <inheritdoc/>
-        public bool Login(string email, string userPassword)
+        public bool Login(string userEmail, string userPassword)
         {
             // validate input
-            Validator.ValidateTextualInput(email, userPassword);
+            Validator.ValidateTextualInput(userEmail, userPassword);
 
             // get the account 
-            UserAccount userAccount = GetUserAccount(email);
+            UserAccount userAccount = GetUserAccount(userEmail);
 
             // account does not exist
             if (userAccount == null) return false;

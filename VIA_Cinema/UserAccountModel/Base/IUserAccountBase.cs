@@ -21,13 +21,13 @@
         ///     Checks if there is a user account in the system with the email
         ///     and password passed as parameters
         /// </summary>
-        /// <param name="email"> the email </param>
+        /// <param name="userEmail"> the email </param>
         /// <param name="userPassword"> the password </param>
         /// <returns>
         ///     true, if there is a user account with the
         ///     email and password parameters. Otherwise, false
         /// </returns>
-        bool Login(string email, string userPassword);
+        bool Login(string userEmail, string userPassword);
 
         /// <summary>
         ///     Retrieves the user account in the system that matches the email
