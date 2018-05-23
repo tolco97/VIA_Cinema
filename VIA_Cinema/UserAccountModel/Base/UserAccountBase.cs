@@ -41,11 +41,11 @@
             // validate input
             Validator.ValidateTextualInput(userEmail, userPassword);
 
+            // check if user exists
+            if (!UserExists(userEmail)) return false;
+
             // get the account 
             UserAccount userAccount = GetUserAccount(userEmail);
-
-            // account does not exist
-            if (userAccount == null) return false;
 
             // verify the password
             return userPassword.Equals(userAccount.UserPassword);
