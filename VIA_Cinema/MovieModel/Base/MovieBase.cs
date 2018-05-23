@@ -5,6 +5,7 @@ namespace Model_VIA_Cinema.MovieModel.Base
     using System.Collections.Generic;
     using Model.MovieModel;
     using VIA_Cinema.Util;
+    using System.Data.Linq;
 
     public class MovieBase : IMovieBase
     {
@@ -17,14 +18,17 @@ namespace Model_VIA_Cinema.MovieModel.Base
         }
 
         /// <inheritdoc/>
-        public Movie AddMovie(string name, int durationMinuites, string genre)
+        public Movie AddMovie(string movieName, int durationMinuites, string genre)
         {
             // validate input
             Validator.ValidateMovieDuration(durationMinuites);
-            Validator.ValidateTextualInput(name, genre);
+            Validator.ValidateTextualInput(movieName, genre);
+
+            // movie already exists
+            if (MovieExists(movieName)) throw new DuplicateKeyException($"Movie with name {movieName} already exists!");
 
             // create new movie in the database
-            Movie newMovie = _movieDao.Create(name, durationMinuites, genre);
+            Movie newMovie = _movieDao.Create(movieName, durationMinuites, genre);
 
             // cache the new movie
             _movieCache[newMovie.Name] = newMovie;
@@ -64,6 +68,15 @@ namespace Model_VIA_Cinema.MovieModel.Base
                     _movieCache[movie.Name] = movie;
 
             return new List<Movie>(_movieCache.Values);
+        }
+
+        /// <inheritdoc/>
+        public bool MovieExists(string movieName)
+        {
+            // movie is null if it doesn't exist
+            bool exists = GetMovie(movieName) != null;
+
+            return exists;
         }
     }
 }

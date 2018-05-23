@@ -5,6 +5,7 @@
     using DAO;
     using UserAccountModel;
     using VIA_Cinema.Util;
+    using System;
 
     public class ProjectionBase : IProjectionBase
     {
@@ -14,6 +15,21 @@
         public ProjectionBase(IProjectionDAO projectionDao)
         {
             _projectionDao = projectionDao;
+        }
+
+        /// <inheritdoc/>
+        public Projection AddProjection(Movie movie, DateTime movieStartTime)
+        {
+            // validate input
+            Validator.ValidateObjectsNotNull(movie, movieStartTime);
+
+            // craete projection in the database
+            Projection newProjection = _projectionDao.CreateProjection(movie, movieStartTime);
+
+            // cache projection
+            _projectionCache[newProjection.Id] = newProjection;
+
+            return newProjection;
         }
 
         /// <inheritdoc/>

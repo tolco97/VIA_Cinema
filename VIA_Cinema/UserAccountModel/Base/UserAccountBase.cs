@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using DAO;
     using VIA_Cinema.Util;
+    using System.Data.Linq;
 
     public class UserAccountBase : IUserAccountBase
     {
@@ -21,6 +22,9 @@
         {
             // validate input
             Validator.ValidateTextualInput(email, firstName, lastName, userPassword);
+
+            // check if user already exists
+            if (UserExists(email)) throw new DuplicateKeyException($"User with account {email} already exists!");
 
             // create a new account in the database
             UserAccount newAccount = _userAccountDao.Create(email, userPassword, firstName, lastName, birthday);

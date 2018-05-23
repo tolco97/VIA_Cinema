@@ -8,11 +8,11 @@
         /// <summary>
         ///     Adds a new movie to the system
         /// </summary>
-        /// <param name="name"> the name of the movie </param>
+        /// <param name="movieName"> the name of the movie </param>
         /// <param name="durationMinuites"> the duration of the movie </param>
         /// <param name="genre"> the movie genre </param>
         /// <returns> a movie object </returns>
-        Movie AddMovie(string name, int durationMinuites, string genre);
+        Movie AddMovie(string movieName, int durationMinuites, string genre);
 
         /// <summary>
         ///     Retrieves a movie from the system, that matches the movie name passed as a parameter
@@ -26,5 +26,12 @@
         /// </summary>
         /// <returns> a list of movies </returns>
         IList<Movie> GetAllMovies();
+
+        /// <summary>
+        ///     Checks if a movie exists in system.
+        /// </summary>
+        /// <param name="movieName"> the name of the movie </param>
+        /// <returns> true, if the movie already exists. Otherwise, false </returns>
+        bool MovieExists(string movieName);
     }
 }

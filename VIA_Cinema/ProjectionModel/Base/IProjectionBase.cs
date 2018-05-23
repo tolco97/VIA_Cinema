@@ -3,9 +3,18 @@
     using System.Collections.Generic;
     using Model.MovieModel;
     using UserAccountModel;
+    using System;
 
     public interface IProjectionBase
     {
+        /// <summary>
+        ///     Creates a new projection in the system.
+        /// </summary>
+        /// <param name="movie"> the projected movie </param>
+        /// <param name="movieStartTime"> the projection start time </param>
+        /// <returns> the newly created projection </returns>
+        Projection AddProjection(Movie movie, DateTime movieStartTime);
+
         /// <summary>
         ///     Assigns seats from the projection passed as a paramter to the user account passed as a
         ///     parameter
