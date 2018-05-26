@@ -77,9 +77,9 @@
             int[] seatNumberArray = Array.ConvertAll(seatNumbers.Split(new[] {", "}, StringSplitOptions.None), int.Parse);
 
             // book seats
-            bool bookingSuccessful = _projectionBase.BookSeats(projection, userAccount, seatNumberArray);
+            bool isBookingSuccessful = _projectionBase.BookSeats(projection, userAccount, seatNumberArray);
 
-            return bookingSuccessful;
+            return isBookingSuccessful;
         }
 
         public bool UserExists(string email)
