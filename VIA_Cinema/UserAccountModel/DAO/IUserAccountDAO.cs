@@ -8,22 +8,22 @@
         /// <summary>
         ///     Creates a new user account database entry from the user account parameter
         /// </summary>
-        /// <param name="email"> the email of the user </param>
+        /// <param name="userEmail"> the email of the user </param>
         /// <param name="userPassword"> the password of the user </param>
         /// <param name="firstName"> the first name of the user </param>
         /// <param name="lastName"> the last name of the user </param>
         /// <param name="birthday"> the birthday of the user </param>
         /// <returns> a user account object </returns>
-        UserAccount Create(string email, string userPassword, string firstName, string lastName,
+        UserAccount Create(string userEmail, string userPassword, string firstName, string lastName,
             DateTime birthday);
 
         /// <summary>
         ///     Reads a user account database entry from the user accounts entry that matches
         ///     the email passed as a parameter
         /// </summary>
-        /// <param name="email"> the email </param>
+        /// <param name="userEmail"> the email </param>
         /// <returns> a user account object </returns>
-        UserAccount Read(string email);
+        UserAccount Read(string userEmail);
 
         /// <summary>
         ///     Reads all user account entries from the database
