@@ -17,17 +17,17 @@
         }
 
         /// <inheritdoc/>
-        public UserAccount CreateAccount(string email, string userPassword, string firstName, string lastName,
+        public UserAccount CreateAccount(string userEmail, string userPassword, string firstName, string lastName,
             DateTime birthday)
         {
             // validate input
-            Validator.ValidateTextualInput(email, firstName, lastName, userPassword);
+            Validator.ValidateTextualInput(userEmail, firstName, lastName, userPassword);
 
             // check if user already exists
-            if (UserExists(email)) throw new DuplicateKeyException($"User with account {email} already exists!");
+            if (UserExists(userEmail)) throw new DuplicateKeyException($"User with account {userEmail} already exists!");
 
             // create a new account in the database
-            UserAccount newAccount = _userAccountDao.Create(email, userPassword, firstName, lastName, birthday);
+            UserAccount newAccount = _userAccountDao.Create(userEmail, userPassword, firstName, lastName, birthday);
 
             // cache the new account
             _userAccountCache[newAccount.Email] = newAccount;

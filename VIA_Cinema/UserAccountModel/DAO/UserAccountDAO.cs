@@ -18,7 +18,7 @@
         }
 
         /// <inheritdoc/>
-        public UserAccount Create(string email, string userPassword, string firstName, string lastName,
+        public UserAccount Create(string userEmail, string userPassword, string firstName, string lastName,
             DateTime birthday)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
@@ -32,7 +32,7 @@
                     " last_name, birthday) VALUES (@email, @password, @first_name, @last_name, @birthday);";
 
                 // set statement parameters
-                stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, email);
+                stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, userEmail);
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.PasswordColumn, userPassword);
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.FirstNameColumn, firstName);
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.LastNameColumn, lastName);
@@ -41,12 +41,12 @@
                 // execute statement
                 stmt.ExecuteNonQuery();
 
-                return new UserAccount(email, userPassword, firstName, lastName, birthday);
+                return new UserAccount(userEmail, userPassword, firstName, lastName, birthday);
             }
         }
 
         /// <inheritdoc/>
-        public UserAccount Read(string email)
+        public UserAccount Read(string userEmail)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -58,7 +58,7 @@
                     "SELECT * FROM via_cinema_schema.user_accounts WHERE via_cinema_schema.user_accounts.email = @email;";
 
                 // set parameters
-                stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, email);
+                stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, userEmail);
 
                 // execute statement
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
@@ -72,7 +72,7 @@
                     string lastName = (string) reader[UserAccountEntityConstants.LastNameColumn];
                     DateTime birthday = (DateTime) reader[UserAccountEntityConstants.BirthdayColumn];
 
-                    return new UserAccount(email, password, firstName, lastName, birthday);
+                    return new UserAccount(userEmail, password, firstName, lastName, birthday);
                 }
             }
         }
@@ -87,9 +87,8 @@
 
                 // set statement
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.user_accounts;";
-
-                // create a collection for the movies
-                List<UserAccount> allAccounts = new List<UserAccount>(); // avoid array list resizing
+                
+                List<UserAccount> allAccounts = new List<UserAccount>(); 
 
                 // execute statement
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
@@ -113,7 +112,7 @@
         }
 
         /// <inheritdoc/>
-        public bool Update(UserAccount updatedAct)
+        public bool Update(UserAccount account)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -126,11 +125,11 @@
                                    " WHERE email = @email;";
 
                 // set the statement parameters
-                stmt.Parameters.AddWithValue(UserAccountEntityConstants.PasswordColumn, updatedAct.UserPassword);
-                stmt.Parameters.AddWithValue(UserAccountEntityConstants.FirstNameColumn, updatedAct.FirstName);
-                stmt.Parameters.AddWithValue(UserAccountEntityConstants.LastNameColumn, updatedAct.LastName);
-                stmt.Parameters.AddWithValue(UserAccountEntityConstants.BirthdayColumn, updatedAct.Birthday);
-                stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, updatedAct.Email);
+                stmt.Parameters.AddWithValue(UserAccountEntityConstants.PasswordColumn, account.UserPassword);
+                stmt.Parameters.AddWithValue(UserAccountEntityConstants.FirstNameColumn, account.FirstName);
+                stmt.Parameters.AddWithValue(UserAccountEntityConstants.LastNameColumn, account.LastName);
+                stmt.Parameters.AddWithValue(UserAccountEntityConstants.BirthdayColumn, account.Birthday);
+                stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, account.Email);
 
                 // execute statement
                 return stmt.ExecuteNonQuery() != 0;

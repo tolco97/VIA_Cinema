@@ -35,9 +35,9 @@
         ///     Updates a user account database entry that matches the account email
         ///     of the account passed as a parameter
         /// </summary>
-        /// <param name="updatedAct"> the updated user account </param>
+        /// <param name="account"> the updated user account </param>
         /// <returns> true, if the update operation has affected at least 1 database row. Otherwise, false </returns>
-        bool Update(UserAccount updatedAct);
+        bool Update(UserAccount account);
 
         /// <summary>
         ///     Deletes a user account database entry that matches the account email
