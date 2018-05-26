@@ -53,6 +53,6 @@
             UriTemplate = "/UserExists?email={email}",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
-        bool UserExists(string email);
+        bool UserExists(string userEmail);
     }
 }

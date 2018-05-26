@@ -82,9 +82,9 @@
             return isBookingSuccessful;
         }
 
-        public bool UserExists(string email)
+        public bool UserExists(string userEmail)
         {
-            bool exists = _userAccountBase.UserExists(email);
+            bool exists = _userAccountBase.UserExists(userEmail);
 
             return exists;
         }
