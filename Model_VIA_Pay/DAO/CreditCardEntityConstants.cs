@@ -3,10 +3,8 @@
     /// <summary>
     ///     Stores constants used when manipulating the credit cards database
     /// </summary>
-    public sealed class CreditCardEntityConstants
+    public static class CreditCardEntityConstants
     {
-        private CreditCardEntityConstants() {}
-
         public const string CardNumberColumn = "number";
         public const string PinColumn = "pin";
         public const string BalanceColumn = "balance_dkk";

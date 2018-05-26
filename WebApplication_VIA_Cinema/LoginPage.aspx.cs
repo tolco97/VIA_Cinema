@@ -10,13 +10,20 @@
     {
         private IViaCinemaService _client;
 
+        #region LoginPageConstants
+
+        private const string WrongInputMessage = "Wrong username or password!";
+        private const string InvalidInputMessage = "Invalid input!";
+        
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // get web service client
-            if (Session[Constants.ServiceClientKey] == null)
-                Session[Constants.ServiceClientKey] = new ViaCinemaServiceClient();
+            if (Session[SessionConstants.ServiceClientKey] == null)
+                Session[SessionConstants.ServiceClientKey] = new ViaCinemaServiceClient();
 
-            _client = (IViaCinemaService) Session[Constants.ServiceClientKey];
+            _client = (IViaCinemaService) Session[SessionConstants.ServiceClientKey];
         }
 
         protected void LoginButtonOnClick(object sender, EventArgs e)
@@ -32,7 +39,7 @@
             }
             catch (ArgumentException)
             {
-                ShowMessageBox("Invalid input!"); // show error message to user
+                ShowMessageBox(InvalidInputMessage); 
                 return;
             }
 
@@ -44,20 +51,20 @@
 
             // get response & save it in the session
             bool loginSuccessful = loginRequest.Result;
-            Session[Constants.IsLoggedInFlagKey] = loginSuccessful;
+            Session[SessionConstants.IsLoggedInFlagKey] = loginSuccessful;
 
             // react to response
             if (loginSuccessful)
             {
                 // save the email
-                Session[Constants.UserEmailKey] = email; 
+                Session[SessionConstants.UserEmailKey] = email; 
 
                 // back to main page
                 Response.Redirect("DefaultPage.aspx"); 
             }
             else
                 // show error message
-                ShowMessageBox("Wrong username or password");
+                ShowMessageBox(WrongInputMessage);
         }
 
         /// <summary>

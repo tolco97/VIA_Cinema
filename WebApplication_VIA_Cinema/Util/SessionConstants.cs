@@ -1,9 +1,7 @@
 ﻿namespace WebApplication_VIA_Cinema
 {
-    public sealed class Constants
+    public static class SessionConstants
     {
-        private Constants() {}
-
         public const string IsLoggedInFlagKey = "isLoggedInFlag";
         public const string ServiceClientKey = "ViaCinemaServiceClient";
         public const string UserEmailKey = "UserEmail";

@@ -14,16 +14,23 @@
         private IViaPayService _payClient;
         private IViaCinemaService _cinemaClient;
 
+        #region PaymentPageConstants
+
+        private const string InvalidInputMessage = "Invalid input";
+        private const string TransactionRejectedMessage = "Transaction rejected";
+
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // instantiate payment web service client
             _payClient = new ViaPayServiceClient();
 
             // get cinema client
-            if (Session[Constants.ServiceClientKey] == null)
-                Session[Constants.ServiceClientKey] = new ViaCinemaServiceClient();
+            if (Session[SessionConstants.ServiceClientKey] == null)
+                Session[SessionConstants.ServiceClientKey] = new ViaCinemaServiceClient();
 
-            _cinemaClient = (IViaCinemaService) Session[Constants.ServiceClientKey];
+            _cinemaClient = (IViaCinemaService) Session[SessionConstants.ServiceClientKey];
         }
 
         protected void PayButtonOnClick(object sender, EventArgs e)
@@ -39,13 +46,13 @@
             }
             catch (ArgumentException)
             {
-                ShowMessageBox("Invalid input");
+                ShowMessageBox(InvalidInputMessage);
                 return;
             }
 
             // calculate amount of money required: {number of seats * 30.0}. Each movie seat costs 30 DKK for all projections
-            List<string> selectedSeatNumbers = (List<string>) Session[Constants.SelectedSeatNumbersKey];
-            decimal totalPrice = Constants.SingleMovieTicketPriceDkk * selectedSeatNumbers.Count;
+            List<string> selectedSeatNumbers = (List<string>) Session[SessionConstants.SelectedSeatNumbersKey];
+            decimal totalPrice = SessionConstants.SingleMovieTicketPriceDkk * selectedSeatNumbers.Count;
 
             // send transaction request
             Task<bool> transactionRequest = _payClient.MakeTransactionAsync(creditCardNumber, pin, totalPrice);
@@ -59,7 +66,7 @@
             // show message if transaction is unsuccessful
             if (!transactionSuccessful)
             { 
-                ShowMessageBox("Transaction rejected");
+                ShowMessageBox(TransactionRejectedMessage);
                 return;
             }
 
@@ -73,9 +80,9 @@
         private void BookSeats()
         {
             // get needed data
-            Projection projection = (Projection) Session[Constants.ProjectionKey];
-            string email = (string) Session[Constants.UserEmailKey];
-            List<string> seatNumbersList = (List<string>) Session[Constants.SelectedSeatNumbersKey];
+            Projection projection = (Projection) Session[SessionConstants.ProjectionKey];
+            string email = (string) Session[SessionConstants.UserEmailKey];
+            List<string> seatNumbersList = (List<string>) Session[SessionConstants.SelectedSeatNumbersKey];
             string seatNumberString = string.Join(", ", seatNumbersList);
 
             // request the booking of the seats

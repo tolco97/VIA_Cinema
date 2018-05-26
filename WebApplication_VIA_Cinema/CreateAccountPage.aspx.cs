@@ -11,13 +11,17 @@
     {
         private IViaCinemaService _client;
 
+        #region CreateAccountPageConstants
+        private const string InvalidInputMessage = "Invalid input";
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // get web service client
-            if (Session[Constants.ServiceClientKey] == null)
-                Session[Constants.ServiceClientKey] = new ViaCinemaServiceClient();
+            if (Session[SessionConstants.ServiceClientKey] == null)
+                Session[SessionConstants.ServiceClientKey] = new ViaCinemaServiceClient();
 
-            _client = (IViaCinemaService) Session[Constants.ServiceClientKey];
+            _client = (IViaCinemaService) Session[SessionConstants.ServiceClientKey];
         }
 
         protected void CreateAccountButtonOnClick(object sender, EventArgs e)
@@ -39,7 +43,7 @@
             }
             catch (ArgumentException)
             {
-                ShowMessageBox("Invalid input");
+                ShowMessageBox(InvalidInputMessage);
                 return;
             }
             catch (InvalidOperationException)
@@ -59,10 +63,10 @@
             UserAccount registerResponse = registerRequest.Result;
             
             // save user email
-            Session[Constants.UserEmailKey] = registerResponse.Email;
+            Session[SessionConstants.UserEmailKey] = registerResponse.Email;
 
             // set login flag to true
-            Session[Constants.IsLoggedInFlagKey] = true;
+            Session[SessionConstants.IsLoggedInFlagKey] = true;
 
             // return to main page
             Response.Redirect("DefaultPage.aspx");

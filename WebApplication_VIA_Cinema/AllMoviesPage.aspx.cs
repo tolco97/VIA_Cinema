@@ -13,8 +13,29 @@
     public partial class AllMovies : Page
     {
         private IViaCinemaService _client;
-        private bool _isLoggedIn;
         private IDictionary<int, Projection> _projectionsOnDisplay;
+        private bool _isLoggedIn;
+
+        #region AllMoviesPageConstants
+
+        private const string ColorPropName = "color";
+        private const string ColorPropValue = "white";
+
+        private const string MovieNameHeader = "Movie Name";
+        private const string MovieGenreHeader = "Movie Genre";
+        private const string MovieDurationHeader = "Movie Duration";
+        private const string ProjectionStartHeader = "Projection Start";
+        private const string AvailableTicketsHeader = "Available Tickets";
+
+        private const string StartTimeDateFormat = "dddd  dd  MMMM HH:mm";
+        private const int BorderWidthValue = 1;
+
+        private const string BookSeatsButtonName = "Book Seats";
+        private const string SoldOutButtonName = "Sold Out";
+
+        private const string LoginRequirementMessage = "You need to log in first!";
+
+        #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,16 +43,16 @@
             _projectionsOnDisplay = new Dictionary<int, Projection>();
 
             // get web service client
-            if (Session[Constants.ServiceClientKey] == null)
-                Session[Constants.ServiceClientKey] = new ViaCinemaServiceClient();
+            if (Session[SessionConstants.ServiceClientKey] == null)
+                Session[SessionConstants.ServiceClientKey] = new ViaCinemaServiceClient();
 
-            _client = (IViaCinemaService) Session[Constants.ServiceClientKey];
+            _client = (IViaCinemaService) Session[SessionConstants.ServiceClientKey];
 
             // get logged in status 
-            if (Session[Constants.IsLoggedInFlagKey] == null)
-                Session[Constants.IsLoggedInFlagKey] = false;
+            if (Session[SessionConstants.IsLoggedInFlagKey] == null)
+                Session[SessionConstants.IsLoggedInFlagKey] = false;
 
-            _isLoggedIn = (bool) Session[Constants.IsLoggedInFlagKey];
+            _isLoggedIn = (bool) Session[SessionConstants.IsLoggedInFlagKey];
 
             // page loaded for the first time
             if (!Page.IsPostBack)
@@ -46,7 +67,7 @@
             // login check
             if (!_isLoggedIn)
             {
-                ShowMessageBox("You need to log in first!");
+                ShowMessageBox(LoginRequirementMessage);
                 return;
             }
 
@@ -57,7 +78,7 @@
             int buttonId = int.Parse(button.ID);
 
             // save projection selected by the user in the session
-            Session[Constants.ProjectionKey] = _projectionsOnDisplay[buttonId];
+            Session[SessionConstants.ProjectionKey] = _projectionsOnDisplay[buttonId];
 
             // redirect to booking page
             Response.Redirect("BookSeatsPage.aspx");
@@ -98,41 +119,41 @@
             // movie name header cell
             TableCell movieNameHeaderCell = new TableCell
             {
-                Text = "Movie Name",
+                Text = MovieNameHeader,
                 HorizontalAlign = HorizontalAlign.Center,
-                Style = {["color"] = "white"}
+                Style = {[ColorPropName] = ColorPropValue}
             };
 
             // movie genre header cell
             TableCell movieGenreHeaderCell = new TableCell
             {
-                Text = "Movie Genre",
+                Text = MovieGenreHeader,
                 HorizontalAlign = HorizontalAlign.Center,
-                Style = {["color"] = "white"}
+                Style = {[ColorPropName] = ColorPropValue}
             };
 
             // movie duration header cell
             TableCell movieDurationHeaderCell = new TableCell
             {
-                Text = "Movie Duration",
+                Text = MovieDurationHeader,
                 HorizontalAlign = HorizontalAlign.Center,
-                Style = {["color"] = "white"}
+                Style = {[ColorPropName] = ColorPropValue}
             };
 
             // movie projection start header cell
             TableCell projectionStartHeaderCell = new TableCell
             {
-                Text = "Projection Start",
+                Text = ProjectionStartHeader,
                 HorizontalAlign = HorizontalAlign.Center,
-                Style = {["color"] = "white"}
+                Style = {[ColorPropName] = ColorPropValue}
             };
 
             // available tickets header cell
             TableCell seatsAvailableHeaderCell = new TableCell
             {
-                Text = "Available Tickets",
+                Text = AvailableTicketsHeader,
                 HorizontalAlign = HorizontalAlign.Center,
-                Style = {["color"] = "white"}
+                Style = {[ColorPropName] = ColorPropValue}
             };
 
             // add all cells to a row
@@ -178,7 +199,7 @@
                 {
                     Text = proj.ProjectedMovie.Name,
                     BorderColor = Color.Black,
-                    BorderWidth = 1
+                    BorderWidth = BorderWidthValue
                 };
 
                 // populate movie genre cell
@@ -186,7 +207,7 @@
                 {
                     Text = proj.ProjectedMovie.Genre,
                     BorderColor = Color.Black,
-                    BorderWidth = 1
+                    BorderWidth = BorderWidthValue
                 };
 
                 // populate movie duration cell
@@ -194,16 +215,16 @@
                 {
                     Text = $"{proj.ProjectedMovie.DurationMinuites} minuites",
                     BorderColor = Color.Black,
-                    BorderWidth = 1
+                    BorderWidth = BorderWidthValue
                 };
 
                 // populate movie projection start cell
                 TableCell projectionStartCell =
                     new TableCell
                     {
-                        Text = proj.MovieStartTime.ToString("dddd  dd  MMMM HH:mm"),
+                        Text = proj.MovieStartTime.ToString(StartTimeDateFormat),
                         BorderColor = Color.Black,
-                        BorderWidth = 1
+                        BorderWidth = BorderWidthValue
                     };
 
                 // calculate number of available seats cell and populate seats cell
@@ -213,13 +234,13 @@
                     Text = numAvailableSeats.ToString(),
                     BorderColor = Color.Black,
                     ForeColor = (numAvailableSeats > 0) ? Color.Black : Color.Red, // button text color is red, if there are no more seats available
-                    BorderWidth = 1
+                    BorderWidth = BorderWidthValue
                 };
 
                 TableCell bookButtonCell = new TableCell();
                 Button bookButton = new Button
                 {
-                    Text =  (numAvailableSeats > 0) ? "Book Seats" : "Sold Out", // button text is "Sold out", if all seats are unavailable, otherwise "Book Seats"
+                    Text =  (numAvailableSeats > 0) ? BookSeatsButtonName : SoldOutButtonName, // button text is "Sold out", if all seats are unavailable, otherwise "Book Seats"
                     Enabled = (numAvailableSeats > 0), // button is disabled if all seats are unavailable
                     ID = proj.Id.ToString()
                 };
@@ -253,7 +274,7 @@
             int numUnavailableSeats = proj.Seats.Count;
 
             // calculate the amount of available seats {30 is the total number of seats in a cinema theatre}
-            return Constants.MaxProjectionAudienceSize - numUnavailableSeats;
+            return SessionConstants.MaxProjectionAudienceSize - numUnavailableSeats;
         }
 
         /// <summary>
@@ -263,8 +284,8 @@
         private void ShowMessageBox(string message)
         {
             // script
-            string s = "<SCRIPT language='javascript'>alert('" + message.Replace("\r\n", "\\n").Replace("'", "") +
-                    "'); </SCRIPT>";
+            string s =
+                $"<SCRIPT language=\'javascript\'>alert(\'{message.Replace("\r\n", "\\n").Replace("'", "")}\'); </SCRIPT>";
 
             // get type of this instance
             Type cstype = GetType();

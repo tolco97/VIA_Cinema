@@ -8,13 +8,19 @@
     {
         private bool _isLoggedIn;
 
+        #region DefaultPageConstants
+
+        private const string NotLoggedInMessage = "You are not logged in!";
+       
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // get Login status
-            if (Session[Constants.IsLoggedInFlagKey] == null)
-                Session[Constants.IsLoggedInFlagKey] = false;
+            if (Session[SessionConstants.IsLoggedInFlagKey] == null)
+                Session[SessionConstants.IsLoggedInFlagKey] = false;
 
-            _isLoggedIn = (bool) Session[Constants.IsLoggedInFlagKey];
+            _isLoggedIn = (bool) Session[SessionConstants.IsLoggedInFlagKey];
 
             // restrict access to buttons depending on login status
             InitializeButtons();
@@ -31,7 +37,7 @@
         protected void LogoutOnClick(object sender, EventArgs e)
         {
             // set login flag to false
-            Session[Constants.IsLoggedInFlagKey] = false;
+            Session[SessionConstants.IsLoggedInFlagKey] = false;
 
             // refresh page
             Response.Redirect(Request.RawUrl);
@@ -55,18 +61,14 @@
             if (_isLoggedIn)
             {
                 // when logged in, you can't use login and create account buttons
-                loginButton.Enabled = false;
-                createAccountButton.Enabled = false;
-                allMoviesButton.Enabled = true;
-                logoutButton.Enabled = true;
+                loginButton.Enabled = createAccountButton.Enabled = false;
+                allMoviesButton.Enabled = logoutButton.Enabled = true;
             }
             else
             {
                 // when logged out, you can't use logout and all movies buttons
-                loginButton.Enabled = true;
-                createAccountButton.Enabled = true;
-                allMoviesButton.Enabled = false;
-                logoutButton.Enabled = false;
+                loginButton.Enabled = createAccountButton.Enabled = true;
+                allMoviesButton.Enabled = logoutButton.Enabled = false;
             }
         }
 
@@ -77,13 +79,13 @@
         {
             if (_isLoggedIn)
             {
-                string userEmail = (string) Session[Constants.UserEmailKey];
+                string userEmail = (string) Session[SessionConstants.UserEmailKey];
                 isLoggedInLabel.Text = $"Hello, {userEmail}!";
                 isLoggedInLabel.ForeColor = Color.Green;
             }
             else
             {
-                isLoggedInLabel.Text = "You are not logged in!";
+                isLoggedInLabel.Text = NotLoggedInMessage;
                 isLoggedInLabel.ForeColor = Color.Red;
             }
         }

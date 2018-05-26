@@ -2,10 +2,8 @@
 {
     using System;
 
-    public sealed class Validator
+    public static class Validator
     {
-        private Validator() {}
-
         /// <summary>
         ///     Validates text user input. Throws exception, if input violates the 
         ///     constraints

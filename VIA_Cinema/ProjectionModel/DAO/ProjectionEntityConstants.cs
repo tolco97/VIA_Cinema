@@ -3,10 +3,8 @@
     /// <summary>
     ///     Stores some constants used when maniupulating the database
     /// </summary>
-    public sealed class ProjectionEntityConstants
+    public static class ProjectionEntityConstants
     {
-        private ProjectionEntityConstants() {}
-
         public const string IdColumn = "id";
         public const string ProjectionIdColumn = "projection_id";
         public const string MovieNameColumn = "movie_name";
