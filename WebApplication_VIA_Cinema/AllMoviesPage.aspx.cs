@@ -233,15 +233,15 @@
                 {
                     Text = numAvailableSeats.ToString(),
                     BorderColor = Color.Black,
-                    ForeColor = (numAvailableSeats > 0) ? Color.Black : Color.Red, // button text color is red, if there are no more seats available
+                    ForeColor = numAvailableSeats > 0 ? Color.Black : Color.Red, // button text color is red, if there are no more seats available
                     BorderWidth = BorderWidthValue
                 };
 
                 TableCell bookButtonCell = new TableCell();
                 Button bookButton = new Button
                 {
-                    Text =  (numAvailableSeats > 0) ? BookSeatsButtonName : SoldOutButtonName, // button text is "Sold out", if all seats are unavailable, otherwise "Book Seats"
-                    Enabled = (numAvailableSeats > 0), // button is disabled if all seats are unavailable
+                    Text =  numAvailableSeats > 0 ? BookSeatsButtonName : SoldOutButtonName, // button text is "Sold out", if all seats are unavailable, otherwise "Book Seats"
+                    Enabled = numAvailableSeats > 0, // button is disabled if all seats are unavailable
                     ID = proj.Id.ToString()
                 };
 
