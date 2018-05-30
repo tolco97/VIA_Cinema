@@ -5,7 +5,7 @@
     using System.Web.UI;
     using VIA_Cinema.Util;
     using ViaCinemaServiceReference;
-    using UserAccountModel;
+    using VIA_Cinema.UserAccountModel;
 
     public partial class CreateAccountPage : Page
     {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Model.MovieModel" />
-  <xs:import schemaLocation="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ProjectionModel" />
-  <xs:import schemaLocation="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/UserAccountModel" />
+  <xs:import schemaLocation="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/VIA_Cinema.MovieModel" />
+  <xs:import schemaLocation="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/VIA_Cinema.ProjectionModel" />
+  <xs:import schemaLocation="http://localhost:56046/ViaCinemaWebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/VIA_Cinema.UserAccountModel" />
   <xs:element name="GetAllMovies">
     <xs:complexType>
       <xs:sequence />
@@ -11,7 +11,7 @@
   <xs:element name="GetAllMoviesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Model.MovieModel" minOccurs="0" name="GetAllMoviesResult" nillable="true" type="q1:ArrayOfMovie" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/VIA_Cinema.MovieModel" minOccurs="0" name="GetAllMoviesResult" nillable="true" type="q1:ArrayOfMovie" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,7 +38,7 @@
   <xs:element name="GetAllProjectionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ProjectionModel" minOccurs="0" name="GetAllProjectionsResult" nillable="true" type="q2:ArrayOfProjection" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/VIA_Cinema.ProjectionModel" minOccurs="0" name="GetAllProjectionsResult" nillable="true" type="q2:ArrayOfProjection" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -58,7 +58,7 @@
   <xs:element name="CreateAccountResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/UserAccountModel" minOccurs="0" name="CreateAccountResult" nillable="true" type="q3:UserAccount" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/VIA_Cinema.UserAccountModel" minOccurs="0" name="CreateAccountResult" nillable="true" type="q3:UserAccount" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -72,7 +72,7 @@
   <xs:element name="GetProjectionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ProjectionModel" minOccurs="0" name="GetProjectionsResult" nillable="true" type="q4:ArrayOfProjection" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/VIA_Cinema.ProjectionModel" minOccurs="0" name="GetProjectionsResult" nillable="true" type="q4:ArrayOfProjection" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -95,7 +95,7 @@
   <xs:element name="UserExists">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userEmail" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

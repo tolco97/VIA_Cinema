@@ -1,17 +1,16 @@
-﻿using VIA_Cinema.MovieModel;
-using VIA_Cinema.ProjectionModel;
-using VIA_Cinema.ProjectionModel.Base;
-using VIA_Cinema.UserAccountModel;
-using VIA_Cinema.UserAccountModel.Base;
-using VIA_Cinema.UserAccountModel.DAO;
-
-namespace WebService_VIA_Cinema
+﻿namespace WebService_VIA_Cinema
 {
     using System;
     using System.Collections.Generic;
     using VIA_Cinema.MovieModel.Base;
     using VIA_Cinema.MovieModel.DAO;
     using VIA_Cinema.ProjectionModel.DAO;
+    using VIA_Cinema.MovieModel;
+    using VIA_Cinema.ProjectionModel;
+    using VIA_Cinema.ProjectionModel.Base;
+    using VIA_Cinema.UserAccountModel;
+    using VIA_Cinema.UserAccountModel.Base;
+    using VIA_Cinema.UserAccountModel.DAO;
 
     public class ViaCinemaService : IViaCinemaService
     {

@@ -5,9 +5,9 @@
     using ViaPayServiceReference;
     using System.Threading.Tasks;
     using VIA_Cinema.Util;
-    using ProjectionModel;
     using ViaCinemaServiceReference;
     using System.Collections.Generic;
+    using VIA_Cinema.ProjectionModel;
 
     public partial class PaymentPage : Page
     {

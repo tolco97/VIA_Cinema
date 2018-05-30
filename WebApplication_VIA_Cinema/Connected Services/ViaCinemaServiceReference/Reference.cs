@@ -16,10 +16,10 @@ namespace WebApplication_VIA_Cinema.ViaCinemaServiceReference {
     public interface IViaCinemaService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/GetAllMovies", ReplyAction="http://tempuri.org/IViaCinemaService/GetAllMoviesResponse")]
-        Model.MovieModel.Movie[] GetAllMovies();
+        VIA_Cinema.MovieModel.Movie[] GetAllMovies();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/GetAllMovies", ReplyAction="http://tempuri.org/IViaCinemaService/GetAllMoviesResponse")]
-        System.Threading.Tasks.Task<Model.MovieModel.Movie[]> GetAllMoviesAsync();
+        System.Threading.Tasks.Task<VIA_Cinema.MovieModel.Movie[]> GetAllMoviesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/Login", ReplyAction="http://tempuri.org/IViaCinemaService/LoginResponse")]
         bool Login(string email, string userPassword);
@@ -28,22 +28,22 @@ namespace WebApplication_VIA_Cinema.ViaCinemaServiceReference {
         System.Threading.Tasks.Task<bool> LoginAsync(string email, string userPassword);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/GetAllProjections", ReplyAction="http://tempuri.org/IViaCinemaService/GetAllProjectionsResponse")]
-        ProjectionModel.Projection[] GetAllProjections();
+        VIA_Cinema.ProjectionModel.Projection[] GetAllProjections();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/GetAllProjections", ReplyAction="http://tempuri.org/IViaCinemaService/GetAllProjectionsResponse")]
-        System.Threading.Tasks.Task<ProjectionModel.Projection[]> GetAllProjectionsAsync();
+        System.Threading.Tasks.Task<VIA_Cinema.ProjectionModel.Projection[]> GetAllProjectionsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/CreateAccount", ReplyAction="http://tempuri.org/IViaCinemaService/CreateAccountResponse")]
-        UserAccountModel.UserAccount CreateAccount(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth);
+        VIA_Cinema.UserAccountModel.UserAccount CreateAccount(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/CreateAccount", ReplyAction="http://tempuri.org/IViaCinemaService/CreateAccountResponse")]
-        System.Threading.Tasks.Task<UserAccountModel.UserAccount> CreateAccountAsync(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth);
+        System.Threading.Tasks.Task<VIA_Cinema.UserAccountModel.UserAccount> CreateAccountAsync(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/GetProjections", ReplyAction="http://tempuri.org/IViaCinemaService/GetProjectionsResponse")]
-        ProjectionModel.Projection[] GetProjections(string movieName);
+        VIA_Cinema.ProjectionModel.Projection[] GetProjections(string movieName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/GetProjections", ReplyAction="http://tempuri.org/IViaCinemaService/GetProjectionsResponse")]
-        System.Threading.Tasks.Task<ProjectionModel.Projection[]> GetProjectionsAsync(string movieName);
+        System.Threading.Tasks.Task<VIA_Cinema.ProjectionModel.Projection[]> GetProjectionsAsync(string movieName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/BookSeat", ReplyAction="http://tempuri.org/IViaCinemaService/BookSeatResponse")]
         bool BookSeat(int projectionId, string email, string seatNumbers);
@@ -52,10 +52,10 @@ namespace WebApplication_VIA_Cinema.ViaCinemaServiceReference {
         System.Threading.Tasks.Task<bool> BookSeatAsync(int projectionId, string email, string seatNumbers);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/UserExists", ReplyAction="http://tempuri.org/IViaCinemaService/UserExistsResponse")]
-        bool UserExists(string email);
+        bool UserExists(string userEmail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViaCinemaService/UserExists", ReplyAction="http://tempuri.org/IViaCinemaService/UserExistsResponse")]
-        System.Threading.Tasks.Task<bool> UserExistsAsync(string email);
+        System.Threading.Tasks.Task<bool> UserExistsAsync(string userEmail);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -85,11 +85,11 @@ namespace WebApplication_VIA_Cinema.ViaCinemaServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public Model.MovieModel.Movie[] GetAllMovies() {
+        public VIA_Cinema.MovieModel.Movie[] GetAllMovies() {
             return base.Channel.GetAllMovies();
         }
         
-        public System.Threading.Tasks.Task<Model.MovieModel.Movie[]> GetAllMoviesAsync() {
+        public System.Threading.Tasks.Task<VIA_Cinema.MovieModel.Movie[]> GetAllMoviesAsync() {
             return base.Channel.GetAllMoviesAsync();
         }
         
@@ -101,27 +101,27 @@ namespace WebApplication_VIA_Cinema.ViaCinemaServiceReference {
             return base.Channel.LoginAsync(email, userPassword);
         }
         
-        public ProjectionModel.Projection[] GetAllProjections() {
+        public VIA_Cinema.ProjectionModel.Projection[] GetAllProjections() {
             return base.Channel.GetAllProjections();
         }
         
-        public System.Threading.Tasks.Task<ProjectionModel.Projection[]> GetAllProjectionsAsync() {
+        public System.Threading.Tasks.Task<VIA_Cinema.ProjectionModel.Projection[]> GetAllProjectionsAsync() {
             return base.Channel.GetAllProjectionsAsync();
         }
         
-        public UserAccountModel.UserAccount CreateAccount(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth) {
+        public VIA_Cinema.UserAccountModel.UserAccount CreateAccount(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth) {
             return base.Channel.CreateAccount(email, userPassword, firstName, lastName, dayOfBirth, monthOfBirth, yearOfBirth);
         }
         
-        public System.Threading.Tasks.Task<UserAccountModel.UserAccount> CreateAccountAsync(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth) {
+        public System.Threading.Tasks.Task<VIA_Cinema.UserAccountModel.UserAccount> CreateAccountAsync(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth) {
             return base.Channel.CreateAccountAsync(email, userPassword, firstName, lastName, dayOfBirth, monthOfBirth, yearOfBirth);
         }
         
-        public ProjectionModel.Projection[] GetProjections(string movieName) {
+        public VIA_Cinema.ProjectionModel.Projection[] GetProjections(string movieName) {
             return base.Channel.GetProjections(movieName);
         }
         
-        public System.Threading.Tasks.Task<ProjectionModel.Projection[]> GetProjectionsAsync(string movieName) {
+        public System.Threading.Tasks.Task<VIA_Cinema.ProjectionModel.Projection[]> GetProjectionsAsync(string movieName) {
             return base.Channel.GetProjectionsAsync(movieName);
         }
         
@@ -133,12 +133,12 @@ namespace WebApplication_VIA_Cinema.ViaCinemaServiceReference {
             return base.Channel.BookSeatAsync(projectionId, email, seatNumbers);
         }
         
-        public bool UserExists(string email) {
-            return base.Channel.UserExists(email);
+        public bool UserExists(string userEmail) {
+            return base.Channel.UserExists(userEmail);
         }
         
-        public System.Threading.Tasks.Task<bool> UserExistsAsync(string email) {
-            return base.Channel.UserExistsAsync(email);
+        public System.Threading.Tasks.Task<bool> UserExistsAsync(string userEmail) {
+            return base.Channel.UserExistsAsync(userEmail);
         }
     }
 }

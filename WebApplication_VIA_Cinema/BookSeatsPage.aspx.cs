@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using ProjectionModel;
+    using VIA_Cinema.ProjectionModel;
 
     public partial class BookSeatsPage : Page
     {

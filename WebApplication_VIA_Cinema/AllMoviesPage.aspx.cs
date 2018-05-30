@@ -6,9 +6,9 @@
     using System.Threading.Tasks;
     using System.Web.UI;
     using System.Web.UI.WebControls;
-    using ProjectionModel;
     using ViaCinemaServiceReference;
-    using Model.MovieModel;
+    using VIA_Cinema.MovieModel;
+    using VIA_Cinema.ProjectionModel;
 
     public partial class AllMovies : Page
     {
