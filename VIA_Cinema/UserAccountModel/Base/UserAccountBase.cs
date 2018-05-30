@@ -1,10 +1,10 @@
-﻿namespace UserAccountModel.Base
+﻿namespace VIA_Cinema.UserAccountModel.Base
 {
     using System;
     using System.Collections.Generic;
-    using DAO;
-    using VIA_Cinema.Util;
     using System.Data.Linq;
+    using DAO;
+    using Util;
 
     public class UserAccountBase : IUserAccountBase
     {

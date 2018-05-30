@@ -1,4 +1,4 @@
-﻿namespace ProjectionModel.DAO
+﻿namespace VIA_Cinema.ProjectionModel.DAO
 {
     /// <summary>
     ///     Stores some constants used when maniupulating the database

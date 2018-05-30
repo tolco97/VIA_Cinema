@@ -1,9 +1,9 @@
-﻿namespace ProjectionModel.Base
+﻿namespace VIA_Cinema.ProjectionModel.Base
 {
-    using System.Collections.Generic;
-    using Model.MovieModel;
-    using UserAccountModel;
     using System;
+    using System.Collections.Generic;
+    using MovieModel;
+    using UserAccountModel;
 
     public interface IProjectionBase
     {

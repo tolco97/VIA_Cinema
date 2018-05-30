@@ -1,4 +1,4 @@
-﻿namespace UserAccountModel.DAO
+﻿namespace VIA_Cinema.UserAccountModel.DAO
 {
     /// <summary>
     ///     Stores constants used when manipulating the user accounts database entity

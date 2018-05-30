@@ -1,11 +1,11 @@
-﻿namespace ProjectionModel.Base
+﻿namespace VIA_Cinema.ProjectionModel.Base
 {
+    using System;
     using System.Collections.Generic;
-    using Model.MovieModel;
+    using MovieModel;
     using DAO;
     using UserAccountModel;
-    using VIA_Cinema.Util;
-    using System;
+    using Util;
 
     public class ProjectionBase : IProjectionBase
     {

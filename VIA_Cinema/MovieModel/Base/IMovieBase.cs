@@ -1,7 +1,6 @@
-﻿namespace Model_VIA_Cinema.MovieModel.Base
+﻿namespace VIA_Cinema.MovieModel.Base
 {
     using System.Collections.Generic;
-    using Model.MovieModel;
 
     public interface IMovieBase
     {

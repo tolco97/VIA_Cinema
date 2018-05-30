@@ -1,9 +1,9 @@
-﻿namespace ProjectionModel.DAO
+﻿namespace VIA_Cinema.ProjectionModel.DAO
 {
-    using System.Collections.Generic;
-    using Model.MovieModel;
-    using UserAccountModel;
     using System;
+    using System.Collections.Generic;
+    using MovieModel;
+    using UserAccountModel;
 
     public interface IProjectionDAO : IDisposable
     {

@@ -1,11 +1,9 @@
-﻿using MovieModel.DAO;
-
-namespace Model_VIA_Cinema.MovieModel.Base
+﻿namespace VIA_Cinema.MovieModel.Base
 {
     using System.Collections.Generic;
-    using Model.MovieModel;
-    using VIA_Cinema.Util;
+    using Util;
     using System.Data.Linq;
+    using DAO;
 
     public class MovieBase : IMovieBase
     {

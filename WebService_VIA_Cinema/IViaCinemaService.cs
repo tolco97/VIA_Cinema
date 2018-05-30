@@ -1,11 +1,12 @@
-﻿namespace WebService_VIA_Cinema
+﻿using VIA_Cinema.MovieModel;
+using VIA_Cinema.ProjectionModel;
+using VIA_Cinema.UserAccountModel;
+
+namespace WebService_VIA_Cinema
 {
     using System.Collections.Generic;
     using System.ServiceModel;
     using System.ServiceModel.Web;
-    using Model.MovieModel;
-    using ProjectionModel;
-    using UserAccountModel;
 
     [ServiceContract]
     public interface IViaCinemaService

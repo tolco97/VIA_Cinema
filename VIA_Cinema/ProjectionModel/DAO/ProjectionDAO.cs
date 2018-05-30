@@ -1,13 +1,14 @@
-﻿namespace ProjectionModel.DAO
+﻿namespace VIA_Cinema.ProjectionModel.DAO
 {
+    using MovieModel;
     using System;
     using System.Collections.Generic;
-    using Model.MovieModel;
     using MovieModel.DAO;
     using Npgsql;
+    using ProjectionModel;
     using UserAccountModel;
     using UserAccountModel.DAO;
-
+    
     public class ProjectionDAO : IProjectionDAO
     {
         private static IProjectionDAO _instance;

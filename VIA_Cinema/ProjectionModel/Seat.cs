@@ -1,4 +1,4 @@
-﻿namespace ProjectionModel
+﻿namespace VIA_Cinema.ProjectionModel
 {
     using System.Runtime.Serialization;
     using UserAccountModel;

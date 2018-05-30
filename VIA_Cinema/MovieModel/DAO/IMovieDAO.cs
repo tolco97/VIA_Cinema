@@ -1,8 +1,7 @@
-﻿namespace MovieModel.DAO
+﻿namespace VIA_Cinema.MovieModel.DAO
 {
-    using System.Collections.Generic;
-    using Model.MovieModel;
     using System;
+    using System.Collections.Generic;
 
     public interface IMovieDAO : IDisposable
     {

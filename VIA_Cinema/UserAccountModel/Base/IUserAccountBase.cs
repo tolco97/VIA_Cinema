@@ -1,4 +1,4 @@
-﻿namespace UserAccountModel.Base
+﻿namespace VIA_Cinema.UserAccountModel.Base
 {
     using System;
     using System.Collections.Generic;

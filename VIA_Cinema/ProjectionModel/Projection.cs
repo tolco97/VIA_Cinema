@@ -1,9 +1,9 @@
-﻿namespace ProjectionModel
+﻿namespace VIA_Cinema.ProjectionModel
 {
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using Model.MovieModel;
+    using MovieModel;
 
     [DataContract]
     public class Projection

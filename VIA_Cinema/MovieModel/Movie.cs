@@ -1,4 +1,4 @@
-﻿namespace Model.MovieModel
+﻿namespace VIA_Cinema.MovieModel
 {
     using System.Runtime.Serialization;
 

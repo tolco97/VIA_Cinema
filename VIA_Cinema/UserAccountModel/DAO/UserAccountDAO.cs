@@ -1,4 +1,4 @@
-﻿namespace UserAccountModel.DAO
+﻿namespace VIA_Cinema.UserAccountModel.DAO
 {
     using System;
     using System.Collections.Generic;

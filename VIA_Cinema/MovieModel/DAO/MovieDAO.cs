@@ -1,7 +1,6 @@
-﻿namespace MovieModel.DAO
+﻿namespace VIA_Cinema.MovieModel.DAO
 {
     using System.Collections.Generic;
-    using Model.MovieModel;
     using Npgsql;
 
     public class MovieDAO : IMovieDAO

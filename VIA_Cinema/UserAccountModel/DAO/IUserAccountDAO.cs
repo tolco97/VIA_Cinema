@@ -1,7 +1,7 @@
-﻿namespace UserAccountModel.DAO
+﻿namespace VIA_Cinema.UserAccountModel.DAO
 {
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
 
     public interface IUserAccountDAO : IDisposable
     {

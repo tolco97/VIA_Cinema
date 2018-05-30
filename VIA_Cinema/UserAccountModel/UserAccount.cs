@@ -1,4 +1,4 @@
-﻿namespace UserAccountModel
+﻿namespace VIA_Cinema.UserAccountModel
 {
     using System;
     using System.Runtime.Serialization;
