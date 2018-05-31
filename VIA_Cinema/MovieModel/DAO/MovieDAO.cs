@@ -106,7 +106,7 @@
         }
 
         /// <inheritdoc/>
-        public bool Update(Movie updatedMovie)
+        public bool Update(Movie updtMovie)
         {
             using (NpgsqlCommand stmt = new NpgsqlCommand())
             {
@@ -119,9 +119,9 @@
                                    "genre = @genre WHERE name = @name;";
 
                 // set the statement parameters
-                stmt.Parameters.AddWithValue(MovieEntityConstants.DurationColumn, updatedMovie.DurationMinuites);
-                stmt.Parameters.AddWithValue(MovieEntityConstants.GenreColumn, updatedMovie.Genre);
-                stmt.Parameters.AddWithValue(MovieEntityConstants.NameColumn, updatedMovie.Name);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.DurationColumn, updtMovie.DurationMinuites);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.GenreColumn, updtMovie.Genre);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.NameColumn, updtMovie.Name);
 
                 // execute statement
                 return stmt.ExecuteNonQuery() != 0;

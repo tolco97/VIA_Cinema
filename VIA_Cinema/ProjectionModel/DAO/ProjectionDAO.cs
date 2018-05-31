@@ -16,8 +16,8 @@
         private readonly NpgsqlConnection _con;
 
         // I couldn't use dependency injections, because all DAO objects are Singletons
-        private readonly IMovieDAO movieDao = MovieDAO.GetInstance();
-        private readonly IUserAccountDAO userAccountDao = UserAccountDAO.GetInstance();
+        private readonly IMovieDAO _movieDao = MovieDAO.GetInstance();
+        private readonly IUserAccountDAO _userAccountDao = UserAccountDAO.GetInstance();
 
         private ProjectionDAO()
         {
@@ -80,7 +80,7 @@
 
                     // get the movie object
                     string movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
-                    Movie movie = movieDao.Read(movieName);
+                    Movie movie = _movieDao.Read(movieName);
 
                     // get projection start
                     DateTime projStartTime = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
@@ -114,7 +114,7 @@
 
                         // get the movie name & movie object
                         string movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
-                        Movie movie = movieDao.Read(movieName);
+                        Movie movie = _movieDao.Read(movieName);
 
                         // get projection start
                         DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
@@ -306,7 +306,7 @@
                     {
                         int seatNumber = (int) reader[ProjectionEntityConstants.SeatNumberColumn];
                         string email = (string) reader[UserAccountEntityConstants.EmailColumn];
-                        UserAccount seatOwner = userAccountDao.Read(email);
+                        UserAccount seatOwner = _userAccountDao.Read(email);
 
                         seatReservations.Add(new Seat(seatNumber, seatOwner));
                     }
