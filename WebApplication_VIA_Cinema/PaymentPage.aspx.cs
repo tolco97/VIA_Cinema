@@ -1,6 +1,4 @@
-﻿using WebApplication_VIA_Cinema.Util;
-
-namespace WebApplication_VIA_Cinema
+﻿namespace WebApplication_VIA_Cinema
 {
     using System;
     using System.Web.UI;
@@ -10,6 +8,7 @@ namespace WebApplication_VIA_Cinema
     using ViaCinemaServiceReference;
     using System.Collections.Generic;
     using VIA_Cinema.ProjectionModel;
+    using Util;
 
     public partial class PaymentPage : Page
     {

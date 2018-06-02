@@ -1,10 +1,9 @@
-﻿using WebApplication_VIA_Cinema.Util;
-
-namespace WebApplication_VIA_Cinema
+﻿namespace WebApplication_VIA_Cinema
 {
     using System;
     using System.Drawing;
     using System.Web.UI;
+    using Util;
 
     public partial class Default : Page
     {

@@ -1,6 +1,4 @@
-﻿using WebApplication_VIA_Cinema.Util;
-
-namespace WebApplication_VIA_Cinema
+﻿namespace WebApplication_VIA_Cinema
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +6,7 @@ namespace WebApplication_VIA_Cinema
     using System.Web.UI;
     using System.Web.UI.WebControls;
     using VIA_Cinema.ProjectionModel;
+    using Util;
 
     public partial class BookSeatsPage : Page
     {

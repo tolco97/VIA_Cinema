@@ -1,6 +1,4 @@
-﻿using WebApplication_VIA_Cinema.Util;
-
-namespace WebApplication_VIA_Cinema
+﻿namespace WebApplication_VIA_Cinema
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +9,7 @@ namespace WebApplication_VIA_Cinema
     using ViaCinemaServiceReference;
     using VIA_Cinema.MovieModel;
     using VIA_Cinema.ProjectionModel;
+    using Util;
 
     public partial class AllMovies : Page
     {

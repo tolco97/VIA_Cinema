@@ -1,12 +1,11 @@
-﻿using WebApplication_VIA_Cinema.Util;
-
-namespace WebApplication_VIA_Cinema
+﻿namespace WebApplication_VIA_Cinema
 {
     using System;
     using System.Threading.Tasks;
     using System.Web.UI;
     using ViaCinemaServiceReference;
     using VIA_Cinema.Util;
+    using Util;
 
     public partial class Login : Page
     {
