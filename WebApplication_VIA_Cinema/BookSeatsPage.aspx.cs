@@ -1,4 +1,6 @@
-﻿namespace WebApplication_VIA_Cinema
+﻿using WebApplication_VIA_Cinema.Util;
+
+namespace WebApplication_VIA_Cinema
 {
     using System;
     using System.Collections.Generic;

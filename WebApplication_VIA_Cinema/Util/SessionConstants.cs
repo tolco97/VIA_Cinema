@@ -1,4 +1,4 @@
-﻿namespace WebApplication_VIA_Cinema
+﻿namespace WebApplication_VIA_Cinema.Util
 {
     public static class SessionConstants
     {

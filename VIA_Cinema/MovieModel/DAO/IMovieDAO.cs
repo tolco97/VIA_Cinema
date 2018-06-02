@@ -24,7 +24,7 @@
         /// <summary>
         ///     Reads all movie entries from the movie entity and returns a collection of them
         /// </summary>
-        /// <returns> a collection of all movie objects</returns>
+        /// <returns> a collection of all movie objects </returns>
         ICollection<Movie> ReadAll();
 
         /// <summary>
