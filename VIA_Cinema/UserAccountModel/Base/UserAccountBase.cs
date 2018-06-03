@@ -48,7 +48,8 @@
             UserAccount userAccount = GetUserAccount(userEmail);
 
             // verify the password
-            return userPassword.Equals(userAccount.UserPassword);
+            bool loginSuccessful = userPassword.Equals(userAccount.UserPassword);
+            return loginSuccessful;
         }
 
         /// <inheritdoc/>
