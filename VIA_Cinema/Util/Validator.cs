@@ -47,7 +47,18 @@
         {
             foreach (object obj in objects)
                 if (obj == null)
-                    throw new ArgumentNullException("null value!");
+                    throw new ArgumentNullException("Null value!");
+        }
+
+        /// <summary>
+        ///     
+        /// </summary>
+        /// <param name="amounts"></param>
+        public static void ValidateMoneyAmountPositive(params decimal[] amounts)
+        {
+            foreach (decimal dec in amounts)
+                if (dec < decimal.Zero)
+                    throw new ArgumentException("Can't withdraw an amount less than zero from bank account!");
         }
 
     }

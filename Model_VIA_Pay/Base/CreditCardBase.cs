@@ -18,10 +18,10 @@
         {
             // validate input
             Validator.ValidateTextualInput(creditCardNumber, creditCardPin);
+            Validator.ValidateMoneyAmountPositive(amountDkk);
 
             // check if user has correct credit card details
-            if (!Authenticate(creditCardNumber, creditCardPin))
-                return false;
+            if (!Authenticate(creditCardNumber, creditCardPin)) return false;
 
             // read credit card from DB
             CreditCard creditCard = _creditCardDao.Read(creditCardNumber);
@@ -43,9 +43,7 @@
         /// <returns> true, if the transaction is successful. Otherwise, false </returns>
         private bool Pay(CreditCard customerCard, decimal amountDkk)
         {
-            // attempt to withdraw the required amountDkk
-            if (!customerCard.Withdraw(amountDkk))
-                return false; // card does not have sufficient funds
+            if (!customerCard.Withdraw(amountDkk)) return false; // card does not have sufficient funds
 
             _creditCardDao.UpdateBalance(customerCard); // card has sufficient funds
             TransferToViaCinemaAccount(amountDkk); // transfer funds to VIA cinema credit card

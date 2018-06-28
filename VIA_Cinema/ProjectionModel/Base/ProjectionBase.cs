@@ -99,7 +99,7 @@
 
             // create output collection
             int size = allProjections.Count;
-            List<Projection> matchingProjections = new List<Projection>(size); // avoid list resizing
+            IList<Projection> matchingProjections = new List<Projection>(size); // avoid list resizing
 
             // cache all projections that have not been read already
             foreach (Projection proj in allProjections)

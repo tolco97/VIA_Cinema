@@ -76,41 +76,7 @@
                 }
             }
         }
-
-        /// <inheritdoc/>
-        public ICollection<UserAccount> ReadAll()
-        {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
-            {
-                // set the connection
-                stmt.Connection = _con;
-
-                // set statement
-                stmt.CommandText = "SELECT * FROM via_cinema_schema.user_accounts;";
-                
-                List<UserAccount> allAccounts = new List<UserAccount>(); 
-
-                // execute statement
-                using (NpgsqlDataReader reader = stmt.ExecuteReader())
-                {
-                    // loop through the reader and collect data
-                    while (reader.Read())
-                    {
-                        // get values
-                        string email = (string) reader[UserAccountEntityConstants.EmailColumn];
-                        string password = (string) reader[UserAccountEntityConstants.PasswordColumn];
-                        string firstName = (string) reader[UserAccountEntityConstants.FirstNameColumn];
-                        string lastName = (string) reader[UserAccountEntityConstants.LastNameColumn];
-                        DateTime birthday = (DateTime) reader[UserAccountEntityConstants.BirthdayColumn];
-
-                        allAccounts.Add(new UserAccount(email, password, firstName, lastName, birthday));
-                    }
-                }
-
-                return allAccounts;
-            }
-        }
-
+        
         /// <inheritdoc/>
         public bool Update(UserAccount account)
         {

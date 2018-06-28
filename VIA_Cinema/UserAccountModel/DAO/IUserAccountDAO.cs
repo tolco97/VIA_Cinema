@@ -24,13 +24,7 @@
         /// <param name="userEmail"> the email </param>
         /// <returns> a user account object </returns>
         UserAccount Read(string userEmail);
-
-        /// <summary>
-        ///     Reads all user account entries from the database
-        /// </summary>
-        /// <returns> a collection of all user accounts </returns>
-        ICollection<UserAccount> ReadAll();
-
+        
         /// <summary>
         ///     Updates a user account database entry that matches the account email
         ///     of the account passed as a parameter

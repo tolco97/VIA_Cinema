@@ -73,21 +73,6 @@
 
             return _userAccountCache[userEmail];
         }
-
-        /// <inheritdoc/>
-        public IList<UserAccount> GetAllAccounts()
-        {
-            // read all accounts from the database
-            ICollection<UserAccount> allUsers = _userAccountDao.ReadAll();
-
-            // cache all accounts that have not been red so far
-            foreach (UserAccount user in allUsers)
-                if (!_userAccountCache.ContainsKey(user.Email))
-                    _userAccountCache[user.Email] = user;
-
-            return new List<UserAccount>(_userAccountCache.Values);
-        }
-
         /// <inheritdoc/>
         public bool UserExists(string userEmail)
         {

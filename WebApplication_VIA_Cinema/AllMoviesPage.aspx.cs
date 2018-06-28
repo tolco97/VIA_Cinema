@@ -84,8 +84,6 @@
             // redirect to booking page
             Response.Redirect("BookSeatsPage.aspx");
         }
-        
-        protected void MovieDropdownSelectedIndexChanged(object sender, EventArgs e) {}
 
         /// <summary>
         ///     Initializes the dropdown menu with all movie values
@@ -220,13 +218,12 @@
                 };
 
                 // populate movie projection start cell
-                TableCell projectionStartCell =
-                    new TableCell
-                    {
-                        Text = proj.MovieStartTime.ToString(StartTimeDateFormat),
-                        BorderColor = Color.Black,
-                        BorderWidth = BorderWidthValue
-                    };
+                TableCell projectionStartCell = new TableCell
+                {
+                    Text = proj.MovieStartTime.ToString(StartTimeDateFormat),
+                    BorderColor = Color.Black,
+                    BorderWidth = BorderWidthValue
+                };
 
                 // calculate number of available seats cell and populate seats cell
                 int numAvailableSeats = GetNumAvailableSeats(proj);
@@ -277,6 +274,13 @@
             // calculate the amount of available seats {30 is the total number of seats in a cinema theatre}
             return SessionConstants.MaxProjectionAudienceSize - numUnavailableSeats;
         }
+
+        /// <summary>
+        ///     Unused, but needed for compilation.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void MovieDropdownSelectedIndexChanged(object sender, EventArgs e) {}
 
         /// <summary>
         ///     Shows a pop-up message to the user
