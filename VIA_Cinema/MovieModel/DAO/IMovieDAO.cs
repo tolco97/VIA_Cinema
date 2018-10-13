@@ -1,9 +1,9 @@
-﻿namespace VIA_Cinema.MovieModel.DAO
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-    public interface IMovieDAO : IDisposable
+namespace VIA_Cinema.MovieModel.DAO
+{
+    public interface IMovieDao : IDisposable
     {
         /// <summary>
         ///     Creates a new movie entry in the movies entity
@@ -40,6 +40,5 @@
         /// <param name="movie"> the movie to be deleted </param>
         /// <returns> true, if the delete operation has affected at least 1 database row. Otherwise, false </returns>
         bool Delete(Movie movie);
-        
     }
 }

@@ -3,7 +3,7 @@
     public interface ICreditCardBase
     {
         /// <summary>
-        ///     Attempts to make a credit card transcation from a customer credit card to the VIA Cinema 
+        ///     Attempts to make a credit card transcation from a customer credit card to the VIA Cinema
         ///     account
         /// </summary>
         /// <param name="creditCardNumber"> the credit card number of the card that will  </param>

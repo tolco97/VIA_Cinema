@@ -1,9 +1,8 @@
-﻿namespace VIA_Cinema.UserAccountModel.DAO
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
 
-    public interface IUserAccountDAO : IDisposable
+namespace VIA_Cinema.UserAccountModel.DAO
+{
+    public interface IUserAccountDao : IDisposable
     {
         /// <summary>
         ///     Creates a new user account database entry from the user account parameter
@@ -24,7 +23,7 @@
         /// <param name="userEmail"> the email </param>
         /// <returns> a user account object </returns>
         UserAccount Read(string userEmail);
-        
+
         /// <summary>
         ///     Updates a user account database entry that matches the account email
         ///     of the account passed as a parameter
@@ -40,6 +39,5 @@
         /// <param name="account"> the account </param>
         /// <returns> true, if the delete operation has affected at least 1 database row. Otherwise, false </returns>
         bool Delete(UserAccount account);
-
     }
 }

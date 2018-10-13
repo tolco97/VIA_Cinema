@@ -1,21 +1,21 @@
-﻿namespace VIA_Cinema.MovieModel.Base
-{
-    using System.Collections.Generic;
-    using Util;
-    using System.Data.Linq;
-    using DAO;
+﻿using System.Collections.Generic;
+using System.Data.Linq;
+using VIA_Cinema.MovieModel.DAO;
+using VIA_Cinema.Util;
 
+namespace VIA_Cinema.MovieModel.Base
+{
     public class MovieBase : IMovieBase
     {
         private readonly IDictionary<string, Movie> _movieCache = new Dictionary<string, Movie>();
-        private readonly IMovieDAO _movieDao;
+        private readonly IMovieDao _movieDao;
 
-        public MovieBase(IMovieDAO movieDao)
+        public MovieBase(IMovieDao movieDao)
         {
             _movieDao = movieDao;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public Movie AddMovie(string movieName, int durationMinuites, string genre)
         {
             // validate input
@@ -23,7 +23,10 @@
             Validator.ValidateTextualInput(movieName, genre);
 
             // movie already exists
-            if (MovieExists(movieName)) throw new DuplicateKeyException($"Movie with name {movieName} already exists!");
+            if (MovieExists(movieName))
+            {
+                throw new DuplicateKeyException($"Movie with name {movieName} already exists!");
+            }
 
             // create new movie in the database
             Movie newMovie = _movieDao.Create(movieName, durationMinuites, genre);
@@ -34,7 +37,7 @@
             return newMovie;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public Movie GetMovie(string movieName)
         {
             // validate input
@@ -46,7 +49,10 @@
                 Movie movie = _movieDao.Read(movieName);
 
                 // movie does not exist
-                if (movie == null) return null;
+                if (movie == null)
+                {
+                    return null;
+                }
 
                 _movieCache[movie.Name] = movie;
             }
@@ -54,21 +60,24 @@
             return _movieCache[movieName];
         }
 
-        /// <inheritdoc/>
-        public IList<Movie> GetAllMovies()
+        /// <inheritdoc />
+        public List<Movie> GetAllMovies()
         {
             // read all movies from the database
             ICollection<Movie> allMovies = _movieDao.ReadAll();
-            
+
             // cache all movies that have not been read already 
             foreach (Movie movie in allMovies)
+            { 
                 if (!_movieCache.ContainsKey(movie.Name))
+                { 
                     _movieCache[movie.Name] = movie;
-
+                }
+            }
             return new List<Movie>(_movieCache.Values);
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool MovieExists(string movieName)
         {
             // movie is null if it doesn't exist

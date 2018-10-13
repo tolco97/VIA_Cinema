@@ -1,35 +1,34 @@
-﻿namespace VIA_Cinema.ProjectionModel.DAO
+﻿using System;
+using System.Collections.Generic;
+using Npgsql;
+using VIA_Cinema.MovieModel;
+using VIA_Cinema.MovieModel.DAO;
+using VIA_Cinema.UserAccountModel;
+using VIA_Cinema.UserAccountModel.DAO;
+
+namespace VIA_Cinema.ProjectionModel.DAO
 {
-    using MovieModel;
-    using System;
-    using System.Collections.Generic;
-    using MovieModel.DAO;
-    using Npgsql;
-    using ProjectionModel;
-    using UserAccountModel;
-    using UserAccountModel.DAO;
-    
-    public class ProjectionDAO : IProjectionDAO
+    public class ProjectionDao : IProjectionDao
     {
-        private static IProjectionDAO _instance;
+        private static IProjectionDao _instance;
 
         private readonly NpgsqlConnection _con;
 
         // I couldn't use dependency injections, because all DAO objects are Singletons
-        private readonly IMovieDAO _movieDao = MovieDAO.GetInstance();
-        private readonly IUserAccountDAO _userAccountDao = UserAccountDAO.GetInstance();
+        private readonly IMovieDao _movieDao = MovieDao.GetInstance();
+        private readonly IUserAccountDao _userAccountDao = UserAccountDAO.GetInstance();
 
-        private ProjectionDAO()
+        private ProjectionDao()
         {
             _con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
-                                       "Password=password;Database=via_cinema_system;");
+                                        "Password=password;Database=via_cinema_system;");
             _con.Open();
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public Projection CreateProjection(Movie projectedMovie, DateTime movieStartTime)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -54,10 +53,10 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public Projection ReadProjection(int projectionId)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -70,13 +69,16 @@
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.IdColumn, projectionId);
 
                 // get seats for this projection
-                IList<Seat> seatAllocations = ReadSeatReservations(projectionId);
+                List<Seat> seatAllocations = ReadSeatReservations(projectionId);
 
                 // execute statement and collect values
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
                 {
                     // projection does not exist
-                    if (!reader.Read()) return null;
+                    if (!reader.Read())
+                    {
+                        return null;
+                    }
 
                     // get the movie object
                     string movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
@@ -90,13 +92,13 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public ICollection<Projection> ReadAllProjections()
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // output collection
-                List<Projection> allProjections = new List<Projection>();
+                var allProjections = new List<Projection>();
 
                 // set connection
                 stmt.Connection = _con;
@@ -119,31 +121,34 @@
                         // get projection start
                         DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
 
-                        Projection projection = new Projection
+                        var projection = new Projection
                         {
                             Id = projectionId,
                             ProjectedMovie = movie,
                             MovieStartTime = projectionStart
                         };
+
                         allProjections.Add(projection);
                     }
                 }
 
                 // read all projection seat resevations
                 foreach (Projection proj in allProjections)
+                { 
                     proj.Seats = ReadSeatReservations(proj.Id);
+                }
 
                 return allProjections;
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public ICollection<Projection> ReadAllProjections(Movie movie)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // output collection
-                List<Projection> allProjections = new List<Projection>();
+                var allProjections = new List<Projection>();
 
                 // set connection
                 stmt.Connection = _con;
@@ -165,8 +170,8 @@
 
                         // get projection start
                         DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
-                        
-                        Projection projection = new Projection
+
+                        var projection = new Projection
                         {
                             Id = projectionId,
                             ProjectedMovie = movie,
@@ -179,16 +184,18 @@
 
                 // read all projection seat reservations
                 foreach (Projection proj in allProjections)
+                { 
                     proj.Seats = ReadSeatReservations(proj.Id);
+                }
 
                 return allProjections;
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool UpdateProjection(Projection updatedProj)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -211,10 +218,10 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool DeleteSeatReservation(int projectionId, UserAccount user, int seatNumber)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -235,10 +242,10 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public IList<Seat> CreateSeatReservations(Projection proj)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -272,12 +279,12 @@
             }
         }
 
-        /// <inheritdoc/>
-        public IList<Seat> ReadSeatReservations(int projId)
+        /// <inheritdoc />
+        public List<Seat> ReadSeatReservations(int projId)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
-                List<Seat> seatReservations = new List<Seat>(30);
+                var seatReservations = new List<Seat>(30);
 
                 // set connection
                 stmt.Connection = _con;
@@ -326,10 +333,9 @@
         ///     Singleton implementation
         /// </summary>
         /// <returns> a reference to a projection data access object </returns>
-        public static IProjectionDAO GetInstance()
+        public static IProjectionDao GetInstance()
         {
-            return _instance ?? (_instance = new ProjectionDAO());
+            return _instance ?? (_instance = new ProjectionDao());
         }
-        
     }
 }

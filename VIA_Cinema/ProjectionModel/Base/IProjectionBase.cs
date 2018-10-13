@@ -1,10 +1,10 @@
-﻿namespace VIA_Cinema.ProjectionModel.Base
-{
-    using System;
-    using System.Collections.Generic;
-    using MovieModel;
-    using UserAccountModel;
+﻿using System;
+using System.Collections.Generic;
+using VIA_Cinema.MovieModel;
+using VIA_Cinema.UserAccountModel;
 
+namespace VIA_Cinema.ProjectionModel.Base
+{
     public interface IProjectionBase
     {
         /// <summary>
@@ -37,13 +37,13 @@
         ///     Retrieves all projections in the system
         /// </summary>
         /// <returns> a list of projections </returns>
-        IList<Projection> GetAllProjections();
+        List<Projection> GetAllProjections();
 
         /// <summary>
         ///     Retrieves all projections in the system that project the movie passed as a parameter
         /// </summary>
         /// <param name="movie"> the movie </param>
         /// <returns> a list of projections </returns>
-        IList<Projection> GetAllProjections(Movie movie);
+        List<Projection> GetAllProjections(Movie movie);
     }
 }

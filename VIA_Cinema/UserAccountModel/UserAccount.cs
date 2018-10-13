@@ -1,12 +1,14 @@
-﻿namespace VIA_Cinema.UserAccountModel
-{
-    using System;
-    using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
+namespace VIA_Cinema.UserAccountModel
+{
     [DataContract]
     public class UserAccount
     {
-        public UserAccount() {}
+        public UserAccount()
+        {
+        }
 
         public UserAccount(string email, string userPassword, string firstName, string lastName, DateTime birthday)
         {
@@ -26,7 +28,7 @@
         [DataMember] public string LastName { get; set; }
 
         [DataMember] public DateTime Birthday { get; set; }
-        
+
         public override string ToString()
         {
             return $"UserAccount [Email: {Email}, UserPassword: {UserPassword}," +

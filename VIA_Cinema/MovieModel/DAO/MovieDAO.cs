@@ -1,24 +1,24 @@
-﻿namespace VIA_Cinema.MovieModel.DAO
-{
-    using System.Collections.Generic;
-    using Npgsql;
+﻿using System.Collections.Generic;
+using Npgsql;
 
-    public class MovieDAO : IMovieDAO
+namespace VIA_Cinema.MovieModel.DAO
+{
+    public class MovieDao : IMovieDao
     {
-        private static IMovieDAO _instance;
+        private static IMovieDao _instance;
         private readonly NpgsqlConnection _con;
 
-        private MovieDAO()
+        private MovieDao()
         {
             _con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
-                                       "Password=password;Database=via_cinema_system;");
+                                        "Password=password;Database=via_cinema_system;");
             _con.Open();
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public Movie Create(string movieName, int durationMinuites, string genre)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -41,10 +41,10 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public Movie Read(string movieName)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -73,10 +73,10 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public ICollection<Movie> ReadAll()
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set the connection
                 stmt.Connection = _con;
@@ -85,7 +85,7 @@
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.movies;";
 
                 // create output collection
-                List<Movie> allMovies = new List<Movie>();
+                var allMovies = new List<Movie>();
 
                 // execute statement
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
@@ -105,10 +105,10 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool Update(Movie updtMovie)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -128,10 +128,10 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool Delete(Movie movie)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -147,7 +147,7 @@
                 return stmt.ExecuteNonQuery() != 0;
             }
         }
-        
+
         /// < inheritdoc />
         public void Dispose()
         {
@@ -158,11 +158,11 @@
         ///     Singleton implementation
         /// </summary>
         /// <returns> an instance of a movie data access object </returns>
-        public static IMovieDAO GetInstance()
+        public static IMovieDao GetInstance()
         {
             // Return movieDao if it is not null. Otherwise create create new MovieDAO object and
             // assign it to movieDao & return.
-            return _instance ?? (_instance = new MovieDAO());
+            return _instance ?? (_instance = new MovieDao());
         }
     }
 }

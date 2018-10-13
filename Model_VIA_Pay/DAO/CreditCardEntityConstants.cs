@@ -13,6 +13,5 @@
         // All money from the tickets is transfered to VIA Cinema's bank account with these details:
         public const string ViaCinemaAccountNumber = "000000000000";
         public const string ViaCinemaAccountPin = "0000";
-
     }
 }

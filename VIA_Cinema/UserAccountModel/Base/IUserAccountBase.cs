@@ -1,8 +1,7 @@
-﻿namespace VIA_Cinema.UserAccountModel.Base
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
 
+namespace VIA_Cinema.UserAccountModel.Base
+{
     public interface IUserAccountBase
     {
         /// <summary>

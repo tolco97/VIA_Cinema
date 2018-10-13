@@ -1,11 +1,11 @@
-﻿namespace VIA_Cinema.ProjectionModel.DAO
-{
-    using System;
-    using System.Collections.Generic;
-    using MovieModel;
-    using UserAccountModel;
+﻿using System;
+using System.Collections.Generic;
+using VIA_Cinema.MovieModel;
+using VIA_Cinema.UserAccountModel;
 
-    public interface IProjectionDAO : IDisposable
+namespace VIA_Cinema.ProjectionModel.DAO
+{
+    public interface IProjectionDao : IDisposable
     {
         /// <summary>
         ///     Creates a projection database entry in the projections entity
@@ -51,7 +51,7 @@
         /// </summary>
         /// <param name="projId"> the projection id </param>
         /// <returns> a list of seats </returns>
-        IList<Seat> ReadSeatReservations(int projId);
+        List<Seat> ReadSeatReservations(int projId);
 
         /// <summary>
         ///     Updates a projection database entry with the data from the projection passed
@@ -70,6 +70,5 @@
         /// <param name="seatNumber"> the seat number </param>
         /// <returns> true, if the delete operation has affected at least 1 database row. Otherwise, false </returns>
         bool DeleteSeatReservation(int projectionId, UserAccount user, int seatNumber);
-        
     }
 }

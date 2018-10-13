@@ -1,11 +1,11 @@
-﻿namespace VIA_Cinema.MovieModel
-{
-    using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
+namespace VIA_Cinema.MovieModel
+{
     [DataContract]
     public class Movie
     {
-        public Movie() {}
+        public Movie() { }
 
         public Movie(string name, int durationMinuites, string genre)
         {
@@ -24,6 +24,5 @@
         {
             return $"Movie [Name: {Name}, DurationMinuites: {DurationMinuites}, Genre: {Genre}]";
         }
-
     }
 }

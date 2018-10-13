@@ -1,7 +1,7 @@
-﻿namespace VIA_Cinema.MovieModel.Base
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace VIA_Cinema.MovieModel.Base
+{
     public interface IMovieBase
     {
         /// <summary>
@@ -24,7 +24,7 @@
         ///     Retrieves all movies from the system
         /// </summary>
         /// <returns> a list of movies </returns>
-        IList<Movie> GetAllMovies();
+        List<Movie> GetAllMovies();
 
         /// <summary>
         ///     Checks if a movie exists in system.

@@ -1,8 +1,8 @@
-﻿namespace Model_VIA_Pay.DAO
-{
-    using System;
+﻿using System;
 
-    public interface ICreditCardDAO : IDisposable
+namespace Model_VIA_Pay.DAO
+{
+    public interface ICreditCardDao : IDisposable
     {
         /// <summary>
         ///     Creates a new credit updatedCard entry in the credit cards database entity

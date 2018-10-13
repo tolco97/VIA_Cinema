@@ -1,24 +1,24 @@
-﻿namespace Model_VIA_Pay.DAO
+﻿using System;
+using Npgsql;
+
+namespace Model_VIA_Pay.DAO
 {
-    using System;
-    using Npgsql;
-
-    public class CreditCardDAO : ICreditCardDAO
+    public class CreditCardDao : ICreditCardDao
     {
+        private static ICreditCardDao _instance;
         private readonly NpgsqlConnection _con;
-        private static ICreditCardDAO _instance;
 
-        private CreditCardDAO()
+        private CreditCardDao()
         {
             _con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
-                                       "Password=password;Database=via_pay_system;");
+                                        "Password=password;Database=via_pay_system;");
             _con.Open();
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public CreditCard Create(string cardNumber, string pin, decimal balanceDkk)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -40,10 +40,10 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool UpdateBalance(CreditCard updatedCard)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -62,16 +62,16 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool CreditCardExists(string creditCardNumber)
         {
             return Read(creditCardNumber) != null;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public CreditCard Read(string creditCardNumber)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -86,25 +86,25 @@
                 stmt.Parameters.AddWithValue(CreditCardEntityConstants.CardNumberColumn, creditCardNumber);
 
                 // execute statement
-                using (NpgsqlDataReader reader = stmt.ExecuteReader())
+                using (var reader = stmt.ExecuteReader())
                 {
                     // the credit updatedCard does not exist
                     if (!reader.Read()) return null;
 
                     // collect data
-                    string pin = (string) reader[CreditCardEntityConstants.PinColumn];
+                    var pin = (string) reader[CreditCardEntityConstants.PinColumn];
 
                     // 2 decimal symbol format for the balance
                     // Example: 450.50
-                    decimal rawBalance = (decimal) reader[CreditCardEntityConstants.BalanceColumn];
-                    decimal balance = Math.Round(rawBalance, 2);
-                    
+                    var rawBalance = (decimal) reader[CreditCardEntityConstants.BalanceColumn];
+                    var balance = Math.Round(rawBalance, 2);
+
                     return new CreditCard(creditCardNumber, pin, balance);
                 }
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void Dispose()
         {
             _con?.Dispose();
@@ -114,10 +114,9 @@
         ///     Singleton implementation
         /// </summary>
         /// <returns> an instance of a credit updatedCard data access object </returns>
-        public static ICreditCardDAO GetInstance()
+        public static ICreditCardDao GetInstance()
         {
-            return _instance ?? (_instance = new CreditCardDAO());
+            return _instance ?? (_instance = new CreditCardDao());
         }
-        
     }
 }

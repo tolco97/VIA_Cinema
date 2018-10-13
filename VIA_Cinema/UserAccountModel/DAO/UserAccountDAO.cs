@@ -1,27 +1,26 @@
-﻿namespace VIA_Cinema.UserAccountModel.DAO
-{
-    using System;
-    using System.Collections.Generic;
-    using Npgsql;
+﻿using System;
+using Npgsql;
 
-    public class UserAccountDAO : IUserAccountDAO
+namespace VIA_Cinema.UserAccountModel.DAO
+{
+    public class UserAccountDAO : IUserAccountDao
     {
-        private static IUserAccountDAO _instance;
+        private static IUserAccountDao _instance;
 
         private readonly NpgsqlConnection _con;
 
         private UserAccountDAO()
         {
             _con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
-                                       "Password=password;Database=via_cinema_system;");
+                                        "Password=password;Database=via_cinema_system;");
             _con.Open();
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public UserAccount Create(string userEmail, string userPassword, string firstName, string lastName,
             DateTime birthday)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -45,10 +44,10 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public UserAccount Read(string userEmail)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -61,26 +60,26 @@
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, userEmail);
 
                 // execute statement
-                using (NpgsqlDataReader reader = stmt.ExecuteReader())
+                using (var reader = stmt.ExecuteReader())
                 {
                     // the account does not exist
                     if (!reader.Read()) return null;
 
                     // get values
-                    string password = (string) reader[UserAccountEntityConstants.PasswordColumn];
-                    string firstName = (string) reader[UserAccountEntityConstants.FirstNameColumn];
-                    string lastName = (string) reader[UserAccountEntityConstants.LastNameColumn];
-                    DateTime birthday = (DateTime) reader[UserAccountEntityConstants.BirthdayColumn];
+                    var password = (string) reader[UserAccountEntityConstants.PasswordColumn];
+                    var firstName = (string) reader[UserAccountEntityConstants.FirstNameColumn];
+                    var lastName = (string) reader[UserAccountEntityConstants.LastNameColumn];
+                    var birthday = (DateTime) reader[UserAccountEntityConstants.BirthdayColumn];
 
                     return new UserAccount(userEmail, password, firstName, lastName, birthday);
                 }
             }
         }
-        
-        /// <inheritdoc/>
+
+        /// <inheritdoc />
         public bool Update(UserAccount account)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -102,10 +101,10 @@
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool Delete(UserAccount account)
         {
-            using (NpgsqlCommand stmt = new NpgsqlCommand())
+            using (var stmt = new NpgsqlCommand())
             {
                 // set connection
                 stmt.Connection = _con;
@@ -113,15 +112,15 @@
                 // set statement
                 stmt.CommandText =
                     "DELETE FROM via_cinema_schema.seat_reservations WHERE seat_reservations.email = @email";
-                
+
                 // set statement parameters
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, account.Email);
 
                 // delete seat reservations of the user account
                 stmt.ExecuteNonQuery();
-                
+
                 stmt.CommandText = "DELETE FROM via_cinema_schema.user_accounts WHERE user_accounts.email = @email;";
-                
+
                 // delete user account
                 return stmt.ExecuteNonQuery() != 0;
             }
@@ -137,10 +136,9 @@
         ///     Singleton implementation
         /// </summary>
         /// <returns> an instance of a user account data access object </returns>
-        public static IUserAccountDAO GetInstance()
+        public static IUserAccountDao GetInstance()
         {
             return _instance ?? (_instance = new UserAccountDAO());
         }
-        
     }
 }
