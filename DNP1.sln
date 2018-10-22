@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaPay.Model", "Model_VIA_P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaCinema.Services", "Services_VIA_Cinema\ViaCinema.Services.csproj", "{81BDE2BC-DAB5-4DDF-8E88-43933EA5B379}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaCinema.Services.Proxies", "ViaCinema.Services.Proxies\ViaCinema.Services.Proxies.csproj", "{D1312C68-E29C-455D-B81C-BF5A9B1B695B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{81BDE2BC-DAB5-4DDF-8E88-43933EA5B379} = {81BDE2BC-DAB5-4DDF-8E88-43933EA5B379}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +32,10 @@ Global
 		{81BDE2BC-DAB5-4DDF-8E88-43933EA5B379}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81BDE2BC-DAB5-4DDF-8E88-43933EA5B379}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81BDE2BC-DAB5-4DDF-8E88-43933EA5B379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1312C68-E29C-455D-B81C-BF5A9B1B695B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1312C68-E29C-455D-B81C-BF5A9B1B695B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1312C68-E29C-455D-B81C-BF5A9B1B695B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1312C68-E29C-455D-B81C-BF5A9B1B695B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

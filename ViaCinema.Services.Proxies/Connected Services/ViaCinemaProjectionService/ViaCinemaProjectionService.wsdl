@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetProjections">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="movieName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectionsResult" type="tns:ArrayOfProjection" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProjection">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Projection" nillable="true" type="tns:Projection" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Projection">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectedMovie" type="tns:Movie" />
+          <s:element minOccurs="0" maxOccurs="1" name="Seats" type="tns:ArrayOfSeat" />
+          <s:element minOccurs="1" maxOccurs="1" name="MovieStartTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Movie">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DurationMinutes" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSeat">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Seat" nillable="true" type="tns:Seat" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Seat">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SeatNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SeatOwner" type="tns:UserAccount" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserAccount">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Birthday" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllProjections">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllProjectionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllProjectionsResult" type="tns:ArrayOfProjection" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookSeat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="seatNumbers" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookSeatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BookSeatResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetProjectionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjections" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProjectionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllProjections" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProjectionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllProjectionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookSeatSoapIn">
+    <wsdl:part name="parameters" element="tns:BookSeat" />
+  </wsdl:message>
+  <wsdl:message name="BookSeatSoapOut">
+    <wsdl:part name="parameters" element="tns:BookSeatResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ViaCinemaProjectionServiceSoap">
+    <wsdl:operation name="GetProjections">
+      <wsdl:input message="tns:GetProjectionsSoapIn" />
+      <wsdl:output message="tns:GetProjectionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProjections">
+      <wsdl:input message="tns:GetAllProjectionsSoapIn" />
+      <wsdl:output message="tns:GetAllProjectionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookSeat">
+      <wsdl:input message="tns:BookSeatSoapIn" />
+      <wsdl:output message="tns:BookSeatSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ViaCinemaProjectionServiceSoap" type="tns:ViaCinemaProjectionServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProjections">
+      <soap:operation soapAction="http://tempuri.org/GetProjections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProjections">
+      <soap:operation soapAction="http://tempuri.org/GetAllProjections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookSeat">
+      <soap:operation soapAction="http://tempuri.org/BookSeat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ViaCinemaProjectionServiceSoap12" type="tns:ViaCinemaProjectionServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProjections">
+      <soap12:operation soapAction="http://tempuri.org/GetProjections" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProjections">
+      <soap12:operation soapAction="http://tempuri.org/GetAllProjections" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookSeat">
+      <soap12:operation soapAction="http://tempuri.org/BookSeat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ViaCinemaProjectionService">
+    <wsdl:port name="ViaCinemaProjectionServiceSoap" binding="tns:ViaCinemaProjectionServiceSoap">
+      <soap:address location="http://localhost:51916/ViaCinemaProjectionService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ViaCinemaProjectionServiceSoap12" binding="tns:ViaCinemaProjectionServiceSoap12">
+      <soap12:address location="http://localhost:51916/ViaCinemaProjectionService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
