@@ -1,4 +1,4 @@
-﻿namespace VIA_Cinema.MovieModel.DAO
+﻿namespace DNP1.ViaCinema.Model.MovieModel.DAO
 {
     /// <summary>
     ///     Stores constants used when manipulating the database

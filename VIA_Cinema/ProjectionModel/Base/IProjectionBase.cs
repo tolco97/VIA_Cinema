@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using VIA_Cinema.MovieModel;
-using VIA_Cinema.UserAccountModel;
+using DNP1.ViaCinema.Model.MovieModel;
+using DNP1.ViaCinema.Model.UserAccountModel;
 
-namespace VIA_Cinema.ProjectionModel.Base
+namespace DNP1.ViaCinema.Model.ProjectionModel.Base
 {
     public interface IProjectionBase
     {

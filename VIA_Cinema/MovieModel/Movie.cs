@@ -1,28 +1,28 @@
 ﻿using System.Runtime.Serialization;
 
-namespace VIA_Cinema.MovieModel
+namespace DNP1.ViaCinema.Model.MovieModel
 {
     [DataContract]
     public class Movie
     {
-        public Movie() { }
+        public Movie() {}
 
-        public Movie(string name, int durationMinuites, string genre)
+        public Movie(string name, int durationMinutes, string genre)
         {
             Name = name;
-            DurationMinuites = durationMinuites;
+            DurationMinutes = durationMinutes;
             Genre = genre;
         }
 
         [DataMember] public string Name { get; set; } // PK
 
-        [DataMember] public int DurationMinuites { get; set; }
+        [DataMember] public int DurationMinutes { get; set; }
 
         [DataMember] public string Genre { get; set; }
 
         public override string ToString()
         {
-            return $"Movie [Name: {Name}, DurationMinuites: {DurationMinuites}, Genre: {Genre}]";
+            return $"Movie [Name: {Name}, DurationMinutes: {DurationMinutes}, Genre: {Genre}]";
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿namespace VIA_Cinema.ProjectionModel.DAO
+﻿namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
 {
     /// <summary>
-    ///     Stores some constants used when maniupulating the database
+    ///     Stores some constants used when manipulating the database
     /// </summary>
     public static class ProjectionEntityConstants
     {

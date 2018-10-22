@@ -1,4 +1,4 @@
-﻿namespace Model_VIA_Pay.Base
+﻿namespace DNP1.ViaPay.Model.Base
 {
     public interface ICreditCardBase
     {

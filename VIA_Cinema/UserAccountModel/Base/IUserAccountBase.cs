@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VIA_Cinema.UserAccountModel.Base
+namespace DNP1.ViaCinema.Model.UserAccountModel.Base
 {
     public interface IUserAccountBase
     {

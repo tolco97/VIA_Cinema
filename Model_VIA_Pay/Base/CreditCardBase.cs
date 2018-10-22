@@ -1,7 +1,7 @@
-﻿using Model_VIA_Pay.DAO;
-using VIA_Cinema.Util;
+﻿using DNP1.ViaCinema.Model.Util;
+using DNP1.ViaPay.Model.DAO;
 
-namespace Model_VIA_Pay.Base
+namespace DNP1.ViaPay.Model.Base
 {
     public class CreditCardBase : ICreditCardBase
     {

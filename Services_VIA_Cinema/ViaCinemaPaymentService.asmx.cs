@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Web.Services;
-using Model_VIA_Pay.Base;
-using Model_VIA_Pay.DAO;
+using DNP1.ViaPay.Model.Base;
+using DNP1.ViaPay.Model.DAO;
 
-namespace Services_VIA_Cinema.PaymentServices
+namespace DNP1.ViaCinema.Services
 {
     /// <summary>
     /// Summary description for ViaCinemaPaymentService
@@ -17,6 +17,13 @@ namespace Services_VIA_Cinema.PaymentServices
     {
         private readonly ICreditCardBase _creditCardBase = new CreditCardBase(CreditCardDao.GetInstance());
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="creditCardNumber"></param>
+        /// <param name="pin"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         [WebMethod]
         public bool MakeTransaction(string creditCardNumber, string pin, decimal amount)
         {

@@ -1,4 +1,4 @@
-﻿namespace Model_VIA_Pay.DAO
+﻿namespace DNP1.ViaPay.Model.DAO
 {
     /// <summary>
     ///     Stores constants used when manipulating the credit cards database

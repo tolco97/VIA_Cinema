@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Model_VIA_Pay.DAO
+namespace DNP1.ViaPay.Model.DAO
 {
     public interface ICreditCardDao : IDisposable
     {
@@ -29,7 +29,7 @@ namespace Model_VIA_Pay.DAO
         bool CreditCardExists(string creditCardNumber);
 
         /// <summary>
-        ///     Reads a creidt card entry from the credit cards database entity
+        ///     Reads a credit card entry from the credit cards database entity
         ///     that matches the credit card number as parameter
         /// </summary>
         /// <param name="creditCardNumber"> the credit card number </param>

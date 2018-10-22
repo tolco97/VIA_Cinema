@@ -1,7 +1,7 @@
 ﻿using System;
 using Npgsql;
 
-namespace Model_VIA_Pay.DAO
+namespace DNP1.ViaPay.Model.DAO
 {
     public class CreditCardDao : ICreditCardDao
     {

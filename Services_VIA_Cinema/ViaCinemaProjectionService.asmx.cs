@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Web.Services;
-using VIA_Cinema.MovieModel;
-using VIA_Cinema.MovieModel.Base;
-using VIA_Cinema.MovieModel.DAO;
-using VIA_Cinema.ProjectionModel;
-using VIA_Cinema.ProjectionModel.Base;
-using VIA_Cinema.ProjectionModel.DAO;
-using VIA_Cinema.UserAccountModel;
-using VIA_Cinema.UserAccountModel.Base;
-using VIA_Cinema.UserAccountModel.DAO;
+using DNP1.ViaCinema.Model.MovieModel;
+using DNP1.ViaCinema.Model.MovieModel.Base;
+using DNP1.ViaCinema.Model.MovieModel.DAO;
+using DNP1.ViaCinema.Model.ProjectionModel;
+using DNP1.ViaCinema.Model.ProjectionModel.Base;
+using DNP1.ViaCinema.Model.ProjectionModel.DAO;
+using DNP1.ViaCinema.Model.UserAccountModel;
+using DNP1.ViaCinema.Model.UserAccountModel.Base;
+using DNP1.ViaCinema.Model.UserAccountModel.DAO;
 
-namespace Services_VIA_Cinema.ProjectionServices
+namespace DNP1.ViaCinema.Services
 {
     /// <summary>
     /// Summary description for ViaCinemaProjectionService
@@ -26,8 +26,9 @@ namespace Services_VIA_Cinema.ProjectionServices
     {
         private readonly IProjectionBase _projectionBase = new ProjectionBase(ProjectionDao.GetInstance());
         private readonly IMovieBase _movieBase = new MovieBase(MovieDao.GetInstance());
-        private readonly IUserAccountBase _userAccountBase = new UserAccountBase(UserAccountDAO.GetInstance());
+        private readonly IUserAccountBase _userAccountBase = new UserAccountBase(UserAccountDao.GetInstance());
 
+        /// <remarks/>
         [WebMethod]
         public List<Projection> GetProjections(string movieName)
         {
@@ -39,6 +40,10 @@ namespace Services_VIA_Cinema.ProjectionServices
             return projections;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [WebMethod]
         public List<Projection> GetAllProjections()
         {
@@ -48,6 +53,13 @@ namespace Services_VIA_Cinema.ProjectionServices
             return allProjections;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="projectionId"></param>
+        /// <param name="email"></param>
+        /// <param name="seatNumbers"></param>
+        /// <returns></returns>
         [WebMethod]
         public bool BookSeat(int projectionId, string email, string seatNumbers)
         {

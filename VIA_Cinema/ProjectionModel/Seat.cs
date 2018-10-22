@@ -1,12 +1,12 @@
 ﻿using System.Runtime.Serialization;
-using VIA_Cinema.UserAccountModel;
+using DNP1.ViaCinema.Model.UserAccountModel;
 
-namespace VIA_Cinema.ProjectionModel
+namespace DNP1.ViaCinema.Model.ProjectionModel
 {
     [DataContract]
     public class Seat
     {
-        public Seat() { }
+        public Seat() {}
 
         public Seat(int seatNumber, UserAccount seatOwner)
         {
@@ -20,7 +20,7 @@ namespace VIA_Cinema.ProjectionModel
 
         public override string ToString()
         {
-            return $"Seat [SeatNumer: {SeatNumber}, SeatOwner: {SeatOwner}]";
+            return $"Seat [SeatNumber: {SeatNumber}, SeatOwner: {SeatOwner}]";
         }
     }
 }

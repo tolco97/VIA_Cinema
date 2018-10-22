@@ -1,7 +1,10 @@
 ﻿using System;
 
-namespace VIA_Cinema.Util
+namespace DNP1.ViaCinema.Model.Util
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class Validator
     {
         /// <summary>
@@ -13,9 +16,9 @@ namespace VIA_Cinema.Util
         {
             foreach (string str in strings)
             {
-                if (string.IsNullOrEmpty(str))
+                if (string.IsNullOrWhiteSpace(str))
                 { 
-                    throw new ArgumentException("String is null or empty");
+                    throw new ArgumentException("String is null or empty", nameof(strings));
                 }
             }
         }
@@ -24,10 +27,10 @@ namespace VIA_Cinema.Util
         ///     Validates a movie duration user input. Throws exception, if input violates
         ///     the constraints
         /// </summary>
-        /// <param name="durationMinuites"> the movie duration input </param>
-        public static void ValidateMovieDuration(int durationMinuites)
+        /// <param name="durationMinutes"> the movie duration input </param>
+        public static void ValidateMovieDuration(int durationMinutes)
         {
-            if (durationMinuites < 1)
+            if (durationMinutes < 1)
             { 
                 throw new ArgumentException("Duration can not be below 1");
             }
@@ -44,7 +47,7 @@ namespace VIA_Cinema.Util
             { 
                 if (num < 1 || num > 30)
                 { 
-                    throw new ArgumentException("Illegal seat number!");
+                    throw new ArgumentException("Illegal seat number!", nameof(seatNumbers));
                 }
             }
         }
@@ -59,7 +62,7 @@ namespace VIA_Cinema.Util
             { 
                 if (obj == null)
                 { 
-                    throw new ArgumentNullException("Null value!");
+                    throw new ArgumentNullException("Null value!", nameof(objects));
                 }
             }
         }
@@ -73,7 +76,7 @@ namespace VIA_Cinema.Util
             { 
                 if (dec < decimal.Zero)
                 { 
-                    throw new ArgumentException("Can't withdraw an amount less than zero from bank account!");
+                    throw new ArgumentException("Can't withdraw an amount less than zero from bank account!", nameof(amounts));
                 }
             }
         }

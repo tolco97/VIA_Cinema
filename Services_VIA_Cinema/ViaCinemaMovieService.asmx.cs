@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Web.Services;
-using VIA_Cinema.MovieModel;
-using VIA_Cinema.MovieModel.Base;
-using VIA_Cinema.MovieModel.DAO;
+using DNP1.ViaCinema.Model.MovieModel;
+using DNP1.ViaCinema.Model.MovieModel.Base;
+using DNP1.ViaCinema.Model.MovieModel.DAO;
 
-namespace Services_VIA_Cinema.MovieServices
+namespace DNP1.ViaCinema.Services
 {
     /// <summary>
     /// Summary description for ViaCinemaMovieService
@@ -19,6 +19,10 @@ namespace Services_VIA_Cinema.MovieServices
     {
         private readonly IMovieBase _movieBase = new MovieBase(MovieDao.GetInstance());
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [WebMethod]
         public List<Movie> GetAllMovies()
         {

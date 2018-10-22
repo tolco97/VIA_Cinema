@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace VIA_Cinema.MovieModel.Base
+namespace DNP1.ViaCinema.Model.MovieModel.Base
 {
     public interface IMovieBase
     {
@@ -8,10 +8,10 @@ namespace VIA_Cinema.MovieModel.Base
         ///     Adds a new movie to the system
         /// </summary>
         /// <param name="movieName"> the name of the movie </param>
-        /// <param name="durationMinuites"> the duration of the movie </param>
+        /// <param name="durationMinutes"> the duration of the movie </param>
         /// <param name="genre"> the movie genre </param>
         /// <returns> a movie object </returns>
-        Movie AddMovie(string movieName, int durationMinuites, string genre);
+        Movie AddMovie(string movieName, int durationMinutes, string genre);
 
         /// <summary>
         ///     Retrieves a movie from the system, that matches the movie name passed as a parameter

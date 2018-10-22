@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VIA_Cinema.UserAccountModel.DAO
+namespace DNP1.ViaCinema.Model.UserAccountModel.DAO
 {
     public interface IUserAccountDao : IDisposable
     {

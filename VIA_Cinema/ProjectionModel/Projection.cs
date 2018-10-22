@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using VIA_Cinema.MovieModel;
+using DNP1.ViaCinema.Model.MovieModel;
 
-namespace VIA_Cinema.ProjectionModel
+namespace DNP1.ViaCinema.Model.ProjectionModel
 {
     [DataContract]
     public class Projection
     {
-        public Projection() { }
+        public Projection() {}
 
         // constructor for reading from the database
         public Projection(int id, Movie projectedMovie, List<Seat> seats,

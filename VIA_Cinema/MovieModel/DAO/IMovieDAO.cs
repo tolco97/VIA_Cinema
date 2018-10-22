@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace VIA_Cinema.MovieModel.DAO
+namespace DNP1.ViaCinema.Model.MovieModel.DAO
 {
     public interface IMovieDao : IDisposable
     {
@@ -9,10 +9,10 @@ namespace VIA_Cinema.MovieModel.DAO
         ///     Creates a new movie entry in the movies entity
         /// </summary>
         /// <param name="movieName"> the name of hte movie </param>
-        /// <param name="durationMinuites"> the duration of the movie </param>
+        /// <param name="durationMinutes"> the duration of the movie </param>
         /// <param name="genre"> the genre of the movie </param>
         /// <returns> a movie object </returns>
-        Movie Create(string movieName, int durationMinuites, string genre);
+        Movie Create(string movieName, int durationMinutes, string genre);
 
         /// <summary>
         ///     Reads a movie from the movies entity, that has the movie name passed as a parameter

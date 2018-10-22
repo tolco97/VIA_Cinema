@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Web.Services;
-using VIA_Cinema.UserAccountModel;
-using VIA_Cinema.UserAccountModel.Base;
-using VIA_Cinema.UserAccountModel.DAO;
+using DNP1.ViaCinema.Model.UserAccountModel;
+using DNP1.ViaCinema.Model.UserAccountModel.Base;
+using DNP1.ViaCinema.Model.UserAccountModel.DAO;
 
-namespace Services_VIA_Cinema.UserServices
+namespace DNP1.ViaCinema.Services
 {
     /// <summary>
     /// Summary description for ViaCinemaUserService
@@ -17,8 +17,9 @@ namespace Services_VIA_Cinema.UserServices
     // [System.Web.Script.Services.ScriptService]
     public class ViaCinemaUserService : WebService
     {
-        private readonly IUserAccountBase _userAccountBase = new UserAccountBase(UserAccountDAO.GetInstance());
+        private readonly IUserAccountBase _userAccountBase = new UserAccountBase(UserAccountDao.GetInstance());
 
+        /// <see cref="IUserAccountBase.Login(string, string)"/>
         [WebMethod]
         public bool Login(string email, string userPassword)
         {
@@ -27,6 +28,7 @@ namespace Services_VIA_Cinema.UserServices
             return loginSuccessful;
         }
 
+        /// <see cref="IUserAccountBase.CreateAccount(string, string, string, string, DateTime)"/>
         [WebMethod]
         public UserAccount CreateAccount(string email, string userPassword, string firstName, string lastName,
             int dayOfBirth, int monthOfBirth, int yearOfBirth)
@@ -38,6 +40,7 @@ namespace Services_VIA_Cinema.UserServices
             return newUser;
         }
 
+        /// <see cref="IUserAccountBase.UserExists(string)"/>
         [WebMethod]
         public bool UserExists(string userEmail)
         {

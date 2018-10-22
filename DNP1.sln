@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model_VIA_Cinema", "VIA_Cinema\Model_VIA_Cinema.csproj", "{7E5BDCD4-8461-468A-B23C-7243DB6A2BC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaCinema.Model", "VIA_Cinema\ViaCinema.Model.csproj", "{7E5BDCD4-8461-468A-B23C-7243DB6A2BC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model_VIA_Pay", "Model_VIA_Pay\Model_VIA_Pay.csproj", "{010CED38-595A-4CAE-BE12-A46D08852AF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaPay.Model", "Model_VIA_Pay\ViaPay.Model.csproj", "{010CED38-595A-4CAE-BE12-A46D08852AF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services_VIA_Cinema", "Services_VIA_Cinema\Services_VIA_Cinema.csproj", "{81BDE2BC-DAB5-4DDF-8E88-43933EA5B379}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaCinema.Services", "Services_VIA_Cinema\ViaCinema.Services.csproj", "{81BDE2BC-DAB5-4DDF-8E88-43933EA5B379}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

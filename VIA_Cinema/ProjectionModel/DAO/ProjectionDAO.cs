@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using DNP1.ViaCinema.Model.MovieModel;
+using DNP1.ViaCinema.Model.MovieModel.DAO;
+using DNP1.ViaCinema.Model.UserAccountModel;
+using DNP1.ViaCinema.Model.UserAccountModel.DAO;
 using Npgsql;
-using VIA_Cinema.MovieModel;
-using VIA_Cinema.MovieModel.DAO;
-using VIA_Cinema.UserAccountModel;
-using VIA_Cinema.UserAccountModel.DAO;
 
-namespace VIA_Cinema.ProjectionModel.DAO
+namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
 {
     public class ProjectionDao : IProjectionDao
     {
@@ -16,7 +16,7 @@ namespace VIA_Cinema.ProjectionModel.DAO
 
         // I couldn't use dependency injections, because all DAO objects are Singletons
         private readonly IMovieDao _movieDao = MovieDao.GetInstance();
-        private readonly IUserAccountDao _userAccountDao = UserAccountDAO.GetInstance();
+        private readonly IUserAccountDao _userAccountDao = UserAccountDao.GetInstance();
 
         private ProjectionDao()
         {
@@ -25,7 +25,7 @@ namespace VIA_Cinema.ProjectionModel.DAO
             _con.Open();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionDao.CreateProjection(Movie, DateTime)"/>
         public Projection CreateProjection(Movie projectedMovie, DateTime movieStartTime)
         {
             using (var stmt = new NpgsqlCommand())

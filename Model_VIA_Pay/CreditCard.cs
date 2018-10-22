@@ -1,7 +1,7 @@
-﻿namespace Model_VIA_Pay
-{
-    using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
+namespace DNP1.ViaPay.Model
+{
     [DataContract]
     public class CreditCard
     {

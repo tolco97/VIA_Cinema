@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using VIA_Cinema.MovieModel;
-using VIA_Cinema.ProjectionModel.DAO;
-using VIA_Cinema.UserAccountModel;
-using VIA_Cinema.Util;
+using DNP1.ViaCinema.Model.MovieModel;
+using DNP1.ViaCinema.Model.ProjectionModel.DAO;
+using DNP1.ViaCinema.Model.UserAccountModel;
+using DNP1.ViaCinema.Model.Util;
 
-namespace VIA_Cinema.ProjectionModel.Base
+namespace DNP1.ViaCinema.Model.ProjectionModel.Base
 {
     public class ProjectionBase : IProjectionBase
     {
@@ -23,7 +23,7 @@ namespace VIA_Cinema.ProjectionModel.Base
             // validate input
             Validator.ValidateObjectsNotNull(movie, movieStartTime);
 
-            // craete projection in the database
+            // create projection in the database
             Projection newProjection = _projectionDao.CreateProjection(movie, movieStartTime);
 
             // cache projection

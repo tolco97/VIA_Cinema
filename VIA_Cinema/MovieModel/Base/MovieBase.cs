@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data.Linq;
-using VIA_Cinema.MovieModel.DAO;
-using VIA_Cinema.Util;
+using DNP1.ViaCinema.Model.MovieModel.DAO;
+using DNP1.ViaCinema.Model.Util;
 
-namespace VIA_Cinema.MovieModel.Base
+namespace DNP1.ViaCinema.Model.MovieModel.Base
 {
     public class MovieBase : IMovieBase
     {
@@ -15,21 +15,21 @@ namespace VIA_Cinema.MovieModel.Base
             _movieDao = movieDao;
         }
 
-        /// <inheritdoc />
-        public Movie AddMovie(string movieName, int durationMinuites, string genre)
+        /// <inheritdoc cref="IMovieBase.AddMovie(string, int, string)"/>
+        public Movie AddMovie(string movieName, int durationMinutes, string genre)
         {
             // validate input
-            Validator.ValidateMovieDuration(durationMinuites);
+            Validator.ValidateMovieDuration(durationMinutes);
             Validator.ValidateTextualInput(movieName, genre);
 
             // movie already exists
             if (MovieExists(movieName))
             {
-                throw new DuplicateKeyException($"Movie with name {movieName} already exists!");
+                throw new DuplicateKeyException(movieName, $"Movie with name {movieName} already exists!");
             }
 
             // create new movie in the database
-            Movie newMovie = _movieDao.Create(movieName, durationMinuites, genre);
+            Movie newMovie = _movieDao.Create(movieName, durationMinutes, genre);
 
             // cache the new movie
             _movieCache[newMovie.Name] = newMovie;
@@ -37,7 +37,7 @@ namespace VIA_Cinema.MovieModel.Base
             return newMovie;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IMovieBase.GetMovie(string)"/>
         public Movie GetMovie(string movieName)
         {
             // validate input
@@ -60,7 +60,7 @@ namespace VIA_Cinema.MovieModel.Base
             return _movieCache[movieName];
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IMovieBase.GetAllMovies"/>
         public List<Movie> GetAllMovies()
         {
             // read all movies from the database
@@ -77,7 +77,7 @@ namespace VIA_Cinema.MovieModel.Base
             return new List<Movie>(_movieCache.Values);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IMovieBase.MovieExists(string)"/>
         public bool MovieExists(string movieName)
         {
             // movie is null if it doesn't exist

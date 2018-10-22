@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Linq;
-using VIA_Cinema.UserAccountModel.DAO;
-using VIA_Cinema.Util;
+using DNP1.ViaCinema.Model.UserAccountModel.DAO;
+using DNP1.ViaCinema.Model.Util;
 
-namespace VIA_Cinema.UserAccountModel.Base
+namespace DNP1.ViaCinema.Model.UserAccountModel.Base
 {
     public class UserAccountBase : IUserAccountBase
     {

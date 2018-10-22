@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace VIA_Cinema.UserAccountModel
+namespace DNP1.ViaCinema.Model.UserAccountModel
 {
     [DataContract]
     public class UserAccount
     {
-        public UserAccount()
-        {
-        }
+        public UserAccount() {}
 
         public UserAccount(string email, string userPassword, string firstName, string lastName, DateTime birthday)
         {

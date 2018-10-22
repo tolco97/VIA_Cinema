@@ -1,15 +1,15 @@
 ﻿using System;
 using Npgsql;
 
-namespace VIA_Cinema.UserAccountModel.DAO
+namespace DNP1.ViaCinema.Model.UserAccountModel.DAO
 {
-    public class UserAccountDAO : IUserAccountDao
+    public class UserAccountDao : IUserAccountDao
     {
         private static IUserAccountDao _instance;
 
         private readonly NpgsqlConnection _con;
 
-        private UserAccountDAO()
+        private UserAccountDao()
         {
             _con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
                                         "Password=password;Database=via_cinema_system;");
@@ -138,7 +138,7 @@ namespace VIA_Cinema.UserAccountModel.DAO
         /// <returns> an instance of a user account data access object </returns>
         public static IUserAccountDao GetInstance()
         {
-            return _instance ?? (_instance = new UserAccountDAO());
+            return _instance ?? (_instance = new UserAccountDao());
         }
     }
 }

@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Npgsql;
 
-namespace VIA_Cinema.MovieModel.DAO
+namespace DNP1.ViaCinema.Model.MovieModel.DAO
 {
     public class MovieDao : IMovieDao
     {
@@ -15,8 +16,8 @@ namespace VIA_Cinema.MovieModel.DAO
             _con.Open();
         }
 
-        /// <inheritdoc />
-        public Movie Create(string movieName, int durationMinuites, string genre)
+        /// <inheritdoc cref="IMovieDao.Create(string, int, string)"/>
+        public Movie Create(string movieName, int durationMinutes, string genre)
         {
             using (var stmt = new NpgsqlCommand())
             {
@@ -31,17 +32,17 @@ namespace VIA_Cinema.MovieModel.DAO
 
                 // set statement parameters
                 stmt.Parameters.AddWithValue(MovieEntityConstants.NameColumn, movieName);
-                stmt.Parameters.AddWithValue(MovieEntityConstants.DurationColumn, durationMinuites);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.DurationColumn, durationMinutes);
                 stmt.Parameters.AddWithValue(MovieEntityConstants.GenreColumn, genre);
 
                 // execute statement
                 stmt.ExecuteNonQuery();
 
-                return new Movie(movieName, durationMinuites, genre);
+                return new Movie(movieName, durationMinutes, genre);
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IMovieDao.Read(string)"/>
         public Movie Read(string movieName)
         {
             using (var stmt = new NpgsqlCommand())
@@ -73,7 +74,7 @@ namespace VIA_Cinema.MovieModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IMovieDao.ReadAll"/>
         public ICollection<Movie> ReadAll()
         {
             using (var stmt = new NpgsqlCommand())
@@ -105,7 +106,7 @@ namespace VIA_Cinema.MovieModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IMovieDao.Update(Movie)"/>
         public bool Update(Movie updtMovie)
         {
             using (var stmt = new NpgsqlCommand())
@@ -119,7 +120,7 @@ namespace VIA_Cinema.MovieModel.DAO
                                    "genre = @genre WHERE name = @name;";
 
                 // set the statement parameters
-                stmt.Parameters.AddWithValue(MovieEntityConstants.DurationColumn, updtMovie.DurationMinuites);
+                stmt.Parameters.AddWithValue(MovieEntityConstants.DurationColumn, updtMovie.DurationMinutes);
                 stmt.Parameters.AddWithValue(MovieEntityConstants.GenreColumn, updtMovie.Genre);
                 stmt.Parameters.AddWithValue(MovieEntityConstants.NameColumn, updtMovie.Name);
 
@@ -128,7 +129,7 @@ namespace VIA_Cinema.MovieModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IMovieDao.Delete(Movie)"/>
         public bool Delete(Movie movie)
         {
             using (var stmt = new NpgsqlCommand())
@@ -148,7 +149,7 @@ namespace VIA_Cinema.MovieModel.DAO
             }
         }
 
-        /// < inheritdoc />
+        /// <inheritdoc cref="IDisposable.Dispose"/>
         public void Dispose()
         {
             _con?.Dispose();
