@@ -65,7 +65,6 @@
     <Compile Include="ConnectionStringHelper.cs" />
     <Compile Include="MovieModel\Base\IMovieBase.cs" />
     <Compile Include="MovieModel\Base\MovieBase.cs" />
-    <Compile Include="MovieModel\DAO\DataAccessException.cs" />
     <Compile Include="MovieModel\DAO\IMovieDao.cs" />
     <Compile Include="MovieModel\DAO\MovieDao.cs" />
     <Compile Include="MovieModel\DAO\MovieEntityConstants.cs" />

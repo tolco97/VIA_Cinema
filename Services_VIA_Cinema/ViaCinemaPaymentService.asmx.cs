@@ -17,13 +17,7 @@ namespace DNP1.ViaCinema.Services
     {
         private readonly ICreditCardBase _creditCardBase = new CreditCardBase(CreditCardDao.GetInstance());
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="creditCardNumber"></param>
-        /// <param name="pin"></param>
-        /// <param name="amount"></param>
-        /// <returns></returns>
+        /// <inheritdoc cref="ICreditCardBase.MakeTransaction(string, string, decimal)"/>
         [WebMethod]
         public bool MakeTransaction(string creditCardNumber, string pin, decimal amount)
         {

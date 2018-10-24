@@ -21,13 +21,10 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.Base
         /// <inheritdoc cref="IProjectionBase.AddProjection(Movie, DateTime)"/>
         public Projection AddProjection(Movie movie, DateTime movieStartTime)
         {
-            // validate input
             Validator.ValidateObjectsNotNull(movie, movieStartTime);
 
-            // create projection in the database
             Projection newProjection = _projectionDao.CreateProjection(movie, movieStartTime);
 
-            // cache projection
             _projectionCache[newProjection.Id] = newProjection;
 
             return newProjection;
@@ -36,26 +33,21 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.Base
         /// <inheritdoc cref="IProjectionBase.BookSeats(Projection, UserAccount, int[])"/>
         public bool BookSeats(Projection proj, UserAccount seatOwner, params int[] seatNumbers)
         {
-            // validate input
             Validator.ValidateObjectsNotNull(proj, seatOwner);
             Validator.ValidateSeatNumbers(seatNumbers);
 
-            // check if requested seats are available
             if (!AreSeatsAvailable(proj, seatNumbers))
             {
                 return false;
             }
 
-            // seats are available. book them
             foreach (int seatNum in seatNumbers)
             { 
                 proj.Seats.Add(new Seat(seatNum, seatOwner));
             }
 
-            // update database
             _projectionDao.CreateSeatReservations(proj);
 
-            // update cache
             _projectionCache[proj.Id] = proj;
 
             return true;
@@ -64,19 +56,15 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.Base
         /// <inheritdoc cref="IProjectionBase.GetProjection(int)"/>
         public Projection GetProjection(int projectionId)
         {
-            // if projection is not cached
             if (!_projectionCache.ContainsKey(projectionId))
             {
-                // read projection
                 Projection proj = _projectionDao.ReadProjection(projectionId);
 
-                // projection does not exist
                 if (proj == null)
                 {
                     return null;
                 }
 
-                // cache projection object
                 _projectionCache[projectionId] = proj;
             }
 
@@ -86,10 +74,8 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.Base
         /// <inheritdoc cref="IProjectionBase.GetAllProjections()"/>
         public List<Projection> GetAllProjections()
         {
-            // read all projections
             ICollection<Projection> allProjections = _projectionDao.ReadAllProjections();
 
-            // cache all projections that are not cached already
             foreach (Projection proj in allProjections)
             { 
                 if (!_projectionCache.ContainsKey(proj.Id))
@@ -104,17 +90,13 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.Base
         /// <inheritdoc cref="IProjectionBase.GetAllProjections(Movie)"/>
         public List<Projection> GetAllProjections(Movie movie)
         {
-            // validate input
             Validator.ValidateObjectsNotNull(movie);
 
-            // read all projections for this movie
             ICollection<Projection> allProjections = _projectionDao.ReadAllProjections(movie);
 
-            // create output collection
             int size = allProjections.Count;
             var matchingProjections = new List<Projection>(size); // avoid list resizing
 
-            // cache all projections that have not been read already
             foreach (Projection proj in allProjections)
             {
                 if (!_projectionCache.ContainsKey(proj.Id))

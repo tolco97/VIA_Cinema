@@ -19,10 +19,7 @@ namespace DNP1.ViaCinema.Services
     {
         private readonly IMovieBase _movieBase = new MovieBase(MovieDao.GetInstance());
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        /// <inheritdoc cref="IMovieBase.GetAllMovies"/>
         [WebMethod]
         public List<Movie> GetAllMovies()
         {

@@ -60,9 +60,9 @@
     <Compile Include="Base\CreditCardBase.cs" />
     <Compile Include="Base\ICreditCardBase.cs" />
     <Compile Include="CreditCard.cs" />
-    <Compile Include="DAO\CreditCardDAO.cs" />
+    <Compile Include="DAO\CreditCardDao.cs" />
     <Compile Include="DAO\CreditCardEntityConstants.cs" />
-    <Compile Include="DAO\ICreditCardDAO.cs" />
+    <Compile Include="DAO\ICreditCardDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -18,7 +18,7 @@ namespace DNP1.ViaCinema.Model.Util
             {
                 if (string.IsNullOrWhiteSpace(str))
                 { 
-                    throw new ArgumentException("String is null or empty", nameof(strings));
+                    throw new ArgumentException("String is null or empty", nameof(str));
                 }
             }
         }
@@ -47,7 +47,7 @@ namespace DNP1.ViaCinema.Model.Util
             { 
                 if (num < 1 || num > 30)
                 { 
-                    throw new ArgumentException("Illegal seat number!", nameof(seatNumbers));
+                    throw new ArgumentException("Illegal seat number!", nameof(num));
                 }
             }
         }
@@ -62,7 +62,7 @@ namespace DNP1.ViaCinema.Model.Util
             { 
                 if (obj == null)
                 { 
-                    throw new ArgumentNullException("Null value!", nameof(objects));
+                    throw new ArgumentNullException(nameof(obj), "Null value!");
                 }
             }
         }
@@ -76,7 +76,7 @@ namespace DNP1.ViaCinema.Model.Util
             { 
                 if (dec < decimal.Zero)
                 { 
-                    throw new ArgumentException("Can't withdraw an amount less than zero from bank account!", nameof(amounts));
+                    throw new ArgumentException("Can't withdraw an amount less than zero from bank account!", nameof(dec));
                 }
             }
         }

@@ -29,25 +29,20 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
         {
             using (var stmt = new NpgsqlCommand())
             {
-                // set connection
                 stmt.Connection = _con;
 
-                // set statement
                 stmt.CommandText =
                     "INSERT INTO via_cinema_schema.projections " +
                     "(movie_name, projection_start)" +
                     " VALUES (@movie_name, @projection_start) RETURNING id;";
 
-                // set statement parameters
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.MovieNameColumn,
                     projectedMovie.Name);
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.ProjectionStartColumn,
                     movieStartTime);
 
-                // execute statement and return generated ID
                 var projId = (int) stmt.ExecuteScalar();
 
-                // create new projection object
                 return new Projection(projId, projectedMovie, new List<Seat>(0), movieStartTime);
             }
         }
@@ -57,33 +52,25 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
         {
             using (var stmt = new NpgsqlCommand())
             {
-                // set connection
                 stmt.Connection = _con;
 
-                // set statement
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.projections" +
                                    " WHERE projections.id = @id;";
 
-                // set statement parameters
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.IdColumn, projectionId);
 
-                // get seats for this projection
                 List<Seat> seatAllocations = ReadSeatReservations(projectionId);
 
-                // execute statement and collect values
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
                 {
-                    // projection does not exist
                     if (!reader.Read())
                     {
                         return null;
                     }
 
-                    // get the movie object
                     var movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
                     Movie movie = _movieDao.Read(movieName);
 
-                    // get projection start
                     var projStartTime = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
 
                     return new Projection(projectionId, movie, seatAllocations, projStartTime);
@@ -96,28 +83,21 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
         {
             using (var stmt = new NpgsqlCommand())
             {
-                // output collection
                 var allProjections = new List<Projection>();
 
-                // set connection
                 stmt.Connection = _con;
 
-                // set statement
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.projections;";
 
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
                 {
-                    // collect values
                     while (reader.Read())
                     {
-                        // get projection projectionId
                         var projectionId = (int) reader[ProjectionEntityConstants.IdColumn];
 
-                        // get the movie name & movie object
                         var movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
                         Movie movie = _movieDao.Read(movieName);
 
-                        // get projection start
                         var projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
 
                         var projection = new Projection
@@ -131,7 +111,6 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
                     }
                 }
 
-                // read all projection seat resevations
                 foreach (Projection proj in allProjections)
                 { 
                     proj.Seats = ReadSeatReservations(proj.Id);
@@ -146,28 +125,21 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
         {
             using (var stmt = new NpgsqlCommand())
             {
-                // output collection
                 var allProjections = new List<Projection>();
 
-                // set connection
                 stmt.Connection = _con;
 
-                // set statement
                 stmt.CommandText = "SELECT * FROM via_cinema_schema.projections" +
                                    " WHERE projections.movie_name = @movie_name;";
 
-                // set parameters
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.MovieNameColumn, movie.Name);
 
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
                 {
-                    // collect values
                     while (reader.Read())
                     {
-                        // get projection projectionId
                         var projectionId = (int) reader[ProjectionEntityConstants.IdColumn];
 
-                        // get projection start
                         var projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
 
                         var projection = new Projection
@@ -181,7 +153,6 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
                     }
                 }
 
-                // read all projection seat reservations
                 foreach (Projection proj in allProjections)
                 { 
                     proj.Seats = ReadSeatReservations(proj.Id);
@@ -196,23 +167,19 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
         {
             using (var stmt = new NpgsqlCommand())
             {
-                // set connection
                 stmt.Connection = _con;
 
-                // set statement
                 stmt.CommandText = "UPDATE via_cinema_schema.projections " +
                                    "SET movie_name = @movie_name," +
                                    " projection_start = @projection_start " +
                                    "WHERE id = @id;";
 
-                // set parameters for proj update
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.MovieNameColumn,
                     updatedProj.ProjectedMovie.Name);
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.ProjectionStartColumn,
                     updatedProj.MovieStartTime);
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.IdColumn, updatedProj.Id);
 
-                // execute statement
                 return stmt.ExecuteNonQuery() != 0;
             }
         }
@@ -222,21 +189,17 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
         {
             using (var stmt = new NpgsqlCommand())
             {
-                // set connection
                 stmt.Connection = _con;
 
-                // set statement
                 stmt.CommandText = "DELETE FROM via_cinema_schema.seat_reservations " +
                                    "WHERE seat_reservations.projection_id = @projection_id" +
                                    " AND seat_reservations.email = @email" +
                                    " AND seat_reservations.seat_number = @seat_number;";
 
-                // set parameters for proj update
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.ProjectionIdColumn, projectionId);
                 stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, user.Email);
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.SeatNumberColumn, seatNumber);
 
-                // execute statement
                 return stmt.ExecuteNonQuery() != 0;
             }
         }
@@ -246,10 +209,8 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
         {
             using (var stmt = new NpgsqlCommand())
             {
-                // set connection
                 stmt.Connection = _con;
 
-                // set statement
                 stmt.CommandText =
                     "INSERT INTO via_cinema_schema.seat_reservations " +
                     "(projection_id, email, seat_number)" +
@@ -262,15 +223,12 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
 
                 foreach (Seat seat in proj.Seats)
                 {
-                    // set parameters
                     stmt.Parameters.AddWithValue(ProjectionEntityConstants.ProjectionIdColumn, proj.Id);
                     stmt.Parameters.AddWithValue(UserAccountEntityConstants.EmailColumn, seat.SeatOwner.Email);
                     stmt.Parameters.AddWithValue(ProjectionEntityConstants.SeatNumberColumn, seat.SeatNumber);
 
-                    // execute statement
                     stmt.ExecuteNonQuery();
 
-                    // clear parameters for next interation
                     stmt.Parameters.Clear();
                 }
 
@@ -285,10 +243,8 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
             {
                 var seatReservations = new List<Seat>(30);
 
-                // set connection
                 stmt.Connection = _con;
 
-                // set statement
                 stmt.CommandText =
                     "SELECT"
                     + " seat_reservations.seat_number,"
@@ -301,13 +257,10 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
                     "@id ORDER BY seat_reservations" +
                     ".seat_number ASC;";
 
-                // set parameters
                 stmt.Parameters.AddWithValue(ProjectionEntityConstants.IdColumn, projId);
 
-                // execute quary
                 using (NpgsqlDataReader reader = stmt.ExecuteReader())
                 {
-                    // collect values
                     while (reader.Read())
                     {
                         var seatNumber = (int) reader[ProjectionEntityConstants.SeatNumberColumn];

@@ -20,19 +20,15 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.Base
         public UserAccount CreateAccount(string userEmail, string userPassword, string firstName, string lastName,
             DateTime birthday)
         {
-            // validate input
             Validator.ValidateTextualInput(userEmail, firstName, lastName, userPassword);
 
-            // check if user already exists
             if (UserExists(userEmail))
             { 
                 throw new DuplicateKeyException(userEmail, $"User with account {userEmail} already exists!");
             }
 
-            // create a new account in the database
             UserAccount newAccount = _userAccountDao.Create(userEmail, userPassword, firstName, lastName, birthday);
 
-            // cache the new account
             _userAccountCache[newAccount.Email] = newAccount;
 
             return newAccount;
@@ -41,16 +37,13 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.Base
         /// <inheritdoc cref="IUserAccountBase.Login(string, string)"/>
         public bool Login(string userEmail, string userPassword)
         {
-            // validate input
             Validator.ValidateTextualInput(userEmail, userPassword);
 
-            // check if user exists
             if (!UserExists(userEmail))
             {
                 return false;
             }
 
-            // get the account 
             UserAccount userAccount = GetUserAccount(userEmail);
 
             if (userAccount == null)
@@ -58,7 +51,6 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.Base
                 return false;
             }
             
-            // verify the password
             bool loginSuccessful = string.Equals(userPassword, userAccount.UserPassword);
 
             return loginSuccessful;
@@ -70,19 +62,15 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.Base
             // validate input
             Validator.ValidateTextualInput(userEmail);
 
-            // account is not cached in the memory
             if (!_userAccountCache.ContainsKey(userEmail))
             {
-                // read it from the database
                 UserAccount userAccount = _userAccountDao.Read(userEmail);
 
-                // account does not exist
                 if (userAccount == null)
                 {
                     return null;
                 }
-
-                // cache it
+                
                 _userAccountCache[userAccount.Email] = userAccount;
             }
 
@@ -92,7 +80,6 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.Base
         /// <inheritdoc cref="IUserAccountBase.UserExists(string)"/>
         public bool UserExists(string userEmail)
         {
-            // user account is null, if it doesn't exist
             bool exists = GetUserAccount(userEmail) != null;
 
             return exists;

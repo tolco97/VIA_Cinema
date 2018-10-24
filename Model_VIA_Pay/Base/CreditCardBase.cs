@@ -5,7 +5,6 @@ namespace DNP1.ViaPay.Model.Base
 {
     public class CreditCardBase : ICreditCardBase
     {
-        // i am not caching here because security reasons
         private readonly ICreditCardDao _creditCardDao;
 
         public CreditCardBase(ICreditCardDao creditCardDao)
@@ -16,20 +15,19 @@ namespace DNP1.ViaPay.Model.Base
         /// <inheritdoc />
         public bool MakeTransaction(string creditCardNumber, string creditCardPin, decimal amountDkk)
         {
-            // validate input
             Validator.ValidateTextualInput(creditCardNumber, creditCardPin);
             Validator.ValidateMoneyAmountPositive(amountDkk);
 
-            // check if user has correct credit card details
-            if (!Authenticate(creditCardNumber, creditCardPin)) return false;
+            if (!Authenticate(creditCardNumber, creditCardPin))
+            {
+                return false;
+            }
 
-            // read credit card from DB
-            var creditCard = _creditCardDao.Read(creditCardNumber);
+            CreditCard creditCard = _creditCardDao.Read(creditCardNumber);
 
             Validator.ValidateObjectsNotNull(creditCard);
 
-            // attempt to pay 
-            var isSuccessful = Pay(creditCard, amountDkk);
+            bool isSuccessful = Pay(creditCard, amountDkk);
 
             return isSuccessful;
         }
@@ -43,10 +41,14 @@ namespace DNP1.ViaPay.Model.Base
         /// <returns> true, if the transaction is successful. Otherwise, false </returns>
         private bool Pay(CreditCard customerCard, decimal amountDkk)
         {
-            if (!customerCard.Withdraw(amountDkk)) return false; // card does not have sufficient funds
+            if (!customerCard.Withdraw(amountDkk))
+            {
+                return false;
+            }
 
-            _creditCardDao.UpdateBalance(customerCard); // card has sufficient funds
-            TransferToViaCinemaAccount(amountDkk); // transfer funds to VIA cinema credit card
+            _creditCardDao.UpdateBalance(customerCard);
+
+            TransferToViaCinemaAccount(amountDkk); 
 
             return true;
         }
@@ -60,15 +62,14 @@ namespace DNP1.ViaPay.Model.Base
         /// <returns> true, if authentication is successful. Otherwise, false </returns>
         private bool Authenticate(string creditCardNumber, string pin)
         {
-            // check if credit card exists
             if (!_creditCardDao.CreditCardExists(creditCardNumber))
+            { 
                 return false;
+            }
 
-            // read credit card from the database
-            var creditCard = _creditCardDao.Read(creditCardNumber);
+            CreditCard creditCard = _creditCardDao.Read(creditCardNumber);
 
-            // check if pins match
-            return pin.Equals(creditCard.Pin);
+            return string.Equals(pin, creditCard.Pin);
         }
 
         /// <summary>
@@ -77,13 +78,10 @@ namespace DNP1.ViaPay.Model.Base
         /// <param name="amount"> the amount of money </param>
         private void TransferToViaCinemaAccount(decimal amount)
         {
-            // get VIA Cinema's bank accoumt
-            var viaCinemaCreditCard = _creditCardDao.Read(CreditCardEntityConstants.ViaCinemaAccountNumber);
+            CreditCard viaCinemaCreditCard = _creditCardDao.Read(CreditCardEntityConstants.ViaCinemaAccountNumber);
 
-            // deposit to account
             viaCinemaCreditCard.Deposit(amount);
 
-            // update credit card account
             _creditCardDao.UpdateBalance(viaCinemaCreditCard);
         }
     }

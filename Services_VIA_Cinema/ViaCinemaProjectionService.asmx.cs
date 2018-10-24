@@ -40,10 +40,7 @@ namespace DNP1.ViaCinema.Services
             return projections;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        /// <inheritdoc cref="IProjectionBase.GetAllProjections()"/>
         [WebMethod]
         public List<Projection> GetAllProjections()
         {
@@ -70,7 +67,7 @@ namespace DNP1.ViaCinema.Services
             UserAccount userAccount = _userAccountBase.GetUserAccount(email);
 
             // parse string into int array
-            int[] seatNumberArray = Array.ConvertAll(seatNumbers.Split(new[] { ", " }, StringSplitOptions.None), int.Parse);
+            int[] seatNumberArray = Array.ConvertAll(seatNumbers.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries), int.Parse);
 
             // book seats
             bool isBookingSuccessful = _projectionBase.BookSeats(projection, userAccount, seatNumberArray);
