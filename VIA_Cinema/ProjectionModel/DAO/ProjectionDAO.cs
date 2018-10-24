@@ -20,8 +20,7 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
 
         private ProjectionDao()
         {
-            _con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
-                                        "Password=password;Database=via_cinema_system;");
+            _con = new NpgsqlConnection(ConnectionStringHelper.GetConnectionString());
             _con.Open();
         }
 
@@ -46,14 +45,14 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
                     movieStartTime);
 
                 // execute statement and return generated ID
-                int projId = (int) stmt.ExecuteScalar();
+                var projId = (int) stmt.ExecuteScalar();
 
                 // create new projection object
-                return new Projection(projId, projectedMovie, new List<Seat>(), movieStartTime);
+                return new Projection(projId, projectedMovie, new List<Seat>(0), movieStartTime);
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionDao.ReadProjection(int)"/>
         public Projection ReadProjection(int projectionId)
         {
             using (var stmt = new NpgsqlCommand())
@@ -81,18 +80,18 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
                     }
 
                     // get the movie object
-                    string movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
+                    var movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
                     Movie movie = _movieDao.Read(movieName);
 
                     // get projection start
-                    DateTime projStartTime = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
+                    var projStartTime = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
 
                     return new Projection(projectionId, movie, seatAllocations, projStartTime);
                 }
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionDao.ReadAllProjections()"/>
         public ICollection<Projection> ReadAllProjections()
         {
             using (var stmt = new NpgsqlCommand())
@@ -112,14 +111,14 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
                     while (reader.Read())
                     {
                         // get projection projectionId
-                        int projectionId = (int) reader[ProjectionEntityConstants.IdColumn];
+                        var projectionId = (int) reader[ProjectionEntityConstants.IdColumn];
 
                         // get the movie name & movie object
-                        string movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
+                        var movieName = (string) reader[ProjectionEntityConstants.MovieNameColumn];
                         Movie movie = _movieDao.Read(movieName);
 
                         // get projection start
-                        DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
+                        var projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
 
                         var projection = new Projection
                         {
@@ -142,7 +141,7 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionDao.ReadAllProjections(Movie)"/>
         public ICollection<Projection> ReadAllProjections(Movie movie)
         {
             using (var stmt = new NpgsqlCommand())
@@ -166,10 +165,10 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
                     while (reader.Read())
                     {
                         // get projection projectionId
-                        int projectionId = (int) reader[ProjectionEntityConstants.IdColumn];
+                        var projectionId = (int) reader[ProjectionEntityConstants.IdColumn];
 
                         // get projection start
-                        DateTime projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
+                        var projectionStart = (DateTime) reader[ProjectionEntityConstants.ProjectionStartColumn];
 
                         var projection = new Projection
                         {
@@ -192,7 +191,7 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionDao.UpdateProjection(Projection)"/>
         public bool UpdateProjection(Projection updatedProj)
         {
             using (var stmt = new NpgsqlCommand())
@@ -218,7 +217,7 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionDao.DeleteSeatReservation(int, UserAccount, int)"/>
         public bool DeleteSeatReservation(int projectionId, UserAccount user, int seatNumber)
         {
             using (var stmt = new NpgsqlCommand())
@@ -242,7 +241,7 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionDao.CreateSeatReservations(Projection)"/>
         public IList<Seat> CreateSeatReservations(Projection proj)
         {
             using (var stmt = new NpgsqlCommand())
@@ -279,7 +278,7 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionDao.ReadSeatReservations(int)"/>
         public List<Seat> ReadSeatReservations(int projId)
         {
             using (var stmt = new NpgsqlCommand())
@@ -311,8 +310,8 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
                     // collect values
                     while (reader.Read())
                     {
-                        int seatNumber = (int) reader[ProjectionEntityConstants.SeatNumberColumn];
-                        string email = (string) reader[UserAccountEntityConstants.EmailColumn];
+                        var seatNumber = (int) reader[ProjectionEntityConstants.SeatNumberColumn];
+                        var email = (string) reader[UserAccountEntityConstants.EmailColumn];
                         UserAccount seatOwner = _userAccountDao.Read(email);
 
                         seatReservations.Add(new Seat(seatNumber, seatOwner));

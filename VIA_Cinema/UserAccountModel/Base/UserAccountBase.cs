@@ -13,10 +13,10 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.Base
 
         public UserAccountBase(IUserAccountDao userAccountDao)
         {
-            _userAccountDao = userAccountDao;
+            _userAccountDao = userAccountDao ?? throw new ArgumentNullException(nameof(userAccountDao), "userAccountDao does not exist");
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IUserAccountBase.CreateAccount(string, string, string, string, DateTime)"/>
         public UserAccount CreateAccount(string userEmail, string userPassword, string firstName, string lastName,
             DateTime birthday)
         {
@@ -26,7 +26,7 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.Base
             // check if user already exists
             if (UserExists(userEmail))
             { 
-                throw new DuplicateKeyException($"User with account {userEmail} already exists!");
+                throw new DuplicateKeyException(userEmail, $"User with account {userEmail} already exists!");
             }
 
             // create a new account in the database
@@ -38,7 +38,7 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.Base
             return newAccount;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IUserAccountBase.Login(string, string)"/>
         public bool Login(string userEmail, string userPassword)
         {
             // validate input
@@ -53,13 +53,18 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.Base
             // get the account 
             UserAccount userAccount = GetUserAccount(userEmail);
 
+            if (userAccount == null)
+            {
+                return false;
+            }
+            
             // verify the password
-            bool loginSuccessful = userPassword.Equals(userAccount.UserPassword);
+            bool loginSuccessful = string.Equals(userPassword, userAccount.UserPassword);
 
             return loginSuccessful;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IUserAccountBase.GetUserAccount(string)"/>
         public UserAccount GetUserAccount(string userEmail)
         {
             // validate input
@@ -84,7 +89,7 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.Base
             return _userAccountCache[userEmail];
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IUserAccountBase.UserExists(string)"/>
         public bool UserExists(string userEmail)
         {
             // user account is null, if it doesn't exist

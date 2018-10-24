@@ -11,12 +11,11 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.DAO
 
         private UserAccountDao()
         {
-            _con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
-                                        "Password=password;Database=via_cinema_system;");
+            _con = new NpgsqlConnection(ConnectionStringHelper.GetConnectionString());
             _con.Open();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IUserAccountDao.Create(string, string, string, string, DateTime)"/>
         public UserAccount Create(string userEmail, string userPassword, string firstName, string lastName,
             DateTime birthday)
         {
@@ -44,7 +43,7 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IUserAccountDao.Read(string)"/>
         public UserAccount Read(string userEmail)
         {
             using (var stmt = new NpgsqlCommand())
@@ -76,7 +75,7 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IUserAccountDao.Update(UserAccount)"/>
         public bool Update(UserAccount account)
         {
             using (var stmt = new NpgsqlCommand())
@@ -101,7 +100,7 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IUserAccountDao.Delete(UserAccount)"/>
         public bool Delete(UserAccount account)
         {
             using (var stmt = new NpgsqlCommand())
@@ -126,7 +125,7 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.DAO
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IDisposable.Dispose"/>
         public void Dispose()
         {
             _con?.Dispose();

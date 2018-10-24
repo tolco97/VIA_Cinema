@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Linq;
+using System.Linq;
 using DNP1.ViaCinema.Model.MovieModel.DAO;
 using DNP1.ViaCinema.Model.Util;
 
@@ -74,7 +75,8 @@ namespace DNP1.ViaCinema.Model.MovieModel.Base
                     _movieCache[movie.Name] = movie;
                 }
             }
-            return new List<Movie>(_movieCache.Values);
+
+            return _movieCache.Values.ToList();
         }
 
         /// <inheritdoc cref="IMovieBase.MovieExists(string)"/>

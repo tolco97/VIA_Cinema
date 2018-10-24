@@ -11,8 +11,7 @@ namespace DNP1.ViaCinema.Model.MovieModel.DAO
 
         private MovieDao()
         {
-            _con = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
-                                        "Password=password;Database=via_cinema_system;");
+            _con = new NpgsqlConnection(ConnectionStringHelper.GetConnectionString());
             _con.Open();
         }
 

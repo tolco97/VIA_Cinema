@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DNP1.ViaCinema.Model.MovieModel;
 using DNP1.ViaCinema.Model.ProjectionModel.DAO;
 using DNP1.ViaCinema.Model.UserAccountModel;
@@ -17,7 +18,7 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.Base
             _projectionDao = projectionDao;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionBase.AddProjection(Movie, DateTime)"/>
         public Projection AddProjection(Movie movie, DateTime movieStartTime)
         {
             // validate input
@@ -32,7 +33,7 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.Base
             return newProjection;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionBase.BookSeats(Projection, UserAccount, int[])"/>
         public bool BookSeats(Projection proj, UserAccount seatOwner, params int[] seatNumbers)
         {
             // validate input
@@ -59,8 +60,8 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.Base
 
             return true;
         }
-
-        /// <inheritdoc />
+        
+        /// <inheritdoc cref="IProjectionBase.GetProjection(int)"/>
         public Projection GetProjection(int projectionId)
         {
             // if projection is not cached
@@ -82,7 +83,7 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.Base
             return _projectionCache[projectionId];
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionBase.GetAllProjections()"/>
         public List<Projection> GetAllProjections()
         {
             // read all projections
@@ -97,10 +98,10 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.Base
                 }
             }
 
-            return new List<Projection>(_projectionCache.Values);
+            return _projectionCache.Values.ToList();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IProjectionBase.GetAllProjections(Movie)"/>
         public List<Projection> GetAllProjections(Movie movie)
         {
             // validate input
