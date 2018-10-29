@@ -2,6 +2,9 @@
 
 namespace DNP1.ViaCinema.Model.MovieModel.Base
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IMovieBase
     {
         /// <summary>

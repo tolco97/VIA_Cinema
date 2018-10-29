@@ -8,11 +8,18 @@ using DNP1.ViaCinema.Model.Util;
 
 namespace DNP1.ViaCinema.Model.ProjectionModel.Base
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ProjectionBase : IProjectionBase
     {
         private readonly IDictionary<int, Projection> _projectionCache = new Dictionary<int, Projection>();
         private readonly IProjectionDao _projectionDao;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="projectionDao"></param>
         public ProjectionBase(IProjectionDao projectionDao)
         {
             _projectionDao = projectionDao;

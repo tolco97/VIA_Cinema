@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
+namespace DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService {
     using System.Runtime.Serialization;
     using System;
     
@@ -25,10 +25,10 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ViaCinema.Services.Proxies.ViaCinemaProjectionService.Movie ProjectedMovieField;
+        private DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Movie ProjectedMovieField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ViaCinema.Services.Proxies.ViaCinemaProjectionService.Seat[] SeatsField;
+        private DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Seat[] SeatsField;
         
         private System.DateTime MovieStartTimeField;
         
@@ -56,7 +56,7 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.Movie ProjectedMovie {
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Movie ProjectedMovie {
             get {
                 return this.ProjectedMovieField;
             }
@@ -69,7 +69,7 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.Seat[] Seats {
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Seat[] Seats {
             get {
                 return this.SeatsField;
             }
@@ -192,7 +192,7 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
         private int SeatNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ViaCinema.Services.Proxies.ViaCinemaProjectionService.UserAccount SeatOwnerField;
+        private DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.UserAccount SeatOwnerField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -218,7 +218,7 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.UserAccount SeatOwner {
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.UserAccount SeatOwner {
             get {
                 return this.SeatOwnerField;
             }
@@ -354,24 +354,24 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
         
         // CODEGEN: Generating message contract since element name movieName from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetProjections", ReplyAction="*")]
-        ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse GetProjections(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest request);
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse GetProjections(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetProjections", ReplyAction="*")]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse> GetProjectionsAsync(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest request);
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse> GetProjectionsAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest request);
         
         // CODEGEN: Generating message contract since element name GetAllProjectionsResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllProjections", ReplyAction="*")]
-        ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse GetAllProjections(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest request);
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse GetAllProjections(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllProjections", ReplyAction="*")]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse> GetAllProjectionsAsync(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest request);
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse> GetAllProjectionsAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest request);
         
         // CODEGEN: Generating message contract since element name email from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BookSeat", ReplyAction="*")]
-        ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse BookSeat(ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest request);
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse BookSeat(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BookSeat", ReplyAction="*")]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse> BookSeatAsync(ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest request);
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse> BookSeatAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -381,12 +381,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
     public partial class GetProjectionsRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="GetProjections", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequestBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequestBody Body;
         
         public GetProjectionsRequest() {
         }
         
-        public GetProjectionsRequest(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequestBody Body) {
+        public GetProjectionsRequest(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -415,12 +415,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
     public partial class GetProjectionsResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="GetProjectionsResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponseBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponseBody Body;
         
         public GetProjectionsResponse() {
         }
         
-        public GetProjectionsResponse(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponseBody Body) {
+        public GetProjectionsResponse(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -432,12 +432,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
     public partial class GetProjectionsResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetProjectionsResult;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetProjectionsResult;
         
         public GetProjectionsResponseBody() {
         }
         
-        public GetProjectionsResponseBody(ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetProjectionsResult) {
+        public GetProjectionsResponseBody(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetProjectionsResult) {
             this.GetProjectionsResult = GetProjectionsResult;
         }
     }
@@ -449,12 +449,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
     public partial class GetAllProjectionsRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllProjections", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequestBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequestBody Body;
         
         public GetAllProjectionsRequest() {
         }
         
-        public GetAllProjectionsRequest(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequestBody Body) {
+        public GetAllProjectionsRequest(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -476,12 +476,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
     public partial class GetAllProjectionsResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllProjectionsResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponseBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponseBody Body;
         
         public GetAllProjectionsResponse() {
         }
         
-        public GetAllProjectionsResponse(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponseBody Body) {
+        public GetAllProjectionsResponse(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -493,12 +493,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
     public partial class GetAllProjectionsResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetAllProjectionsResult;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetAllProjectionsResult;
         
         public GetAllProjectionsResponseBody() {
         }
         
-        public GetAllProjectionsResponseBody(ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetAllProjectionsResult) {
+        public GetAllProjectionsResponseBody(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetAllProjectionsResult) {
             this.GetAllProjectionsResult = GetAllProjectionsResult;
         }
     }
@@ -510,12 +510,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
     public partial class BookSeatRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="BookSeat", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequestBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequestBody Body;
         
         public BookSeatRequest() {
         }
         
-        public BookSeatRequest(ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequestBody Body) {
+        public BookSeatRequest(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -552,12 +552,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
     public partial class BookSeatResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="BookSeatResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponseBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponseBody Body;
         
         public BookSeatResponse() {
         }
         
-        public BookSeatResponse(ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponseBody Body) {
+        public BookSeatResponse(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -580,12 +580,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ViaCinemaProjectionServiceSoapChannel : ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap, System.ServiceModel.IClientChannel {
+    public interface ViaCinemaProjectionServiceSoapChannel : DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ViaCinemaProjectionServiceSoapClient : System.ServiceModel.ClientBase<ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap>, ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap {
+    public partial class ViaCinemaProjectionServiceSoapClient : System.ServiceModel.ClientBase<DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap>, DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap {
         
         public ViaCinemaProjectionServiceSoapClient() {
         }
@@ -607,80 +607,80 @@ namespace ViaCinema.Services.Proxies.ViaCinemaProjectionService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.GetProjections(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest request) {
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.GetProjections(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest request) {
             return base.Channel.GetProjections(request);
         }
         
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetProjections(string movieName) {
-            ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequestBody();
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetProjections(string movieName) {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequestBody();
             inValue.Body.movieName = movieName;
-            ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse retVal = ((ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).GetProjections(inValue);
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse retVal = ((DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).GetProjections(inValue);
             return retVal.Body.GetProjectionsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse> ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.GetProjectionsAsync(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest request) {
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse> DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.GetProjectionsAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest request) {
             return base.Channel.GetProjectionsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse> GetProjectionsAsync(string movieName) {
-            ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequestBody();
+        public System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse> GetProjectionsAsync(string movieName) {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsRequestBody();
             inValue.Body.movieName = movieName;
-            return ((ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).GetProjectionsAsync(inValue);
+            return ((DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).GetProjectionsAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.GetAllProjections(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest request) {
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.GetAllProjections(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest request) {
             return base.Channel.GetAllProjections(request);
         }
         
-        public ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetAllProjections() {
-            ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequestBody();
-            ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse retVal = ((ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).GetAllProjections(inValue);
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection[] GetAllProjections() {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequestBody();
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse retVal = ((DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).GetAllProjections(inValue);
             return retVal.Body.GetAllProjectionsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse> ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.GetAllProjectionsAsync(ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest request) {
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse> DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.GetAllProjectionsAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest request) {
             return base.Channel.GetAllProjectionsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse> GetAllProjectionsAsync() {
-            ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequestBody();
-            return ((ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).GetAllProjectionsAsync(inValue);
+        public System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse> GetAllProjectionsAsync() {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsRequestBody();
+            return ((DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).GetAllProjectionsAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.BookSeat(ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest request) {
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.BookSeat(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest request) {
             return base.Channel.BookSeat(request);
         }
         
         public bool BookSeat(int projectionId, string email, string seatNumbers) {
-            ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequestBody();
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequestBody();
             inValue.Body.projectionId = projectionId;
             inValue.Body.email = email;
             inValue.Body.seatNumbers = seatNumbers;
-            ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse retVal = ((ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).BookSeat(inValue);
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse retVal = ((DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).BookSeat(inValue);
             return retVal.Body.BookSeatResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse> ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.BookSeatAsync(ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest request) {
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse> DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap.BookSeatAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest request) {
             return base.Channel.BookSeatAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse> BookSeatAsync(int projectionId, string email, string seatNumbers) {
-            ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequestBody();
+        public System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse> BookSeatAsync(int projectionId, string email, string seatNumbers) {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatRequestBody();
             inValue.Body.projectionId = projectionId;
             inValue.Body.email = email;
             inValue.Body.seatNumbers = seatNumbers;
-            return ((ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).BookSeatAsync(inValue);
+            return ((DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.ViaCinemaProjectionServiceSoap)(this)).BookSeatAsync(inValue);
         }
     }
 }

@@ -2,6 +2,9 @@
 
 namespace DNP1.ViaCinema.Model.UserAccountModel.DAO
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IUserAccountDao : IDisposable
     {
         /// <summary>

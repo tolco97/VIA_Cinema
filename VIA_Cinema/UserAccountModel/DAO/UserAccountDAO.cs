@@ -3,6 +3,9 @@ using Npgsql;
 
 namespace DNP1.ViaCinema.Model.UserAccountModel.DAO
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UserAccountDao : IUserAccountDao
     {
         private static IUserAccountDao _instance;
@@ -11,7 +14,7 @@ namespace DNP1.ViaCinema.Model.UserAccountModel.DAO
 
         private UserAccountDao()
         {
-            _con = new NpgsqlConnection(ConnectionStringHelper.GetConnectionString());
+            _con = new NpgsqlConnection("Server=localhost;User Id=postgres;Password=password;Database=via_cinema_system;");
             _con.Open();
         }
 

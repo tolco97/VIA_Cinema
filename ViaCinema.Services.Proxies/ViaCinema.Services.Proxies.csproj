@@ -7,8 +7,8 @@
     <ProjectGuid>{D1312C68-E29C-455D-B81C-BF5A9B1B695B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ViaCinema.Services.Proxies</RootNamespace>
-    <AssemblyName>ViaCinema.Services.Proxies</AssemblyName>
+    <RootNamespace>DNP1.ViaCinema.Services.Proxies</RootNamespace>
+    <AssemblyName>DNP1.ViaCinema.Services.Proxies</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -71,40 +71,40 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\ViaCinemaMovieService\ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse.datasource">
+    <None Include="Connected Services\ViaCinemaMovieService\DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ViaCinemaMovieService\ViaCinema.Services.Proxies.ViaCinemaMovieService.Movie.datasource">
+    <None Include="Connected Services\ViaCinemaMovieService\DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.Movie.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ViaCinemaMovieService\ViaCinemaMovieService.wsdl" />
-    <None Include="Connected Services\ViaCinemaPaymentService\ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse.datasource">
+    <None Include="Connected Services\ViaCinemaPaymentService\DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ViaCinemaPaymentService\ViaCinemaPaymentService.wsdl" />
-    <None Include="Connected Services\ViaCinemaProjectionService\ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse.datasource">
+    <None Include="Connected Services\ViaCinemaProjectionService\DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.BookSeatResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ViaCinemaProjectionService\ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse.datasource">
+    <None Include="Connected Services\ViaCinemaProjectionService\DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetAllProjectionsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ViaCinemaProjectionService\ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse.datasource">
+    <None Include="Connected Services\ViaCinemaProjectionService\DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.GetProjectionsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ViaCinemaProjectionService\ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection.datasource">
+    <None Include="Connected Services\ViaCinemaProjectionService\DNP1.ViaCinema.Services.Proxies.ViaCinemaProjectionService.Projection.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ViaCinemaProjectionService\ViaCinemaProjectionService.wsdl" />
-    <None Include="Connected Services\ViaCinemaUserService\ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse.datasource">
+    <None Include="Connected Services\ViaCinemaUserService\DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ViaCinemaUserService\ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse.datasource">
+    <None Include="Connected Services\ViaCinemaUserService\DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ViaCinemaUserService\ViaCinema.Services.Proxies.ViaCinemaUserService.UserAccount.datasource">
+    <None Include="Connected Services\ViaCinemaUserService\DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserAccount.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ViaCinemaUserService\ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse.datasource">
+    <None Include="Connected Services\ViaCinemaUserService\DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ViaCinemaUserService\ViaCinemaUserService.wsdl" />

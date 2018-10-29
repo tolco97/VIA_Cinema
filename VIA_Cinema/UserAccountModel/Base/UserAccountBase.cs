@@ -6,11 +6,18 @@ using DNP1.ViaCinema.Model.Util;
 
 namespace DNP1.ViaCinema.Model.UserAccountModel.Base
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UserAccountBase : IUserAccountBase
     {
         private readonly IDictionary<string, UserAccount> _userAccountCache = new Dictionary<string, UserAccount>();
         private readonly IUserAccountDao _userAccountDao;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userAccountDao"></param>
         public UserAccountBase(IUserAccountDao userAccountDao)
         {
             _userAccountDao = userAccountDao ?? throw new ArgumentNullException(nameof(userAccountDao), "userAccountDao does not exist");

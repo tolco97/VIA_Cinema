@@ -4,6 +4,9 @@ using Npgsql;
 
 namespace DNP1.ViaCinema.Model.MovieModel.DAO
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MovieDao : IMovieDao
     {
         private static IMovieDao _instance;
@@ -11,7 +14,7 @@ namespace DNP1.ViaCinema.Model.MovieModel.DAO
 
         private MovieDao()
         {
-            _con = new NpgsqlConnection(ConnectionStringHelper.GetConnectionString());
+            _con = new NpgsqlConnection("Server=localhost;User Id=postgres;Password=password;Database=via_cinema_system;");
             _con.Open();
         }
 

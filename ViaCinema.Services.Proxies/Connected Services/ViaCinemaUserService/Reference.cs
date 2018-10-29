@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
+namespace DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService {
     using System.Runtime.Serialization;
     using System;
     
@@ -127,24 +127,24 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
         
         // CODEGEN: Generating message contract since element name email from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Login", ReplyAction="*")]
-        ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse Login(ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest request);
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse Login(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Login", ReplyAction="*")]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse> LoginAsync(ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest request);
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse> LoginAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest request);
         
         // CODEGEN: Generating message contract since element name email from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateAccount", ReplyAction="*")]
-        ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse CreateAccount(ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest request);
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse CreateAccount(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateAccount", ReplyAction="*")]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse> CreateAccountAsync(ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest request);
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse> CreateAccountAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest request);
         
         // CODEGEN: Generating message contract since element name userEmail from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UserExists", ReplyAction="*")]
-        ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse UserExists(ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest request);
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse UserExists(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UserExists", ReplyAction="*")]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse> UserExistsAsync(ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest request);
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse> UserExistsAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -154,12 +154,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
     public partial class LoginRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="Login", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequestBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequestBody Body;
         
         public LoginRequest() {
         }
         
-        public LoginRequest(ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequestBody Body) {
+        public LoginRequest(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -192,12 +192,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
     public partial class LoginResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="LoginResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponseBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponseBody Body;
         
         public LoginResponse() {
         }
         
-        public LoginResponse(ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponseBody Body) {
+        public LoginResponse(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -226,12 +226,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
     public partial class CreateAccountRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateAccount", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequestBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequestBody Body;
         
         public CreateAccountRequest() {
         }
         
-        public CreateAccountRequest(ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequestBody Body) {
+        public CreateAccountRequest(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -284,12 +284,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
     public partial class CreateAccountResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateAccountResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponseBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponseBody Body;
         
         public CreateAccountResponse() {
         }
         
-        public CreateAccountResponse(ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponseBody Body) {
+        public CreateAccountResponse(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -301,12 +301,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
     public partial class CreateAccountResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaUserService.UserAccount CreateAccountResult;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserAccount CreateAccountResult;
         
         public CreateAccountResponseBody() {
         }
         
-        public CreateAccountResponseBody(ViaCinema.Services.Proxies.ViaCinemaUserService.UserAccount CreateAccountResult) {
+        public CreateAccountResponseBody(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserAccount CreateAccountResult) {
             this.CreateAccountResult = CreateAccountResult;
         }
     }
@@ -318,12 +318,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
     public partial class UserExistsRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="UserExists", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequestBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequestBody Body;
         
         public UserExistsRequest() {
         }
         
-        public UserExistsRequest(ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequestBody Body) {
+        public UserExistsRequest(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -352,12 +352,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
     public partial class UserExistsResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="UserExistsResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponseBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponseBody Body;
         
         public UserExistsResponse() {
         }
         
-        public UserExistsResponse(ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponseBody Body) {
+        public UserExistsResponse(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -380,12 +380,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ViaCinemaUserServiceSoapChannel : ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap, System.ServiceModel.IClientChannel {
+    public interface ViaCinemaUserServiceSoapChannel : DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ViaCinemaUserServiceSoapClient : System.ServiceModel.ClientBase<ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap>, ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap {
+    public partial class ViaCinemaUserServiceSoapClient : System.ServiceModel.ClientBase<DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap>, DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap {
         
         public ViaCinemaUserServiceSoapClient() {
         }
@@ -407,40 +407,40 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.Login(ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest request) {
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.Login(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest request) {
             return base.Channel.Login(request);
         }
         
         public bool Login(string email, string userPassword) {
-            ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequestBody();
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequestBody();
             inValue.Body.email = email;
             inValue.Body.userPassword = userPassword;
-            ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse retVal = ((ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).Login(inValue);
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse retVal = ((DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).Login(inValue);
             return retVal.Body.LoginResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse> ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.LoginAsync(ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest request) {
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse> DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.LoginAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest request) {
             return base.Channel.LoginAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse> LoginAsync(string email, string userPassword) {
-            ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequestBody();
+        public System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginResponse> LoginAsync(string email, string userPassword) {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.LoginRequestBody();
             inValue.Body.email = email;
             inValue.Body.userPassword = userPassword;
-            return ((ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).LoginAsync(inValue);
+            return ((DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).LoginAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.CreateAccount(ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest request) {
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.CreateAccount(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest request) {
             return base.Channel.CreateAccount(request);
         }
         
-        public ViaCinema.Services.Proxies.ViaCinemaUserService.UserAccount CreateAccount(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth) {
-            ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequestBody();
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserAccount CreateAccount(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth) {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequestBody();
             inValue.Body.email = email;
             inValue.Body.userPassword = userPassword;
             inValue.Body.firstName = firstName;
@@ -448,18 +448,18 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
             inValue.Body.dayOfBirth = dayOfBirth;
             inValue.Body.monthOfBirth = monthOfBirth;
             inValue.Body.yearOfBirth = yearOfBirth;
-            ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse retVal = ((ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).CreateAccount(inValue);
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse retVal = ((DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).CreateAccount(inValue);
             return retVal.Body.CreateAccountResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse> ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.CreateAccountAsync(ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest request) {
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse> DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.CreateAccountAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest request) {
             return base.Channel.CreateAccountAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse> CreateAccountAsync(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth) {
-            ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequestBody();
+        public System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountResponse> CreateAccountAsync(string email, string userPassword, string firstName, string lastName, int dayOfBirth, int monthOfBirth, int yearOfBirth) {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.CreateAccountRequestBody();
             inValue.Body.email = email;
             inValue.Body.userPassword = userPassword;
             inValue.Body.firstName = firstName;
@@ -467,32 +467,32 @@ namespace ViaCinema.Services.Proxies.ViaCinemaUserService {
             inValue.Body.dayOfBirth = dayOfBirth;
             inValue.Body.monthOfBirth = monthOfBirth;
             inValue.Body.yearOfBirth = yearOfBirth;
-            return ((ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).CreateAccountAsync(inValue);
+            return ((DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).CreateAccountAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.UserExists(ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest request) {
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.UserExists(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest request) {
             return base.Channel.UserExists(request);
         }
         
         public bool UserExists(string userEmail) {
-            ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequestBody();
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequestBody();
             inValue.Body.userEmail = userEmail;
-            ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse retVal = ((ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).UserExists(inValue);
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse retVal = ((DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).UserExists(inValue);
             return retVal.Body.UserExistsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse> ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.UserExistsAsync(ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest request) {
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse> DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap.UserExistsAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest request) {
             return base.Channel.UserExistsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse> UserExistsAsync(string userEmail) {
-            ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequestBody();
+        public System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsResponse> UserExistsAsync(string userEmail) {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.UserExistsRequestBody();
             inValue.Body.userEmail = userEmail;
-            return ((ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).UserExistsAsync(inValue);
+            return ((DNP1.ViaCinema.Services.Proxies.ViaCinemaUserService.ViaCinemaUserServiceSoap)(this)).UserExistsAsync(inValue);
         }
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace DNP1.ViaCinema.Model.MovieModel.DAO
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IMovieDao : IDisposable
     {
         /// <summary>
@@ -30,9 +33,9 @@ namespace DNP1.ViaCinema.Model.MovieModel.DAO
         /// <summary>
         ///     Updates a movie entry in the database, with the data from the movie passed as a parameter
         /// </summary>
-        /// <param name="updtMovie"> the updated movie object </param>
+        /// <param name="updatedMovie"> the updated movie object </param>
         /// <returns> true, if the update operation has affected at least 1 database row. Otherwise, false </returns>
-        bool Update(Movie updtMovie);
+        bool Update(Movie updatedMovie);
 
         /// <summary>
         ///     Deletes a movie entry from the database that matches the properties of the movie object passed as a parameter

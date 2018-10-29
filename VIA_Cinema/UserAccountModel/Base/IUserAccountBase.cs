@@ -2,6 +2,9 @@
 
 namespace DNP1.ViaCinema.Model.UserAccountModel.Base
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IUserAccountBase
     {
         /// <summary>

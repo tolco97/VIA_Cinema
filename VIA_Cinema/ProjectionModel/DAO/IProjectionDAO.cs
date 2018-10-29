@@ -5,6 +5,9 @@ using DNP1.ViaCinema.Model.UserAccountModel;
 
 namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IProjectionDao : IDisposable
     {
         /// <summary>

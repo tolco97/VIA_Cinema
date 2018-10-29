@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ViaCinema.Services.Proxies.ViaCinemaPaymentService {
+namespace DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -17,10 +17,10 @@ namespace ViaCinema.Services.Proxies.ViaCinemaPaymentService {
         
         // CODEGEN: Generating message contract since element name creditCardNumber from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MakeTransaction", ReplyAction="*")]
-        ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse MakeTransaction(ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest request);
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse MakeTransaction(DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MakeTransaction", ReplyAction="*")]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse> MakeTransactionAsync(ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest request);
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse> MakeTransactionAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -30,12 +30,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaPaymentService {
     public partial class MakeTransactionRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="MakeTransaction", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequestBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequestBody Body;
         
         public MakeTransactionRequest() {
         }
         
-        public MakeTransactionRequest(ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequestBody Body) {
+        public MakeTransactionRequest(DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -72,12 +72,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaPaymentService {
     public partial class MakeTransactionResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="MakeTransactionResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponseBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponseBody Body;
         
         public MakeTransactionResponse() {
         }
         
-        public MakeTransactionResponse(ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponseBody Body) {
+        public MakeTransactionResponse(DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -100,12 +100,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaPaymentService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ViaCinemaPaymentServiceSoapChannel : ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap, System.ServiceModel.IClientChannel {
+    public interface ViaCinemaPaymentServiceSoapChannel : DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ViaCinemaPaymentServiceSoapClient : System.ServiceModel.ClientBase<ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap>, ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap {
+    public partial class ViaCinemaPaymentServiceSoapClient : System.ServiceModel.ClientBase<DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap>, DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap {
         
         public ViaCinemaPaymentServiceSoapClient() {
         }
@@ -127,32 +127,32 @@ namespace ViaCinema.Services.Proxies.ViaCinemaPaymentService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap.MakeTransaction(ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest request) {
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap.MakeTransaction(DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest request) {
             return base.Channel.MakeTransaction(request);
         }
         
         public bool MakeTransaction(string creditCardNumber, string pin, decimal amount) {
-            ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequestBody();
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequestBody();
             inValue.Body.creditCardNumber = creditCardNumber;
             inValue.Body.pin = pin;
             inValue.Body.amount = amount;
-            ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse retVal = ((ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap)(this)).MakeTransaction(inValue);
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse retVal = ((DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap)(this)).MakeTransaction(inValue);
             return retVal.Body.MakeTransactionResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse> ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap.MakeTransactionAsync(ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest request) {
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse> DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap.MakeTransactionAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest request) {
             return base.Channel.MakeTransactionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse> MakeTransactionAsync(string creditCardNumber, string pin, decimal amount) {
-            ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequestBody();
+        public System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionResponse> MakeTransactionAsync(string creditCardNumber, string pin, decimal amount) {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.MakeTransactionRequestBody();
             inValue.Body.creditCardNumber = creditCardNumber;
             inValue.Body.pin = pin;
             inValue.Body.amount = amount;
-            return ((ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap)(this)).MakeTransactionAsync(inValue);
+            return ((DNP1.ViaCinema.Services.Proxies.ViaCinemaPaymentService.ViaCinemaPaymentServiceSoap)(this)).MakeTransactionAsync(inValue);
         }
     }
 }

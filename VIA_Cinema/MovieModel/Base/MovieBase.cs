@@ -6,11 +6,18 @@ using DNP1.ViaCinema.Model.Util;
 
 namespace DNP1.ViaCinema.Model.MovieModel.Base
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MovieBase : IMovieBase
     {
         private readonly IDictionary<string, Movie> _movieCache = new Dictionary<string, Movie>();
         private readonly IMovieDao _movieDao;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="movieDao"></param>
         public MovieBase(IMovieDao movieDao)
         {
             _movieDao = movieDao;

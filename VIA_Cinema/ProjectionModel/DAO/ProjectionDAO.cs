@@ -8,6 +8,9 @@ using Npgsql;
 
 namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ProjectionDao : IProjectionDao
     {
         private static IProjectionDao _instance;
@@ -20,7 +23,7 @@ namespace DNP1.ViaCinema.Model.ProjectionModel.DAO
 
         private ProjectionDao()
         {
-            _con = new NpgsqlConnection(ConnectionStringHelper.GetConnectionString());
+            _con = new NpgsqlConnection("Server=localhost;User Id=postgres;Password=password;Database=via_cinema_system;");
             _con.Open();
         }
 

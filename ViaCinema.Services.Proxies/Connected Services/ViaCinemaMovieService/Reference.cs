@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ViaCinema.Services.Proxies.ViaCinemaMovieService {
+namespace DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService {
     using System.Runtime.Serialization;
     using System;
     
@@ -95,10 +95,10 @@ namespace ViaCinema.Services.Proxies.ViaCinemaMovieService {
         
         // CODEGEN: Generating message contract since element name GetAllMoviesResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllMovies", ReplyAction="*")]
-        ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse GetAllMovies(ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest request);
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse GetAllMovies(DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllMovies", ReplyAction="*")]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse> GetAllMoviesAsync(ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest request);
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse> GetAllMoviesAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -108,12 +108,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaMovieService {
     public partial class GetAllMoviesRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllMovies", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequestBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequestBody Body;
         
         public GetAllMoviesRequest() {
         }
         
-        public GetAllMoviesRequest(ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequestBody Body) {
+        public GetAllMoviesRequest(DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -135,12 +135,12 @@ namespace ViaCinema.Services.Proxies.ViaCinemaMovieService {
     public partial class GetAllMoviesResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllMoviesResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponseBody Body;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponseBody Body;
         
         public GetAllMoviesResponse() {
         }
         
-        public GetAllMoviesResponse(ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponseBody Body) {
+        public GetAllMoviesResponse(DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -152,23 +152,23 @@ namespace ViaCinema.Services.Proxies.ViaCinemaMovieService {
     public partial class GetAllMoviesResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public ViaCinema.Services.Proxies.ViaCinemaMovieService.Movie[] GetAllMoviesResult;
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.Movie[] GetAllMoviesResult;
         
         public GetAllMoviesResponseBody() {
         }
         
-        public GetAllMoviesResponseBody(ViaCinema.Services.Proxies.ViaCinemaMovieService.Movie[] GetAllMoviesResult) {
+        public GetAllMoviesResponseBody(DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.Movie[] GetAllMoviesResult) {
             this.GetAllMoviesResult = GetAllMoviesResult;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ViaCinemaMovieServiceSoapChannel : ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap, System.ServiceModel.IClientChannel {
+    public interface ViaCinemaMovieServiceSoapChannel : DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ViaCinemaMovieServiceSoapClient : System.ServiceModel.ClientBase<ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap>, ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap {
+    public partial class ViaCinemaMovieServiceSoapClient : System.ServiceModel.ClientBase<DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap>, DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap {
         
         public ViaCinemaMovieServiceSoapClient() {
         }
@@ -190,26 +190,26 @@ namespace ViaCinema.Services.Proxies.ViaCinemaMovieService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap.GetAllMovies(ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest request) {
+        DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap.GetAllMovies(DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest request) {
             return base.Channel.GetAllMovies(request);
         }
         
-        public ViaCinema.Services.Proxies.ViaCinemaMovieService.Movie[] GetAllMovies() {
-            ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequestBody();
-            ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse retVal = ((ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap)(this)).GetAllMovies(inValue);
+        public DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.Movie[] GetAllMovies() {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequestBody();
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse retVal = ((DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap)(this)).GetAllMovies(inValue);
             return retVal.Body.GetAllMoviesResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse> ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap.GetAllMoviesAsync(ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest request) {
+        System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse> DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap.GetAllMoviesAsync(DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest request) {
             return base.Channel.GetAllMoviesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse> GetAllMoviesAsync() {
-            ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest inValue = new ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest();
-            inValue.Body = new ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequestBody();
-            return ((ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap)(this)).GetAllMoviesAsync(inValue);
+        public System.Threading.Tasks.Task<DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesResponse> GetAllMoviesAsync() {
+            DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest inValue = new DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequest();
+            inValue.Body = new DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.GetAllMoviesRequestBody();
+            return ((DNP1.ViaCinema.Services.Proxies.ViaCinemaMovieService.ViaCinemaMovieServiceSoap)(this)).GetAllMoviesAsync(inValue);
         }
     }
 }
